@@ -7,6 +7,8 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.RobotMap;
 import frc.robot.commands.ArcadeDriveJoystick;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 public class Drive extends Subsystem{
 
     protected DifferentialDrive diffDrive;
