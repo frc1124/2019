@@ -11,7 +11,10 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 public class Drive extends Subsystem{
 
-    protected DifferentialDrive diffDrive;
+    protected static WPI_TalonSRX leftBack, leftFront;
+    protected static WPI_TalonSRX rightBack, rightFront;
+
+    protected static DifferentialDrive diffDrive;
 
     protected final double THROTTLE = .75;
 
