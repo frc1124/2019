@@ -2,37 +2,37 @@
 @startuml
 package "robot domain" #DDDDDD {
 
-	IterativeRobot <|-- OurRobot
-	OurRobot "1" *-- "1" OI
-	OurRobot "1" *-- "1" RobotMap
+	IterativeRobot <|-- Robot
+	Robot "1" *-- "1" OI
+	Robot "1" *-- "1" RobotMap
 
-	OurRobot .. Scheduler : uses
-	OurRobot .. SmartDashboard : uses
+	Robot .. Scheduler : uses
+	Robot .. SmartDashboard : uses
 
-	class OurRobot {
+	class Robot {
 	}
-	OurRobot : robotInit()
-	OurRobot : autonomousInit()
-	OurRobot : autonomousPeriodic()
-	OurRobot : teleopInit()
-	OurRobot : teleopPeriodic()
-	OurRobot : testInit()
-	OurRobot : testPeriodic()
+	Robot : robotInit()
+	Robot : autonomousInit()
+	Robot : autonomousPeriodic()
+	Robot : teleopInit()
+	Robot : teleopPeriodic()
+	Robot : testInit()
+	Robot : testPeriodic()
 
 	Command <|-- AutoCommand
-	OurRobot "1" -- "1" AutoCommand
+	Robot "1" -- "1" AutoCommand
 
 	class AutoCommand {
 	}
 
 	Command <|-- DriveCommand
-	OurRobot "1" -- "1" DriveCommand
+	Robot "1" -- "1" DriveCommand
 
 	class DriveCommand {
 	}
 
 
-	OurRobot "1" *-- "1" Drivetrain
+	Robot "1" *-- "1" Drivetrain
 	DriveCommand -- Drivetrain
 
 	class Drivetrain {
