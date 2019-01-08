@@ -14,4 +14,7 @@ public class RobotMap {
     public static final int LEFT_2 = 2;
     public static final int RIGHT_1 = 1;
     public static final int RIGHT_2 = 3;
+
+    // Analog Inputs
+	public static final int GYRO = 0;
 }
