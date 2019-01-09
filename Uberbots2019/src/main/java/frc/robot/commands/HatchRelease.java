@@ -2,7 +2,14 @@ package frc.robot.commands;
 
 import frc.robot.Robot;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class 
+public class HatchRelease extends Command {
+
+    public HatchRelease(){
+        requires(Robot.hatchMechanism);
+
+        setInterruptible(true);
+    }
+
+}

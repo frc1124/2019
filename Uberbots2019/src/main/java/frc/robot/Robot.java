@@ -31,11 +31,14 @@ public class Robot extends TimedRobot {
 
   public static OI oi;
 
+  public static HatchMechanism hatchMechanism;
+
   @Override
   public void robotInit() {
 
     driveTrain = new Drive();
     driveCamera = new Camera("Drive");
+    hatchMechanism = new HatchMechanism();
 
     oi = new OI(); //instantiate this last
   

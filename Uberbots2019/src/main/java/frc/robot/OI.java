@@ -19,12 +19,17 @@ public class OI {
 
   public Button[] joystickButtons = {
     null,
-    new JoystickButton(joystick, 1)
+    new JoystickButton(joystick, 1),
+    new JoystickButton(joystick, 2),
+    new JoystickButton(joystick, 3),
+
   };
 
   public OI(){
     
     joystickButtons[1].toggleWhenPressed(new ArcadeDriveJoystick());
+    joystickButtons[2].toggleWhenPressed(new HatchRelease());
+    joystickButtons[3].toggleWhenPressed(new HatchRetract());
 
   }
 
