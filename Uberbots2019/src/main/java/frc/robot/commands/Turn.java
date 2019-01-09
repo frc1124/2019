@@ -12,9 +12,7 @@ import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.AnalogGyro;
-import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 import edu.wpi.first.wpilibj.PIDController;
 
@@ -26,6 +24,7 @@ public class Turn extends PIDCommand {
 
 	public static WPI_TalonSRX leftBack, leftFront;
 	public static WPI_TalonSRX rightBack, rightFront;
+
 
 	private static final double MAX_SPEED = 1;
 
@@ -67,6 +66,13 @@ public class Turn extends PIDCommand {
 		gyro = new AnalogGyro(RobotMap.GYRO);
 		gyro.initGyro();
 		accel = new BuiltInAccelerometer();
+
+		int leftBackChannel = RobotMap.LEFT_DRIVE_BACK;
+		int leftFrontChannel = RobotMap.LEFT_DRIVE_FRONT;
+		int rightBackChannel = RobotMap.RIGHT_DRIVE_BACK;
+		int rightFrontChannel = RobotMap.RIGHT_DRIVE_FRONT;
+
+
 
 		startPoint = Robot.driveTrain.getAngle();
 
