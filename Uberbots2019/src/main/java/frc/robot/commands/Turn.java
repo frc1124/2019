@@ -22,6 +22,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
  */
 public class Turn extends PIDCommand {
 
+	// TODO: Get rid of unnecessary code
 	public static WPI_TalonSRX leftBack, leftFront;
 	public static WPI_TalonSRX rightBack, rightFront;
 
