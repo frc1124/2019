@@ -30,7 +30,7 @@ public class Robot extends TimedRobot {
   
     driveTrain = new Drive();
     
-    oi = new OI(); //instanciate this last
+    oi = new OI(); //instantiate this last
   
   }
 
