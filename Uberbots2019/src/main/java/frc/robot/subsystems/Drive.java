@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.SPI;
 
 import frc.robot.RobotMap;
 import frc.robot.commands.ArcadeDriveJoystick;
@@ -14,6 +15,8 @@ import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
+import com.kauailabs.navx.frc.AHRS;
 
 public class Drive extends Subsystem{
 
@@ -26,7 +29,8 @@ public class Drive extends Subsystem{
 	protected static WPI_TalonSRX leftBack, leftFront;
 	protected static WPI_TalonSRX rightBack, rightFront;
 
-	private AnalogGyro gyro;
+    private AnalogGyro gyro;
+    public AHRS navx = new AHRS(SPI.Port.kMXP);
 	private BuiltInAccelerometer accel;
 
 	protected static SpeedControllerGroup left, right;
@@ -36,7 +40,8 @@ public class Drive extends Subsystem{
 	protected final double THROTTLE = .75;
 
 	public Drive(){
-		super("Drive");
+        super("Drive");
+        
 		leftBack = new WPI_TalonSRX(RobotMap.LEFT_1); //Check device numbers
 		leftFront = new WPI_TalonSRX(RobotMap.LEFT_2);
 		left = new SpeedControllerGroup(leftBack, leftFront);
@@ -47,12 +52,11 @@ public class Drive extends Subsystem{
 
 		diffDrive = new DifferentialDrive(left, right);
 
-
-
 		int leftBackChannel = RobotMap.LEFT_DRIVE_BACK;
 		int leftFrontChannel = RobotMap.LEFT_DRIVE_FRONT;
 		int rightBackChannel = RobotMap.RIGHT_DRIVE_BACK;
-		int rightFrontChannel = RobotMap.RIGHT_DRIVE_FRONT;
+        int rightFrontChannel = RobotMap.RIGHT_DRIVE_FRONT;
+        
 		leftEncoder = new Encoder(leftBackChannel, leftFrontChannel, false, EncodingType.k4X);
 
 		rightEncoder = new Encoder(rightBackChannel, rightFrontChannel, false, EncodingType.k4X);

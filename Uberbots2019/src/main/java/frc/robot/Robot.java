@@ -10,7 +10,12 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 
+import com.kauailabs.navx.frc.AHRS;
+import edu.wpi.first.wpilibj.SPI;
+
 import frc.robot.subsystems.Drive;
+import frc.robot.vision.Camera;
+import frc.robot.OI;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -20,16 +25,18 @@ import frc.robot.subsystems.Drive;
  * project.
  */
 public class Robot extends TimedRobot {
-  
+
   public static Drive driveTrain;
+  public static Camera driveCamera;
 
   public static OI oi;
 
   @Override
   public void robotInit() {
-  
+
     driveTrain = new Drive();
-    
+    driveCamera = new Camera("Drive");
+
     oi = new OI(); //instantiate this last
   
   }

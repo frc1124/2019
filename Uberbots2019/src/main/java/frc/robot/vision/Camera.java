@@ -1,12 +1,8 @@
 package frc.robot.vision;
 
-import frc.robot.Robot;
-import frc.robot.RobotMap;
-
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.cscore.CvSink;
-import edu.wpi.cscore.CvSource;
 import edu.wpi.cscore.UsbCamera; 
 
 import org.opencv.core.Mat;
@@ -21,17 +17,21 @@ public class Camera extends Subsystem {
 	protected final int CAMERA_RESOLUTION_X = 640;
 	protected final int CAMERA_RESOLUTION_Y = 480;
 
-	public Camera(UsbCamera camera, String name){
+	protected String name;
+
+	public Camera(String name){
 		super("camera");
+
+		this.name = name;
 		
-		initCamera(camera, name);
+		initCamera(name);
 	}
 	
 	protected void initDefaultCommand() {}
 	
-	private void initCamera(UsbCamera camera, String name){
+	private void initCamera(String name){
 		try{
-			camera = CameraServer.getInstance().startAutomaticCapture();
+			UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
 			camera.setResolution(CAMERA_RESOLUTION_X, CAMERA_RESOLUTION_Y);
 			camera.setFPS(20);
 		}catch(Exception e) {
@@ -39,7 +39,7 @@ public class Camera extends Subsystem {
 		}
 
 		cvSink = CameraServer.getInstance().getVideo();
-		CameraServer.getInstance().putVideo(name, CAMERA_RESOLUTION_X, CAMERA_RESOLUTION_Y);
+		//CameraServer.getInstance().putVideo(name, CAMERA_RESOLUTION_X, CAMERA_RESOLUTION_Y);
 	}
 
 	public Mat getMat(){
