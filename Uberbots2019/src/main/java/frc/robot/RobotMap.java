@@ -15,6 +15,12 @@ public class RobotMap {
     public static final int RIGHT_1 = 1;
     public static final int RIGHT_2 = 3;
 
+    // Digital
+	public static final int LEFT_DRIVE_BACK = 0;
+	public static final int LEFT_DRIVE_FRONT = 1;
+	public static final int RIGHT_DRIVE_BACK = 2;
+	public static final int RIGHT_DRIVE_FRONT = 3;
+
     // Analog Inputs
 	public static final int GYRO = 0;
 }
