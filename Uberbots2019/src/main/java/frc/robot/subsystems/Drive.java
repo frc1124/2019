@@ -11,9 +11,6 @@ import edu.wpi.first.wpilibj.SPI;
 import frc.robot.RobotMap;
 import frc.robot.commands.ArcadeDriveJoystick;
 
-import edu.wpi.first.wpilibj.AnalogGyro;
-import edu.wpi.first.wpilibj.BuiltInAccelerometer;
-
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import com.kauailabs.navx.frc.AHRS;
@@ -29,9 +26,7 @@ public class Drive extends Subsystem{
 	protected static WPI_TalonSRX leftBack, leftFront;
 	protected static WPI_TalonSRX rightBack, rightFront;
 
-    private AnalogGyro gyro;
     public AHRS navx = new AHRS(SPI.Port.kMXP);
-	private BuiltInAccelerometer accel;
 
 	protected static SpeedControllerGroup left, right;
 
@@ -64,10 +59,6 @@ public class Drive extends Subsystem{
 		rightEncoder.setDistancePerPulse(ENCODER_DIST_PER_PULSE);
 		leftEncoder.setDistancePerPulse(ENCODER_DIST_PER_PULSE);
 
-		gyro = new AnalogGyro(RobotMap.GYRO);
-		gyro.initGyro();
-
-		accel = new BuiltInAccelerometer();
 	}
 
 	@Override
@@ -87,41 +78,45 @@ public class Drive extends Subsystem{
 		diffDrive.arcadeDrive(0, 0);
 	}
 
-	public void resetGyro(){
-		gyro.reset();
+	public void resetNavx(){
+		navx.reset();
 	}
+	
 
 	/**
 	 * Goes beyond 360 degrees
 	 * @return absolute full angle that is beyond 360 degrees after 1 rotation
 	 */
 	public double getFullAngle(){
-		return gyro.getAngle();
+		return navx.getAngle();
 	}
 
 	/**
 	 * Angle is between 0 and 360 degrees
 	 */
 	public double getAngle(){
-		return gyro.getAngle() / 360.0;
+		return navx.getAngle() / 360.0;
+	}
+	public float getYaw(){
+		return navx.getYaw();
 	}
 
 	public double getAngularRate(){
-		return gyro.getRate();
+		return navx.getRate();
 	}
 
 	// accelerometer methods
 
 	public double getAccelX(){
-		return accel.getX();
+		return navx.getWorldLinearAccelX();
 	}
 
 	public double getAccelY(){
-		return accel.getY();
+		return navx.getWorldLinearAccelY();
 	}
 
 	public double getAccelZ(){
-		return accel.getZ();
+		return navx.getWorldLinearAccelZ();
 	}
 
 	// encoder methods

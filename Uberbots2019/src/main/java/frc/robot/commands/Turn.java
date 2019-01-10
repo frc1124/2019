@@ -9,11 +9,8 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.PIDCommand;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 import edu.wpi.first.wpilibj.PIDController;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
@@ -22,7 +19,6 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
  */
 public class Turn extends PIDCommand {
 
-	// TODO: Get rid of unnecessary code
 	public static WPI_TalonSRX leftBack, leftFront;
 	public static WPI_TalonSRX rightBack, rightFront;
 
@@ -36,46 +32,24 @@ public class Turn extends PIDCommand {
 
 	public final double SETPOINT_TOLERANCE = 2.0;
 	
-	private final double UNITS_PER_TICK = 10.0 * 60.0 / 4096.0;
-
-	private BuiltInAccelerometer accel;
-	
-
 	private static final double P = 0;
 	private static final double I = 0;
 	private static final double D = 0;
 
-	public AnalogGyro gyro;
 	public DifferentialDrive robotDrive;
 
-	public double startPoint;
+	public float startPoint;
 	// Degrees range from 180 to -179
 	public Turn(double angle) {
 		super("Turn", P, I, D);
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.driveTrain);
 
-		leftBack = new WPI_TalonSRX(RobotMap.LEFT_2);
-		leftFront = new WPI_TalonSRX(RobotMap.LEFT_1);
-		rightBack = new WPI_TalonSRX(RobotMap.RIGHT_2);
-		rightFront = new WPI_TalonSRX(RobotMap.RIGHT_1);
-
 		this.angle = angle;
 
 		this.getPIDController().setOutputRange(-MAX_SPEED, MAX_SPEED);
 
-		gyro = new AnalogGyro(RobotMap.GYRO);
-		gyro.initGyro();
-		accel = new BuiltInAccelerometer();
-
-		int leftBackChannel = RobotMap.LEFT_DRIVE_BACK;
-		int leftFrontChannel = RobotMap.LEFT_DRIVE_FRONT;
-		int rightBackChannel = RobotMap.RIGHT_DRIVE_BACK;
-		int rightFrontChannel = RobotMap.RIGHT_DRIVE_FRONT;
-
-
-
-		startPoint = Robot.driveTrain.getAngle();
+		startPoint = Robot.driveTrain.getYaw();
 
 		setInterruptible(true);
 	}
