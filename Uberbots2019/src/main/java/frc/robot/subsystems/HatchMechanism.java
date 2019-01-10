@@ -31,6 +31,13 @@ public class HatchMechanism extends Subsystem{
         Push2.set(DoubleSolenoid.Value.kReverse);
 
     }
+    public void PistonExtend(){
+        Bar.set(DoubleSolenoid.Value.kForward);
+    }
+    public void PistonRetract(){
+        Bar.set(DoubleSolenoid.Value.kReverse);
+        
+    }
 }
 
 
