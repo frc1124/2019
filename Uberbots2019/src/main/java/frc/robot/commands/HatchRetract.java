@@ -11,10 +11,6 @@ public class HatchRetract extends Command{
         setInterruptible(true);
     }
 
-    public void initDefaultCommand(){
-
-    }
-
     public void execute(){
         Robot.hatchMechanism.HatchRetract();
 
