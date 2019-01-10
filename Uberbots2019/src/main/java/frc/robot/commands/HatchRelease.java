@@ -16,4 +16,10 @@ public class HatchRelease extends Command {
         return false;
     }
 
+    @Override
+  protected void execute() {
+
+    Robot.hatchMechanism.HatchRelease();
+  }
+
 }
