@@ -5,13 +5,14 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class HatchMechanism extends Subsystem{
    
+    protected static DoubleSolenoid Push1, Push2, Bar;
 
     public HatchMechanism(){
         super("HatchMechanism");
 
-        DoubleSolenoid Push1 = new DoubleSolenoid (0,1);
-        DoubleSolenoid Push2 = new DoubleSolenoid (2,3);
-        DoubleSolenoid Bar = new DoubleSolenoid (4,5);
+        Push1 = new DoubleSolenoid (0,1);
+        Push2 = new DoubleSolenoid (2,3);
+        Bar = new DoubleSolenoid (4,5);
 
     }
 

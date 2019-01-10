@@ -10,12 +10,10 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 
-import com.kauailabs.navx.frc.AHRS;
-import edu.wpi.first.wpilibj.SPI;
-
 import frc.robot.subsystems.Drive;
 import frc.robot.vision.Camera;
 import frc.robot.OI;
+import frc.robot.subsystems.HatchMechanism;
 
 /**
  * The VM is configured to automatically run this class, and to call the

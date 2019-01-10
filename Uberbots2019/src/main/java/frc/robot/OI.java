@@ -12,6 +12,8 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import frc.robot.commands.ArcadeDriveJoystick;
+import frc.robot.commands.HatchRelease;
+import frc.robot.commands.HatchRetract;
 
 public class OI {
  

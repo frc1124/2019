@@ -12,4 +12,8 @@ public class HatchRelease extends Command {
         setInterruptible(true);
     }
 
+    public boolean isFinished(){
+        return false;
+    }
+
 }
