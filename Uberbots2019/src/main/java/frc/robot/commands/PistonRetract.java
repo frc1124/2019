@@ -4,20 +4,19 @@ import frc.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 
-public class PistonExtend extends Command{
+public class PistonRetract extends Command{
     
-    public PistonExtend(){
+    public PistonRetract(){
         requires(Robot.hatchMechanism);
 
         setInterruptible(true);
     }
     
     public void execute(){
-        Robot.hatchMechanism.PistonExtend();
+        Robot.hatchMechanism.PistonRetract();
 
     }
     protected boolean isFinished(){
         return false;
     }
 }
-
