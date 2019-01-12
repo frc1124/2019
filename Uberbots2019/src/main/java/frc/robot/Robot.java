@@ -1,8 +1,8 @@
 /*----------------------------------------------------------------------------*/
-/* Copyright (c) 2017-2018 FIRST. All Rights Reserved.                        */
+/* Copyright (c) 2017-2018 FIRST. All Rights Reserved.						*/
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
 /* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
+/* the project.															   */
 /*----------------------------------------------------------------------------*/
 
 package frc.robot;
@@ -15,6 +15,10 @@ import frc.robot.vision.Camera;
 import frc.robot.OI;
 import frc.robot.subsystems.HatchMechanism;
 
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -24,56 +28,88 @@ import frc.robot.subsystems.HatchMechanism;
  */
 public class Robot extends TimedRobot {
 
-  public static Drive driveTrain;
-  public static Camera driveCamera;
+	public static NetworkTableEntry arcadeDriveMoveEntry;
+	public static NetworkTableEntry arcadeDriveRotateEntry;
 
-  public static OI oi;
+	public static NetworkTableEntry leftDrivePEntry;
+	public static NetworkTableEntry leftDriveIEntry;
+	public static NetworkTableEntry leftDriveDEntry;
 
-  public static HatchMechanism hatchMechanism;
+	public static NetworkTableEntry rightDrivePEntry;
+	public static NetworkTableEntry rightDriveIEntry;
+	public static NetworkTableEntry rightDriveDEntry;
 
-  @Override
-  public void robotInit() {
+	public static NetworkTableEntry turnPEntry;
+	public static NetworkTableEntry turnIEntry;
+	public static NetworkTableEntry turnDEntry;
 
-    driveTrain = new Drive();
-    driveCamera = new Camera("Drive");
-    hatchMechanism = new HatchMechanism();
+	public static Drive driveTrain;
+	public static Camera driveCamera;
 
-    oi = new OI(); //instantiate this last
-  
-  }
+	public static OI oi;
 
-  @Override
-  public void robotPeriodic() {
-  }
+	public static HatchMechanism hatchMechanism;
 
-  @Override
-  public void disabledInit() {
-  }
+	@Override
+	public void robotInit() {
 
-  @Override
-  public void disabledPeriodic() {
-    Scheduler.getInstance().run();
-  }
+		driveTrain = new Drive();
+		driveCamera = new Camera("Drive");
+		hatchMechanism = new HatchMechanism();
 
-  @Override
-  public void autonomousInit() {
-  }
+		oi = new OI(); //instantiate this last
 
-  @Override
-  public void autonomousPeriodic() {
-    Scheduler.getInstance().run();
-  }
+		NetworkTableInstance inst = NetworkTableInstance.getDefault();
+		NetworkTable dashboard = inst.getTable("dashboard");
 
-  @Override
-  public void teleopInit() {
-  }
+		arcadeDriveMoveEntry = dashboard.getEntry("arcadeDriveMoveEntry");
+		arcadeDriveRotateEntry = dashboard.getEntry("arcadeDriveRotateEntry");
 
-  @Override
-  public void teleopPeriodic() {
-    Scheduler.getInstance().run();
-  }
+		leftDrivePEntry = dashboard.getEntry("dashboard");
+		leftDriveIEntry = dashboard.getEntry("dashboard");
+		leftDriveDEntry = dashboard.getEntry("dashboard");
 
-  @Override
-  public void testPeriodic() {
-  }
+		rightDrivePEntry = dashboard.getEntry("dashboard");
+		rightDriveIEntry = dashboard.getEntry("dashboard");
+		rightDriveDEntry = dashboard.getEntry("dashboard");
+
+		turnPEntry = dashboard.getEntry("dashboard");
+		turnIEntry = dashboard.getEntry("dashboard");
+		turnDEntry = dashboard.getEntry("dashboard");
+	}
+
+	@Override
+	public void robotPeriodic() {
+	}
+
+	@Override
+	public void disabledInit() {
+	}
+
+	@Override
+	public void disabledPeriodic() {
+		Scheduler.getInstance().run();
+	}
+
+	@Override
+	public void autonomousInit() {
+	}
+
+	@Override
+	public void autonomousPeriodic() {
+		Scheduler.getInstance().run();
+	}
+
+	@Override
+	public void teleopInit() {
+	}
+
+	@Override
+	public void teleopPeriodic() {
+		Scheduler.getInstance().run();
+	}
+
+	@Override
+	public void testPeriodic() {
+	}
 }

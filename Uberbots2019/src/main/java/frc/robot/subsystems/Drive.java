@@ -75,7 +75,7 @@ public class Drive extends Subsystem{
 	}
 
 	public void stop(){
-		diffDrive.arcadeDrive(0, 0);
+		this.drive(0,0);
 	}
 
 	public void resetNavx(){
