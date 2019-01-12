@@ -1,43 +1,48 @@
 package frc.robot.subsystems;
 
+import frc.robot.Robot;
+import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class HatchMechanism extends Subsystem{
-   
-    protected static DoubleSolenoid Push1, Push2, Bar;
+	// public static double isHatchReleased;
+	protected static DoubleSolenoid Push1, Push2, Bar;
 
-    public HatchMechanism(){
-        super("HatchMechanism");
+	public HatchMechanism(){
+		super("HatchMechanism");
 
-        Push1 = new DoubleSolenoid (0,1);
-        Push2 = new DoubleSolenoid (2,3);
-        Bar = new DoubleSolenoid (4,5);
+		Push1 = new DoubleSolenoid(RobotMap.PUSH1_FORWARD_CHANNEL,RobotMap.PUSH1_BACKWARD_CHANNEL);
+		Push2 = new DoubleSolenoid(RobotMap.PUSH2_FORWARD_CHANNEL,RobotMap.PUSH2_BACKWARD_CHANNEL);
+		Bar = new DoubleSolenoid(RobotMap.BAR_FORWARD_CHANNEL,RobotMap.BAR_BACKWARD_CHANNEL);
 
-    }
+	}
 
-    public void initDefaultCommand(){
+	public void initDefaultCommand(){
 
-    }
-    public void HatchRelease(){
+	}
+	public void HatchRelease(){
+		Robot.hatchReleasedEntry.setBoolean(true);
 
-        Push1.set(DoubleSolenoid.Value.kForward);
-        Push2.set(DoubleSolenoid.Value.kForward);
-        
-    }
-    public void HatchRetract(){
+		Push1.set(DoubleSolenoid.Value.kForward);
+		Push2.set(DoubleSolenoid.Value.kForward);
 
-        Push1.set(DoubleSolenoid.Value.kReverse);
-        Push2.set(DoubleSolenoid.Value.kReverse);
+	}
+	public void HatchRetract(){
+		Robot.hatchReleasedEntry.setBoolean(false);
 
-    }
-    public void PistonExtend(){
-        Bar.set(DoubleSolenoid.Value.kForward);
-    }
-    public void PistonRetract(){
-        Bar.set(DoubleSolenoid.Value.kReverse);
-        
-    }
+		Push1.set(DoubleSolenoid.Value.kReverse);
+		Push2.set(DoubleSolenoid.Value.kReverse);
+	}
+
+	public void PistonExtend(){
+		Robot.pistonExtendedEntry.setBoolean(true);
+		Bar.set(DoubleSolenoid.Value.kForward);
+	}
+	public void PistonRetract(){
+		Robot.pistonExtendedEntry.setBoolean(false);
+		Bar.set(DoubleSolenoid.Value.kReverse);
+	}
 }
 
 

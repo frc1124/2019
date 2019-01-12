@@ -10,6 +10,9 @@ import edu.wpi.first.wpilibj.SPI;
 
 import frc.robot.RobotMap;
 import frc.robot.commands.ArcadeDriveJoystick;
+// Check for error here
+import frc.robot.Robot;
+
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
@@ -58,7 +61,6 @@ public class Drive extends Subsystem{
 
 		rightEncoder.setDistancePerPulse(ENCODER_DIST_PER_PULSE);
 		leftEncoder.setDistancePerPulse(ENCODER_DIST_PER_PULSE);
-
 	}
 
 	@Override
@@ -67,6 +69,8 @@ public class Drive extends Subsystem{
 	}
 
 	public void drive(double move, double rotate){
+		Robot.arcadeDriveMoveEntry.getDouble(move);
+		Robot.arcadeDriveRotateEntry.getDouble(rotate);
 		diffDrive.arcadeDrive(move, rotate);
 	}
 
@@ -163,5 +167,4 @@ public class Drive extends Subsystem{
 	public void resetRightEncoder(){
 		rightEncoder.reset();
 	}
-
 }

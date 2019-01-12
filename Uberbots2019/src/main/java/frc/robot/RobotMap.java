@@ -24,4 +24,13 @@ public class RobotMap {
     // Analog Inputs
 	public static final int GYRO = 0;
 
+	// Pistons & Solenoid
+	public static final int PUSH1_FORWARD_CHANNEL = 0;
+	public static final int PUSH1_BACKWARD_CHANNEL = 1;
+
+	public static final int PUSH2_FORWARD_CHANNEL = 2;
+	public static final int PUSH2_BACKWARD_CHANNEL = 3;
+
+	public static final int BAR_FORWARD_CHANNEL = 4;
+	public static final int BAR_BACKWARD_CHANNEL = 5;
 }
