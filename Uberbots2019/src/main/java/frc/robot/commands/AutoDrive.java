@@ -14,7 +14,7 @@ public class AutoDrive extends Command {
     }  
     @Override
     public void execute(){
-
+        this.drive(100, 0);
 
     }  
 
