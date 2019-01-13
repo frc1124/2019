@@ -2,7 +2,6 @@ package frc.robot.commands;
 
 import frc.robot.Robot;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class AutoDrive extends Command {
@@ -14,7 +13,7 @@ public class AutoDrive extends Command {
     }  
     @Override
     public void execute(){
-        this.drive(100, 0);
+        Robot.driveTrain.drive(100, 0);
 
     }  
 
