@@ -14,8 +14,8 @@ public class Camera extends Subsystem {
 
 	protected static CvSink cvSink;
 
-	protected final int CAMERA_RESOLUTION_X = 640;
-	protected final int CAMERA_RESOLUTION_Y = 480;
+	protected final int CAMERA_RESOLUTION_X = 320;
+	protected final int CAMERA_RESOLUTION_Y = 240;
 
 	protected String name;
 
@@ -39,7 +39,10 @@ public class Camera extends Subsystem {
 		}
 
 		cvSink = CameraServer.getInstance().getVideo();
-		//CameraServer.getInstance().putVideo(name, CAMERA_RESOLUTION_X, CAMERA_RESOLUTION_Y);
+
+		if(name == "Drive"){
+			CameraServer.getInstance().putVideo(name, CAMERA_RESOLUTION_X, CAMERA_RESOLUTION_Y);
+		}
 	}
 
 	public Mat getMat(){
