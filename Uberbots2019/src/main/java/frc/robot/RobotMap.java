@@ -10,10 +10,10 @@ package frc.robot;
 public class RobotMap {
 
     // Can addresses
-    public static final int LEFT_1 = 0;
-    public static final int LEFT_2 = 2;
-    public static final int RIGHT_1 = 1;
-    public static final int RIGHT_2 = 3;
+    public static final int LEFT_1 = 14;
+    public static final int LEFT_2 = 15;
+    public static final int RIGHT_1 = 0;
+    public static final int RIGHT_2 = 1;
 
     // Digital
 	public static final int LEFT_DRIVE_BACK = 0;

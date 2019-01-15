@@ -69,8 +69,8 @@ public class Drive extends Subsystem{
 	}
 
 	public void drive(double move, double rotate){
-		Robot.arcadeDriveMoveEntry.getDouble(move);
-		Robot.arcadeDriveRotateEntry.getDouble(rotate);
+		// Robot.ntData.arcadeDriveMoveEntry.getDouble(move);
+		// Robot.ntData.arcadeDriveRotateEntry.getDouble(rotate);
 		diffDrive.arcadeDrive(move, rotate);
 	}
 

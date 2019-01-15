@@ -22,25 +22,25 @@ public class HatchMechanism extends Subsystem{
 
 	}
 	public void HatchRelease(){
-		Robot.hatchReleasedEntry.setBoolean(true);
+		Robot.ntData.hatchReleasedEntry.setBoolean(true);
 
 		Push1.set(DoubleSolenoid.Value.kForward);
 		Push2.set(DoubleSolenoid.Value.kForward);
 
 	}
 	public void HatchRetract(){
-		Robot.hatchReleasedEntry.setBoolean(false);
+		Robot.ntData.hatchReleasedEntry.setBoolean(false);
 
 		Push1.set(DoubleSolenoid.Value.kReverse);
 		Push2.set(DoubleSolenoid.Value.kReverse);
 	}
 
 	public void PistonExtend(){
-		Robot.pistonExtendedEntry.setBoolean(true);
+		Robot.ntData.pistonExtendedEntry.setBoolean(true);
 		Bar.set(DoubleSolenoid.Value.kForward);
 	}
 	public void PistonRetract(){
-		Robot.pistonExtendedEntry.setBoolean(false);
+		Robot.ntData.pistonExtendedEntry.setBoolean(false);
 		Bar.set(DoubleSolenoid.Value.kReverse);
 	}
 }

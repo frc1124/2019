@@ -12,12 +12,12 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 
 import frc.robot.subsystems.Drive;
 import frc.robot.vision.Camera;
+import frc.robot.data.Data;
 import frc.robot.OI;
 import frc.robot.subsystems.HatchMechanism;
 
-import edu.wpi.first.networktables.NetworkTable;
-import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -28,34 +28,9 @@ import edu.wpi.first.networktables.NetworkTableInstance;
  */
 public class Robot extends TimedRobot {
 
-	public static NetworkTableEntry arcadeDriveMoveEntry;
-	public static NetworkTableEntry arcadeDriveRotateEntry;
+	NetworkTableInstance inst = NetworkTableInstance.getDefault();
 
-	public static NetworkTableEntry leftDrivePEntry;
-	public static NetworkTableEntry leftDriveIEntry;
-	public static NetworkTableEntry leftDriveDEntry;
-	public static NetworkTableEntry leftEncoderDistanceEntry;
-
-
-	public static NetworkTableEntry rightDrivePEntry;
-	public static NetworkTableEntry rightDriveIEntry;
-	public static NetworkTableEntry rightDriveDEntry;
-	public static NetworkTableEntry rightEncoderDistanceEntry;
-
-	public static NetworkTableEntry turnPEntry;
-	public static NetworkTableEntry turnIEntry;
-	public static NetworkTableEntry turnDEntry;
-
-	public static NetworkTableEntry dataAngleEntry;
-	public static NetworkTableEntry dataYawEntry;
-	public static NetworkTableEntry dataAccelXEntry;
-	public static NetworkTableEntry dataAccelYEntry;
-	public static NetworkTableEntry dataAccelZEntry;
-	public static NetworkTableEntry hatchReleasedEntry;
-	public static NetworkTableEntry pistonExtendedEntry;
-
-
-
+	public static Data ntData;
 	public static Drive driveTrain;
 	public static Camera driveCamera;
 
@@ -66,40 +41,12 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 
+		ntData = new Data(inst);
 		driveTrain = new Drive();
 		driveCamera = new Camera("Drive");
 		hatchMechanism = new HatchMechanism();
 
 		oi = new OI(); //instantiate this last
-
-		NetworkTableInstance inst = NetworkTableInstance.getDefault();
-		NetworkTable dashboard = inst.getTable("dashboard");
-
-		arcadeDriveMoveEntry = dashboard.getEntry("arcadeDriveMoveEntry");
-		arcadeDriveRotateEntry = dashboard.getEntry("arcadeDriveRotateEntry");
-
-		leftDrivePEntry = dashboard.getEntry("leftDrivePEntry");
-		leftDriveIEntry = dashboard.getEntry("leftDriveIEntry");
-		leftDriveDEntry = dashboard.getEntry("leftDriveDEntry");
-		leftEncoderDistanceEntry = dashboard.getEntry("leftEncoderDistanceEntry");
-
-
-		rightDrivePEntry = dashboard.getEntry("rightDrivePEntry");
-		rightDriveIEntry = dashboard.getEntry("rightDriveIEntry");
-		rightDriveDEntry = dashboard.getEntry("rightDriveDEntry");
-		rightEncoderDistanceEntry = dashboard.getEntry("rightEncoderDistanceEntry");
-
-		turnPEntry = dashboard.getEntry("turnPEntry");
-		turnIEntry = dashboard.getEntry("turnIEntry");
-		turnDEntry = dashboard.getEntry("turnDEntry");
-
-		dataAngleEntry = dashboard.getEntry("dataAngleEntry");
-		dataYawEntry = dashboard.getEntry("dataYawEntry");
-		dataAccelXEntry = dashboard.getEntry("dataAccelXEntry");
-		dataAccelYEntry = dashboard.getEntry("dataAccelYEntry");
-		dataAccelZEntry = dashboard.getEntry("dataAccelZEntry");
-		hatchReleasedEntry = dashboard.getEntry("hatchReleasedEntry");
-		pistonExtendedEntry = dashboard.getEntry("pistonExtendedEntry");
 	}
 
 	@Override
