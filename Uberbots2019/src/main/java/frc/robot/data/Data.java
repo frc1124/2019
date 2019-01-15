@@ -61,164 +61,404 @@ public class Data {
 		hatchReleasedEntry = dashboard.getEntry("hatchReleasedEntry");
 		pistonExtendedEntry = dashboard.getEntry("pistonExtendedEntry");
 	}
-
-	public NetworkTableEntry getArcadeDriveMoveEntry() {
-		return arcadeDriveMoveEntry;
+	
+	/**
+	 * Get arcadeDriveMoveEntry.
+	 *
+	 * @return arcadeDriveMoveEntry as NetworkTableEntry.
+	 */
+	public NetworkTableEntry getArcadeDriveMoveEntry()
+	{
+	    return arcadeDriveMoveEntry;
 	}
-
-	public void setArcadeDriveMoveEntry(NetworkTableEntry arcadeDriveMoveEntry) {
-		this.arcadeDriveMoveEntry = arcadeDriveMoveEntry;
+	
+	/**
+	 * Set arcadeDriveMoveEntry.
+	 *
+	 * @param arcadeDriveMoveEntry the value to set.
+	 */
+	public void setArcadeDriveMoveEntry(NetworkTableEntry arcadeDriveMoveEntry)
+	{
+	    this.arcadeDriveMoveEntry = arcadeDriveMoveEntry;
 	}
-
-	public NetworkTableEntry getArcadeDriveRotateEntry() {
-		return arcadeDriveRotateEntry;
+	
+	/**
+	 * Get arcadeDriveRotateEntry.
+	 *
+	 * @return arcadeDriveRotateEntry as NetworkTableEntry.
+	 */
+	public NetworkTableEntry getArcadeDriveRotateEntry()
+	{
+	    return arcadeDriveRotateEntry;
 	}
-
-	public void setArcadeDriveRotateEntry(NetworkTableEntry arcadeDriveRotateEntry) {
-		this.arcadeDriveRotateEntry = arcadeDriveRotateEntry;
+	
+	/**
+	 * Set arcadeDriveRotateEntry.
+	 *
+	 * @param arcadeDriveRotateEntry the value to set.
+	 */
+	public void setArcadeDriveRotateEntry(NetworkTableEntry arcadeDriveRotateEntry)
+	{
+	    this.arcadeDriveRotateEntry = arcadeDriveRotateEntry;
 	}
-
-	public NetworkTableEntry getLeftDrivePEntry() {
-		return leftDrivePEntry;
+	
+	/**
+	 * Get leftDrivePEntry.
+	 *
+	 * @return leftDrivePEntry as NetworkTableEntry.
+	 */
+	public NetworkTableEntry getLeftDrivePEntry()
+	{
+	    return leftDrivePEntry;
 	}
-
-	public void setLeftDrivePEntry(NetworkTableEntry leftDrivePEntry) {
-		this.leftDrivePEntry = leftDrivePEntry;
+	
+	/**
+	 * Set leftDrivePEntry.
+	 *
+	 * @param leftDrivePEntry the value to set.
+	 */
+	public void setLeftDrivePEntry(NetworkTableEntry leftDrivePEntry)
+	{
+	    this.leftDrivePEntry = leftDrivePEntry;
 	}
-
-	public NetworkTableEntry getLeftDriveIEntry() {
-		return leftDriveIEntry;
+	
+	/**
+	 * Get leftDriveIEntry.
+	 *
+	 * @return leftDriveIEntry as NetworkTableEntry.
+	 */
+	public NetworkTableEntry getLeftDriveIEntry()
+	{
+	    return leftDriveIEntry;
 	}
-
-	public void setLeftDriveIEntry(NetworkTableEntry leftDriveIEntry) {
-		this.leftDriveIEntry = leftDriveIEntry;
+	
+	/**
+	 * Set leftDriveIEntry.
+	 *
+	 * @param leftDriveIEntry the value to set.
+	 */
+	public void setLeftDriveIEntry(NetworkTableEntry leftDriveIEntry)
+	{
+	    this.leftDriveIEntry = leftDriveIEntry;
 	}
-
-	public NetworkTableEntry getLeftDriveDEntry() {
-		return leftDriveDEntry;
+	
+	/**
+	 * Get leftDriveDEntry.
+	 *
+	 * @return leftDriveDEntry as NetworkTableEntry.
+	 */
+	public NetworkTableEntry getLeftDriveDEntry()
+	{
+	    return leftDriveDEntry;
 	}
-
-	public void setLeftDriveDEntry(NetworkTableEntry leftDriveDEntry) {
-		this.leftDriveDEntry = leftDriveDEntry;
+	
+	/**
+	 * Set leftDriveDEntry.
+	 *
+	 * @param leftDriveDEntry the value to set.
+	 */
+	public void setLeftDriveDEntry(NetworkTableEntry leftDriveDEntry)
+	{
+	    this.leftDriveDEntry = leftDriveDEntry;
 	}
-
-	public NetworkTableEntry getLeftEncoderDistanceEntry() {
-		return leftEncoderDistanceEntry;
+	
+	/**
+	 * Get leftEncoderDistanceEntry.
+	 *
+	 * @return leftEncoderDistanceEntry as NetworkTableEntry.
+	 */
+	public NetworkTableEntry getLeftEncoderDistanceEntry()
+	{
+	    return leftEncoderDistanceEntry;
 	}
-
-	public void setLeftEncoderDistanceEntry(NetworkTableEntry leftEncoderDistanceEntry) {
-		this.leftEncoderDistanceEntry = leftEncoderDistanceEntry;
+	
+	/**
+	 * Set leftEncoderDistanceEntry.
+	 *
+	 * @param leftEncoderDistanceEntry the value to set.
+	 */
+	public void setLeftEncoderDistanceEntry(NetworkTableEntry leftEncoderDistanceEntry)
+	{
+	    this.leftEncoderDistanceEntry = leftEncoderDistanceEntry;
 	}
-
-	public NetworkTableEntry getRightDrivePEntry() {
-		return rightDrivePEntry;
+	
+	/**
+	 * Get rightDrivePEntry.
+	 *
+	 * @return rightDrivePEntry as NetworkTableEntry.
+	 */
+	public NetworkTableEntry getRightDrivePEntry()
+	{
+	    return rightDrivePEntry;
 	}
-
-	public void setRightDrivePEntry(NetworkTableEntry rightDrivePEntry) {
-		this.rightDrivePEntry = rightDrivePEntry;
+	
+	/**
+	 * Set rightDrivePEntry.
+	 *
+	 * @param rightDrivePEntry the value to set.
+	 */
+	public void setRightDrivePEntry(NetworkTableEntry rightDrivePEntry)
+	{
+	    this.rightDrivePEntry = rightDrivePEntry;
 	}
-
-	public NetworkTableEntry getRightDriveIEntry() {
-		return rightDriveIEntry;
+	
+	/**
+	 * Get rightDriveIEntry.
+	 *
+	 * @return rightDriveIEntry as NetworkTableEntry.
+	 */
+	public NetworkTableEntry getRightDriveIEntry()
+	{
+	    return rightDriveIEntry;
 	}
-
-	public void setRightDriveIEntry(NetworkTableEntry rightDriveIEntry) {
-		this.rightDriveIEntry = rightDriveIEntry;
+	
+	/**
+	 * Set rightDriveIEntry.
+	 *
+	 * @param rightDriveIEntry the value to set.
+	 */
+	public void setRightDriveIEntry(NetworkTableEntry rightDriveIEntry)
+	{
+	    this.rightDriveIEntry = rightDriveIEntry;
 	}
-
-	public NetworkTableEntry getRightDriveDEntry() {
-		return rightDriveDEntry;
+	
+	/**
+	 * Get rightDriveDEntry.
+	 *
+	 * @return rightDriveDEntry as NetworkTableEntry.
+	 */
+	public NetworkTableEntry getRightDriveDEntry()
+	{
+	    return rightDriveDEntry;
 	}
-
-	public void setRightDriveDEntry(NetworkTableEntry rightDriveDEntry) {
-		this.rightDriveDEntry = rightDriveDEntry;
+	
+	/**
+	 * Set rightDriveDEntry.
+	 *
+	 * @param rightDriveDEntry the value to set.
+	 */
+	public void setRightDriveDEntry(NetworkTableEntry rightDriveDEntry)
+	{
+	    this.rightDriveDEntry = rightDriveDEntry;
 	}
-
-	public NetworkTableEntry getRightEncoderDistanceEntry() {
-		return rightEncoderDistanceEntry;
+	
+	/**
+	 * Get rightEncoderDistanceEntry.
+	 *
+	 * @return rightEncoderDistanceEntry as NetworkTableEntry.
+	 */
+	public NetworkTableEntry getRightEncoderDistanceEntry()
+	{
+	    return rightEncoderDistanceEntry;
 	}
-
-	public void setRightEncoderDistanceEntry(NetworkTableEntry rightEncoderDistanceEntry) {
-		this.rightEncoderDistanceEntry = rightEncoderDistanceEntry;
+	
+	/**
+	 * Set rightEncoderDistanceEntry.
+	 *
+	 * @param rightEncoderDistanceEntry the value to set.
+	 */
+	public void setRightEncoderDistanceEntry(NetworkTableEntry rightEncoderDistanceEntry)
+	{
+	    this.rightEncoderDistanceEntry = rightEncoderDistanceEntry;
 	}
-
-	public NetworkTableEntry getTurnPEntry() {
-		return turnPEntry;
+	
+	/**
+	 * Get turnPEntry.
+	 *
+	 * @return turnPEntry as NetworkTableEntry.
+	 */
+	public NetworkTableEntry getTurnPEntry()
+	{
+	    return turnPEntry;
 	}
-
-	public void setTurnPEntry(NetworkTableEntry turnPEntry) {
-		this.turnPEntry = turnPEntry;
+	
+	/**
+	 * Set turnPEntry.
+	 *
+	 * @param turnPEntry the value to set.
+	 */
+	public void setTurnPEntry(NetworkTableEntry turnPEntry)
+	{
+	    this.turnPEntry = turnPEntry;
 	}
-
-	public NetworkTableEntry getTurnIEntry() {
-		return turnIEntry;
+	
+	/**
+	 * Get turnIEntry.
+	 *
+	 * @return turnIEntry as NetworkTableEntry.
+	 */
+	public NetworkTableEntry getTurnIEntry()
+	{
+	    return turnIEntry;
 	}
-
-	public void setTurnIEntry(NetworkTableEntry turnIEntry) {
-		this.turnIEntry = turnIEntry;
+	
+	/**
+	 * Set turnIEntry.
+	 *
+	 * @param turnIEntry the value to set.
+	 */
+	public void setTurnIEntry(NetworkTableEntry turnIEntry)
+	{
+	    this.turnIEntry = turnIEntry;
 	}
-
-	public NetworkTableEntry getTurnDEntry() {
-		return turnDEntry;
+	
+	/**
+	 * Get turnDEntry.
+	 *
+	 * @return turnDEntry as NetworkTableEntry.
+	 */
+	public NetworkTableEntry getTurnDEntry()
+	{
+	    return turnDEntry;
 	}
-
-	public void setTurnDEntry(NetworkTableEntry turnDEntry) {
-		this.turnDEntry = turnDEntry;
+	
+	/**
+	 * Set turnDEntry.
+	 *
+	 * @param turnDEntry the value to set.
+	 */
+	public void setTurnDEntry(NetworkTableEntry turnDEntry)
+	{
+	    this.turnDEntry = turnDEntry;
 	}
-
-	public NetworkTableEntry getDataAngleEntry() {
-		return dataAngleEntry;
+	
+	/**
+	 * Get dataAngleEntry.
+	 *
+	 * @return dataAngleEntry as NetworkTableEntry.
+	 */
+	public NetworkTableEntry getDataAngleEntry()
+	{
+	    return dataAngleEntry;
 	}
-
-	public void setDataAngleEntry(NetworkTableEntry dataAngleEntry) {
-		this.dataAngleEntry = dataAngleEntry;
+	
+	/**
+	 * Set dataAngleEntry.
+	 *
+	 * @param dataAngleEntry the value to set.
+	 */
+	public void setDataAngleEntry(NetworkTableEntry dataAngleEntry)
+	{
+	    this.dataAngleEntry = dataAngleEntry;
 	}
-
-	public NetworkTableEntry getDataYawEntry() {
-		return dataYawEntry;
+	
+	/**
+	 * Get dataYawEntry.
+	 *
+	 * @return dataYawEntry as NetworkTableEntry.
+	 */
+	public NetworkTableEntry getDataYawEntry()
+	{
+	    return dataYawEntry;
 	}
-
-	public void setDataYawEntry(NetworkTableEntry dataYawEntry) {
-		this.dataYawEntry = dataYawEntry;
+	
+	/**
+	 * Set dataYawEntry.
+	 *
+	 * @param dataYawEntry the value to set.
+	 */
+	public void setDataYawEntry(NetworkTableEntry dataYawEntry)
+	{
+	    this.dataYawEntry = dataYawEntry;
 	}
-
-	public NetworkTableEntry getDataAccelXEntry() {
-		return dataAccelXEntry;
+	
+	/**
+	 * Get dataAccelXEntry.
+	 *
+	 * @return dataAccelXEntry as NetworkTableEntry.
+	 */
+	public NetworkTableEntry getDataAccelXEntry()
+	{
+	    return dataAccelXEntry;
 	}
-
-	public void setDataAccelXEntry(NetworkTableEntry dataAccelXEntry) {
-		this.dataAccelXEntry = dataAccelXEntry;
+	
+	/**
+	 * Set dataAccelXEntry.
+	 *
+	 * @param dataAccelXEntry the value to set.
+	 */
+	public void setDataAccelXEntry(NetworkTableEntry dataAccelXEntry)
+	{
+	    this.dataAccelXEntry = dataAccelXEntry;
 	}
-
-	public NetworkTableEntry getDataAccelYEntry() {
-		return dataAccelYEntry;
+	
+	/**
+	 * Get dataAccelYEntry.
+	 *
+	 * @return dataAccelYEntry as NetworkTableEntry.
+	 */
+	public NetworkTableEntry getDataAccelYEntry()
+	{
+	    return dataAccelYEntry;
 	}
-
-	public void setDataAccelYEntry(NetworkTableEntry dataAccelYEntry) {
-		this.dataAccelYEntry = dataAccelYEntry;
+	
+	/**
+	 * Set dataAccelYEntry.
+	 *
+	 * @param dataAccelYEntry the value to set.
+	 */
+	public void setDataAccelYEntry(NetworkTableEntry dataAccelYEntry)
+	{
+	    this.dataAccelYEntry = dataAccelYEntry;
 	}
-
-	public NetworkTableEntry getDataAccelZEntry() {
-		return dataAccelZEntry;
+	
+	/**
+	 * Get dataAccelZEntry.
+	 *
+	 * @return dataAccelZEntry as NetworkTableEntry.
+	 */
+	public NetworkTableEntry getDataAccelZEntry()
+	{
+	    return dataAccelZEntry;
 	}
-
-	public void setDataAccelZEntry(NetworkTableEntry dataAccelZEntry) {
-		this.dataAccelZEntry = dataAccelZEntry;
+	
+	/**
+	 * Set dataAccelZEntry.
+	 *
+	 * @param dataAccelZEntry the value to set.
+	 */
+	public void setDataAccelZEntry(NetworkTableEntry dataAccelZEntry)
+	{
+	    this.dataAccelZEntry = dataAccelZEntry;
 	}
-
-	public NetworkTableEntry getHatchReleasedEntry() {
-		return hatchReleasedEntry;
+	
+	/**
+	 * Get hatchReleasedEntry.
+	 *
+	 * @return hatchReleasedEntry as NetworkTableEntry.
+	 */
+	public NetworkTableEntry getHatchReleasedEntry()
+	{
+	    return hatchReleasedEntry;
 	}
-
-	public void setHatchReleasedEntry(NetworkTableEntry hatchReleasedEntry) {
-		this.hatchReleasedEntry = hatchReleasedEntry;
+	
+	/**
+	 * Set hatchReleasedEntry.
+	 *
+	 * @param hatchReleasedEntry the value to set.
+	 */
+	public void setHatchReleasedEntry(NetworkTableEntry hatchReleasedEntry)
+	{
+	    this.hatchReleasedEntry = hatchReleasedEntry;
 	}
-
-	public NetworkTableEntry getPistonExtendedEntry() {
-		return pistonExtendedEntry;
+	
+	/**
+	 * Get pistonExtendedEntry.
+	 *
+	 * @return pistonExtendedEntry as NetworkTableEntry.
+	 */
+	public NetworkTableEntry getPistonExtendedEntry()
+	{
+	    return pistonExtendedEntry;
 	}
-
-	public void setPistonExtendedEntry(NetworkTableEntry pistonExtendedEntry) {
-		this.pistonExtendedEntry = pistonExtendedEntry;
+	
+	/**
+	 * Set pistonExtendedEntry.
+	 *
+	 * @param pistonExtendedEntry the value to set.
+	 */
+	public void setPistonExtendedEntry(NetworkTableEntry pistonExtendedEntry)
+	{
+	    this.pistonExtendedEntry = pistonExtendedEntry;
 	}
 }
