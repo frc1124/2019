@@ -31,6 +31,12 @@ public class RobotMap {
 	public static final int PUSH2_FORWARD_CHANNEL = 2;
 	public static final int PUSH2_BACKWARD_CHANNEL = 3;
 
-	public static final int BAR_FORWARD_CHANNEL = 4;
-	public static final int BAR_BACKWARD_CHANNEL = 5;
+	public static final int SLIDE1_FORWARD_CHANNEL = 4;
+	public static final int SLIDE1_BACKWARD_CHANNEL = 5;
+
+	public static final int SLIDE2_FORWARD_CHANNEL = 6;
+	public static final int SLIDE2_BACKWARD_CHANNEL = 7;
+
+
+
 }
