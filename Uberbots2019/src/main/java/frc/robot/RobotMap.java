@@ -15,7 +15,7 @@ public class RobotMap {
     public static final int RIGHT_1 = 2;
     public static final int RIGHT_2 = 4;
 	// TODO: GET VAUES
-    public static final int PDP_ID = 99999;
+    public static final int PDP_ID = 0;
     public static final int COMPRESSOR_ID = 99999;
 
     // Digital
