@@ -31,9 +31,13 @@ public class Data {
 	public NetworkTableEntry hatchReleasedEntry;
 	public NetworkTableEntry pistonExtendedEntry;
 
+	public NetworkTableEntry batteryEntry;
+
+	public NetworkTableEntry pressureEntry;
+
 	public Data(NetworkTableInstance inst) {
 	
-		NetworkTable dashboard = inst.getTable("dashboard");
+		NetworkTable dashboard = inst.getTable("dash");
 
 		arcadeDriveMoveEntry = dashboard.getEntry("arcadeDriveMoveEntry");
 		arcadeDriveRotateEntry = dashboard.getEntry("arcadeDriveRotateEntry");
@@ -60,6 +64,9 @@ public class Data {
 		dataAccelZEntry = dashboard.getEntry("dataAccelZEntry");
 		hatchReleasedEntry = dashboard.getEntry("hatchReleasedEntry");
 		pistonExtendedEntry = dashboard.getEntry("pistonExtendedEntry");
+
+		batteryEntry = dashboard.getEntry("batteryEntry");
+		pressureEntry = dashboard.getEntry("pressureEntry");
 	}
 	
 	/**
@@ -460,5 +467,45 @@ public class Data {
 	public void setPistonExtendedEntry(NetworkTableEntry pistonExtendedEntry)
 	{
 	    this.pistonExtendedEntry = pistonExtendedEntry;
+	}
+	
+	/**
+	 * Get batteryEntry.
+	 *
+	 * @return batteryEntry as NetworkTableEntry.
+	 */
+	public NetworkTableEntry getBatteryEntry()
+	{
+	    return batteryEntry;
+	}
+	
+	/**
+	 * Set batteryEntry.
+	 *
+	 * @param batteryEntry the value to set.
+	 */
+	public void setBatteryEntry(NetworkTableEntry batteryEntry)
+	{
+	    this.batteryEntry = batteryEntry;
+	}
+	
+	/**
+	 * Get pressureEntry.
+	 *
+	 * @return pressureEntry as NetworkTableEntry.
+	 */
+	public NetworkTableEntry getPressureEntry()
+	{
+	    return pressureEntry;
+	}
+	
+	/**
+	 * Set pressureEntry.
+	 *
+	 * @param pressureEntry the value to set.
+	 */
+	public void setPressureEntry(NetworkTableEntry pressureEntry)
+	{
+	    this.pressureEntry = pressureEntry;
 	}
 }
