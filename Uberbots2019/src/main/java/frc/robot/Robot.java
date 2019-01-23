@@ -84,4 +84,7 @@ public class Robot extends TimedRobot {
 	public void testPeriodic() {
 
 	}
+	public void allPeriodic() {
+		ntData.update();
+	}
 }
