@@ -32,8 +32,9 @@ public class Data {
 	public NetworkTableEntry pistonExtendedEntry;
 
 	public NetworkTableEntry batteryEntry;
-
 	public NetworkTableEntry pressureEntry;
+
+	public NetworkTableEntry logEntry;
 
 	public Data(NetworkTableInstance inst) {
 	
@@ -67,6 +68,8 @@ public class Data {
 
 		batteryEntry = dashboard.getEntry("batteryEntry");
 		pressureEntry = dashboard.getEntry("pressureEntry");
+
+		logEntry = dashboard.getEntry("logEntry");
 	}
 	
 	/**
@@ -507,5 +510,25 @@ public class Data {
 	public void setPressureEntry(NetworkTableEntry pressureEntry)
 	{
 	    this.pressureEntry = pressureEntry;
+	}
+	
+	/**
+	 * Get logEntry.
+	 *
+	 * @return logEntry as NetworkTableEntry.
+	 */
+	public NetworkTableEntry getLogEntry()
+	{
+	    return logEntry;
+	}
+	
+	/**
+	 * Set logEntry.
+	 *
+	 * @param logEntry the value to set.
+	 */
+	public void setLogEntry(NetworkTableEntry logEntry)
+	{
+	    this.logEntry = logEntry;
 	}
 }
