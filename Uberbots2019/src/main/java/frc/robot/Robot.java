@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import frc.robot.subsystems.Drive;
 import frc.robot.vision.Camera;
 import frc.robot.data.Data;
+import frc.robot.data.NTInfo;
 import frc.robot.OI;
 import frc.robot.subsystems.HatchMechanism;
 
@@ -29,7 +30,7 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 public class Robot extends TimedRobot {
 
 	NetworkTableInstance inst = NetworkTableInstance.getDefault();
-
+	
 	public static Data ntData;
 	public static Drive driveTrain;
 	public static Camera driveCamera;
