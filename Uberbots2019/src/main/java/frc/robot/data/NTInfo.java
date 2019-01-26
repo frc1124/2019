@@ -1,5 +1,6 @@
 package frc.robot.data;
 
+import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.data.Data;
 
@@ -10,15 +11,16 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 public class NTInfo {
 	public Data d;
 	public PowerDistributionPanel pdp;
-	public Compressor compressor;
+	//public Compressor compressor;
 	public NTInfo(NetworkTableInstance inst) {
 		d = new Data(inst);
-		pdp = new PowerDistributionPanel(RobotMap.PDP_ID);
-		compressor = new Compressor(RobotMap.COMPRESSOR_ID);
+		//pdp = new PowerDistributionPanel(RobotMap.PDP_ID);
+		//compressor = new Compressor(RobotMap.COMPRESSOR_ID);
 	}
 	public void update() {
-		d.getBatteryEntry().setDouble(pdp.getVoltage());
-		d.getPressureEntry().setBoolean(compressor.getPressureSwitchValue());
+		d.getLeftEncoderDistanceEntry().setDouble(Robot.driveTrain.getLeftGearbox().getEncoder().getRate());
+		//d.getBatteryEntry().setDouble(pdp.getVoltage());
+		//d.getPressureEntry().setBoolean(compressor.getPressureSwitchValue());
 	}
 	
 }

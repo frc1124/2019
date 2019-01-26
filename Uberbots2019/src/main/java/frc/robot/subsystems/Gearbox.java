@@ -1,6 +1,10 @@
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
+import edu.wpi.first.wpilibj.PIDSourceType;
 
 public class Gearbox extends PIDSubsystem{
 	private SpeedController front, back;
@@ -20,10 +24,12 @@ public class Gearbox extends PIDSubsystem{
     }
 
     public double returnPIDInput(){
+		System.out.println("Rate: " + encoder.getRate());
         return this.encoder.getRate();
     }
 
     public void usePIDOutput(double input){
+		System.out.println("use Output, Input:" + input);
     	this.speedControllerGroup.pidWrite(input);
     }
 
@@ -44,7 +50,7 @@ public class Gearbox extends PIDSubsystem{
 	}
 
 	public void setPIDSourceType(PIDSourceType pidSourceType) {
-		this.encoder(pidSourceType);
+		this.encoder.setPIDSourceType(pidSourceType);
 	}
 
 }

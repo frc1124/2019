@@ -16,6 +16,8 @@ import frc.robot.data.Data;
 import frc.robot.data.NTInfo;
 import frc.robot.OI;
 import frc.robot.subsystems.HatchMechanism;
+import frc.robot.commands.PIDTuner;
+import frc.robot.subsystems.PIDDrive;
 
 import edu.wpi.first.networktables.NetworkTableInstance;
 
@@ -29,21 +31,27 @@ import edu.wpi.first.networktables.NetworkTableInstance;
  */
 public class Robot extends TimedRobot {
 
-	NetworkTableInstance inst = NetworkTableInstance.getDefault();
+	NetworkTableInstance inst;
 	
 	public static Data ntData;
-	public static Drive driveTrain;
+	public static NTInfo ntInfo;
+	public static PIDDrive driveTrain;
 	public static Camera driveCamera;
 
 	public static OI oi;
 
 	public static HatchMechanism hatchMechanism;
 
+	public static PIDTuner pidTuner;
+
 	@Override
 	public void robotInit() {
 
+		inst = NetworkTableInstance.getDefault();
 		ntData = new Data(inst);
-		driveTrain = new Drive();
+		ntInfo = new NTInfo(inst);
+
+		driveTrain = new PIDDrive();
 		driveCamera = new Camera("Drive");
 		hatchMechanism = new HatchMechanism();
 
@@ -83,9 +91,16 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void testPeriodic() {
-
+		Scheduler.getInstance().run();
 	}
+
+	@Override
+	public void testInit(){
+		pidTuner = new PIDTuner(4);
+		pidTuner.start();
+	}
+
 	public void allPeriodic() {
-		ntData.update();
+		ntInfo.update();
 	}
 }

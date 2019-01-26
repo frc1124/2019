@@ -1,0 +1,48 @@
+package frc.robot.commands;
+
+import edu.wpi.first.wpilibj.command.Command;
+
+import frc.robot.Robot;
+import frc.robot.subsystems.PIDDrive;
+
+public class PIDTuner extends Command{
+
+    private double setpoint;
+
+    private final double TOLERANCE = 0.1;
+
+    public PIDTuner(double setpoint){
+        super("PIDTuner");
+        requires(Robot.driveTrain);
+        
+        this.setpoint = setpoint;
+        System.out.println("Error Build");
+    }
+
+    public boolean isFinished(){
+        boolean finished = Math.abs(Robot.driveTrain.getLeftGearbox().getSetpoint() - Robot.driveTrain.getLeftGearbox().getPosition()) <= TOLERANCE;
+
+        return finished;
+    }
+
+    public void initialize() {
+        System.out.println("Error Init");
+        Robot.driveTrain.getLeftGearbox().setSetpoint(setpoint);
+    }
+
+    public void execute(){
+    }
+
+    @Override
+    public void end(){
+        System.out.println("Error END");
+        Robot.driveTrain.stop();
+    }
+
+    @Override
+    public void interrupted(){
+        System.out.println("Error Interrupted");
+        Robot.driveTrain.stop();
+    }
+
+}

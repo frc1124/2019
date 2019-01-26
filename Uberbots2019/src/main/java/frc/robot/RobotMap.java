@@ -14,6 +14,7 @@ public class RobotMap {
     public static final int LEFT_2 = 0;
     public static final int RIGHT_1 = 2;
     public static final int RIGHT_2 = 4;
+	
 	// TODO: GET VAUES
     public static final int PDP_ID = 0;
     public static final int COMPRESSOR_ID = 99999;
@@ -40,6 +41,15 @@ public class RobotMap {
 	public static final int SLIDE2_FORWARD_CHANNEL = 6;
 	public static final int SLIDE2_BACKWARD_CHANNEL = 7;
 
-
+	//PID Values
+	public static final double LEFT_P = 0.001;
+	public static final double LEFT_I = 0.0;
+	public static final double LEFT_D = 0.0;
+	public static final double LEFT_F = 0.0;
+	
+	public static final double RIGHT_P = 0.001;
+	public static final double RIGHT_I = 0.0;
+	public static final double RIGHT_D = 0.0;
+	public static final double RIGHT_F = 0.0;
 
 }
