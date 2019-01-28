@@ -16,7 +16,6 @@ public class PIDTuner extends Command{
         requires(Robot.driveTrain);
         
         this.setpoint = setpoint;
-        System.out.println("Error Build");
     }
 
     public boolean isFinished(){
@@ -26,7 +25,6 @@ public class PIDTuner extends Command{
     }
 
     public void initialize() {
-        System.out.println("Error Init");
         Robot.driveTrain.getLeftGearbox().setSetpoint(setpoint);
     }
 
@@ -41,7 +39,6 @@ public class PIDTuner extends Command{
 
     @Override
     public void interrupted(){
-        System.out.println("Error Interrupted");
         Robot.driveTrain.stop();
     }
 

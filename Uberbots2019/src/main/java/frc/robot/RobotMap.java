@@ -42,7 +42,7 @@ public class RobotMap {
 	public static final int SLIDE2_BACKWARD_CHANNEL = 7;
 
 	//PID Values
-	public static final double LEFT_P = 0.001;
+	public static final double LEFT_P = 0.1;
 	public static final double LEFT_I = 0.0;
 	public static final double LEFT_D = 0.0;
 	public static final double LEFT_F = 0.0;
