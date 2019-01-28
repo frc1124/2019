@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.PIDSourceType;
 
 public class Gearbox extends PIDSubsystem{
+	
 	private SpeedController front, back;
 	private SpeedControllerGroup speedControllerGroup;
 	private Encoder encoder;
@@ -24,7 +25,7 @@ public class Gearbox extends PIDSubsystem{
     }
 
     public double returnPIDInput(){
-		System.out.println("Rate: " + encoder.getRate());
+		//System.out.println("Rate: " + encoder.getRate());
         return this.encoder.getRate();
     }
 

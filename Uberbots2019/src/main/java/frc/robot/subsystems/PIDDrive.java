@@ -176,11 +176,11 @@ public class PIDDrive extends Subsystem{
 		rightEncoder.reset();
 	}
 
-	public void setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode mode) {
-		this.leftFront.setNeutralMode(mode);
-		this.leftBack.setNeutralMode(mode);
-		this.rightFront.setNeutralMode(mode);
-		this.rightBack.setNeutralMode(mode);
+	public static void setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode mode) {
+		leftFront.setNeutralMode(mode);
+		leftBack.setNeutralMode(mode);
+		rightFront.setNeutralMode(mode);
+		rightBack.setNeutralMode(mode);
 	}
 
 	public Gearbox getLeftGearbox(){

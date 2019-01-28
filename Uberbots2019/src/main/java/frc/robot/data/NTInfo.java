@@ -9,9 +9,11 @@ import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.networktables.NetworkTableInstance;
 
 public class NTInfo {
+	
 	public Data d;
 	public PowerDistributionPanel pdp;
 	//public Compressor compressor;
+
 	public NTInfo(NetworkTableInstance inst) {
 		d = new Data(inst);
 		//pdp = new PowerDistributionPanel(RobotMap.PDP_ID);
