@@ -16,6 +16,7 @@ import frc.robot.data.Data;
 import frc.robot.data.NTInfo;
 import frc.robot.OI;
 import frc.robot.subsystems.HatchMechanism;
+import frc.robot.subsystems.SuctionCup;
 import frc.robot.commands.PIDTuner;
 import frc.robot.subsystems.PIDDrive;
 
@@ -42,6 +43,8 @@ public class Robot extends TimedRobot {
 
 	public static HatchMechanism hatchMechanism;
 
+	public static SuctionCup suctionCup;
+
 	public static PIDTuner pidTuner;
 
 	@Override
@@ -53,6 +56,7 @@ public class Robot extends TimedRobot {
 
 		driveTrain = new PIDDrive();
 		driveCamera = new Camera("Drive");
+		suctionCup - new SuctionCup();
 		hatchMechanism = new HatchMechanism();
 
 		oi = new OI(); //instantiate this last

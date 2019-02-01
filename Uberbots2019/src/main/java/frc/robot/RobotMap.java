@@ -10,6 +10,7 @@ package frc.robot;
 public class RobotMap {
 
     // Can addresses
+    public static final int ARM = 9999999;
     public static final int LEFT_1 = 3;
     public static final int LEFT_2 = 0;
     public static final int RIGHT_1 = 2;
@@ -29,6 +30,8 @@ public class RobotMap {
 	public static final int GYRO = 0;
 
 	// Pistons & Solenoid
+	public static final int ARM_CHANNEL = 0;
+
 	public static final int PUSH1_FORWARD_CHANNEL = 0;
 	public static final int PUSH1_BACKWARD_CHANNEL = 1;
 
