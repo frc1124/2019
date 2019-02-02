@@ -10,15 +10,15 @@ package frc.robot;
 public class RobotMap {
 
     // Can addresses
-    public static final int ARM = 9999999;
+    // public static final int ARM = 9999999;
     public static final int LEFT_1 = 3;
     public static final int LEFT_2 = 0;
     public static final int RIGHT_1 = 2;
     public static final int RIGHT_2 = 4;
 	
 	// TODO: GET VAUES
-    public static final int PDP_ID = 0;
-    public static final int COMPRESSOR_ID = 99999;
+    // public static final int PDP_ID = 0;
+    // public static final int COMPRESSOR_ID = 99999;
 
     // Digital
 	public static final int LEFT_DRIVE_BACK = 0;
@@ -30,7 +30,9 @@ public class RobotMap {
 	public static final int GYRO = 0;
 
 	// Pistons & Solenoid
-	public static final int ARM_CHANNEL = 0;
+	
+	// public static final int SUCTION_FORWARD_CHANNEL = 99999;
+	// public static final int SUCTION_BACKWARD_CHANNEL = 99999;
 
 	public static final int PUSH1_FORWARD_CHANNEL = 0;
 	public static final int PUSH1_BACKWARD_CHANNEL = 1;
