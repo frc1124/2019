@@ -36,6 +36,10 @@ public class Data {
 
 	public NetworkTableEntry logEntry;
 
+	public NetworkTableEntry targetCenterXEntry;
+	public NetworkTableEntry targetCenterYEntry;
+
+
 	public Data(NetworkTableInstance inst) {
 	
 		NetworkTable dashboard = inst.getTable("dash");
@@ -70,6 +74,9 @@ public class Data {
 		pressureEntry = dashboard.getEntry("pressureEntry");
 
 		logEntry = dashboard.getEntry("logEntry");
+
+		targetCenterXEntry = dashboard.getEntry("targetCenterXEntry");
+		targetCenterYEntry = dashboard.getEntry("targetCenterYEntry");
 	}
 	
 	/**
@@ -530,5 +537,45 @@ public class Data {
 	public void setLogEntry(NetworkTableEntry logEntry)
 	{
 	    this.logEntry = logEntry;
+	}
+	
+	/**
+	 * Get targetCenterXEntry.
+	 *
+	 * @return targetCenterXEntry as NetworkTableEntry.
+	 */
+	public NetworkTableEntry getTargetCenterXEntry()
+	{
+	    return targetCenterXEntry;
+	}
+	
+	/**
+	 * Set targetCenterXEntry.
+	 *
+	 * @param targetCenterXEntry the value to set.
+	 */
+	public void setTargetCenterXEntry(NetworkTableEntry targetCenterXEntry)
+	{
+	    this.targetCenterXEntry = targetCenterXEntry;
+	}
+	
+	/**
+	 * Get targetCenterYEntry.
+	 *
+	 * @return targetCenterYEntry as NetworkTableEntry.
+	 */
+	public NetworkTableEntry getTargetCenterYEntry()
+	{
+	    return targetCenterYEntry;
+	}
+	
+	/**
+	 * Set targetCenterYEntry.
+	 *
+	 * @param targetCenterYEntry the value to set.
+	 */
+	public void setTargetCenterYEntry(NetworkTableEntry targetCenterYEntry)
+	{
+	    this.targetCenterYEntry = targetCenterYEntry;
 	}
 }
