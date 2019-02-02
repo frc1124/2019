@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import frc.robot.commands.ArcadeDriveJoystick;
+import frc.robot.commands.SuctionCupStart;
 import frc.robot.commands.HatchRelease;
 import frc.robot.commands.HatchRetract;
 import frc.robot.commands.PistonExtend;
@@ -33,7 +34,8 @@ public class OI {
     new JoystickButton(joystick, 6),
     new JoystickButton(joystick, 7),
     new JoystickButton(joystick, 8),
-    new JoystickButton(joystick, 9)
+    new JoystickButton(joystick, 9),
+    new JoystickButton(joystick, 10)
   };
 
   public OI(){
@@ -46,7 +48,7 @@ public class OI {
     joystickButtons[6].toggleWhenPressed(new PIDTuner(4));
     joystickButtons[8].toggleWhenPressed(new LowerArm());
     joystickButtons[9].toggleWhenPressed(new RaiseArm());
-
+    joystickButtons[10].toggleWhenPressed(new SuctionCupStart());
   }
 
   public Joystick getJoystick(){
