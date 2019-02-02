@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class SuctionCupStart extends Command{
     
     public SuctionCupStart(){
-        requires(Robot.suctionCup);
+        //requires(Robot.suctionCup);
 
         setInterruptible(true);
     }

@@ -36,7 +36,7 @@ public class Data {
 
 	public NetworkTableEntry logEntry;
 
-	public NetworkTableEntry targetCenterXEntry;
+	public NetworkTableEntry targetCenterEntry;
 	public NetworkTableEntry targetCenterYEntry;
 
 
@@ -75,8 +75,8 @@ public class Data {
 
 		logEntry = dashboard.getEntry("logEntry");
 
-		targetCenterXEntry = dashboard.getEntry("targetCenterXEntry");
-		targetCenterYEntry = dashboard.getEntry("targetCenterYEntry");
+		//targetCenterXEntry = dashboard.getEntry("targetCenterXEntry");
+		targetCenterEntry = dashboard.getEntry("targetCenterEntry");
 	}
 	
 	/**
@@ -544,19 +544,19 @@ public class Data {
 	 *
 	 * @return targetCenterXEntry as NetworkTableEntry.
 	 */
-	public NetworkTableEntry getTargetCenterXEntry()
+	public NetworkTableEntry getTargetCenterEntry()
 	{
-	    return targetCenterXEntry;
+	    return targetCenterEntry;
 	}
 	
 	/**
 	 * Set targetCenterXEntry.
 	 *
-	 * @param targetCenterXEntry the value to set.
+	 * @param targetCenterEntry the value to set.
 	 */
-	public void setTargetCenterXEntry(NetworkTableEntry targetCenterXEntry)
+	public void setTargetCenterEntry(NetworkTableEntry targetCenterEntry)
 	{
-	    this.targetCenterXEntry = targetCenterXEntry;
+	    this.targetCenterEntry = targetCenterEntry;
 	}
 	
 	/**

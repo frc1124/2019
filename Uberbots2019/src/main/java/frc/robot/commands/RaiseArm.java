@@ -13,9 +13,9 @@ public class RaiseArm extends Command {
 	protected static DigitalInput forwardLimitSwitch;
 
 	public RaiseArm(){
-        requires(Robot.arm);
+        //requires(Robot.arm);
 
-		forwardLimitSwitch = new DigitalInput(RobotMap.ARM_LIMIT_FORWARD);
+		//forwardLimitSwitch = new DigitalInput(RobotMap.ARM_LIMIT_FORWARD);
 	
         setInterruptible(true);
     }

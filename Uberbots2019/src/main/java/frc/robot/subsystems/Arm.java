@@ -26,7 +26,7 @@ public class Arm extends Subsystem{
 
 	public Arm(){
 		super("Arm");
-		arm = new WPI_TalonSRX(RobotMap.ARM); //Check device numbers
+		//arm = new WPI_TalonSRX(RobotMap.ARM); //Check device numbers
 		armSCGroup = new SpeedControllerGroup(arm);
 		// enc = new Encoder();
 	}

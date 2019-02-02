@@ -13,9 +13,9 @@ public class LowerArm extends Command {
 	protected static DigitalInput reverseLimitSwitch;
 
 	public LowerArm(){
-        requires(Robot.arm);
+       // requires(Robot.arm);
 
-		reverseLimitSwitch = new DigitalInput(RobotMap.ARM_LIMIT_REVERSE);
+		//reverseLimitSwitch = new DigitalInput(RobotMap.ARM_LIMIT_REVERSE);
 	
         setInterruptible(true);
     }

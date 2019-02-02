@@ -1,5 +1,7 @@
 package frc.robot.subsystems;
 
+import frc.robot.Robot;
+
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Encoder;
@@ -27,6 +29,7 @@ public class Gearbox extends PIDSubsystem{
     }
 
     public double returnPIDInput(){
+		Robot.ntInfo.update();
         return this.encoder.getRate();
     }
 

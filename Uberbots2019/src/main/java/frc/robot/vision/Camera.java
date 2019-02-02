@@ -14,13 +14,13 @@ public class Camera extends Subsystem {
 
 	protected static CvSink cvSink;
 
-	protected final int CAMERA_RESOLUTION_X = 320;
-	protected final int CAMERA_RESOLUTION_Y = 240;
+	public static final int CAMERA_RESOLUTION_X = 320;
+	public static final int CAMERA_RESOLUTION_Y = 240;
 
 	protected String name;
 
 	public Camera(String name){
-		super("camera");
+		super(name);
 
 		this.name = name;
 		

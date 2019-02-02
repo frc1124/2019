@@ -12,7 +12,7 @@ public class SuctionCup extends Subsystem{
 	public SuctionCup(){
 		super("SuctionCup");
 
-		suctionSol = new DoubleSolenoid(RobotMap.SUCTION_FORWARDS_CHANNEL,  RobotMap.SUCTION_BACKWARDS_CHANNEL);
+		//suctionSol = new DoubleSolenoid(RobotMap.SUCTION_FORWARDS_CHANNEL,  RobotMap.SUCTION_BACKWARDS_CHANNEL);
 	}
 
 	public void initDefaultCommand(){

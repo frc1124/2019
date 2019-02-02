@@ -41,14 +41,14 @@ public class OI {
   public OI(){
     
     joystickButtons[1].toggleWhenPressed(new ArcadeDriveJoystick());
-    joystickButtons[2].toggleWhenPressed(new HatchRelease());
-    joystickButtons[3].toggleWhenPressed(new HatchRetract());
-    joystickButtons[4].toggleWhenPressed(new PistonExtend());
-    joystickButtons[5].toggleWhenPressed(new PistonRetract());
-    joystickButtons[6].toggleWhenPressed(new PIDTuner(4));
-    joystickButtons[8].toggleWhenPressed(new LowerArm());
-    joystickButtons[9].toggleWhenPressed(new RaiseArm());
-    joystickButtons[10].toggleWhenPressed(new SuctionCupStart());
+    //joystickButtons[2].toggleWhenPressed(new HatchRelease());
+    //joystickButtons[3].toggleWhenPressed(new HatchRetract());
+    //joystickButtons[4].toggleWhenPressed(new PistonExtend());
+    //joystickButtons[5].toggleWhenPressed(new PistonRetract());
+    joystickButtons[5].toggleWhenPressed(new PIDTuner(4));
+    //joystickButtons[8].toggleWhenPressed(new LowerArm());
+    //joystickButtons[9].toggleWhenPressed(new RaiseArm());
+    //joystickButtons[10].toggleWhenPressed(new SuctionCupStart());
   }
 
   public Joystick getJoystick(){

@@ -9,7 +9,7 @@ public class PIDTuner extends Command{
 
     private double setpoint;
 
-    private final double TOLERANCE = 0.1;
+    private final double TOLERANCE = 0.001;
 
     public PIDTuner(double setpoint){
         super("PIDTuner");
