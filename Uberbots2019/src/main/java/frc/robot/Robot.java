@@ -19,6 +19,7 @@ import frc.robot.subsystems.HatchMechanism;
 import frc.robot.subsystems.SuctionCup;
 import frc.robot.commands.PIDTuner;
 import frc.robot.subsystems.PIDDrive;
+import frc.robot.subsystems.Arm;
 
 import edu.wpi.first.networktables.NetworkTableInstance;
 
@@ -32,7 +33,7 @@ import edu.wpi.first.networktables.NetworkTableInstance;
  */
 public class Robot extends TimedRobot {
 
-	NetworkTableInstance inst;
+	private static NetworkTableInstance inst;
 	
 	public static Data ntData;
 	public static NTInfo ntInfo;
@@ -44,6 +45,7 @@ public class Robot extends TimedRobot {
 	public static HatchMechanism hatchMechanism;
 
 	public static SuctionCup suctionCup;
+	public static Arm arm;
 
 	public static PIDTuner pidTuner;
 
@@ -56,8 +58,9 @@ public class Robot extends TimedRobot {
 
 		driveTrain = new PIDDrive();
 		driveCamera = new Camera("Drive");
-		suctionCup - new SuctionCup();
 		hatchMechanism = new HatchMechanism();
+		// suctionCup = new SuctionCup();
+		// arm = new Arm();
 
 		oi = new OI(); //instantiate this last
 	}

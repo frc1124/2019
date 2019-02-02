@@ -26,6 +26,9 @@ public class RobotMap {
 	public static final int RIGHT_DRIVE_BACK = 2;
 	public static final int RIGHT_DRIVE_FRONT = 3;
 
+	// public static final int ARM_LIMIT_FORWARD = 4;
+	// public static final int ARM_LIMIT_REVERSE = 5;
+
     // Analog Inputs
 	public static final int GYRO = 0;
 
