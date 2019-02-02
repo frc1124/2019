@@ -16,10 +16,11 @@ import frc.robot.commands.HatchRelease;
 import frc.robot.commands.HatchRetract;
 import frc.robot.commands.PistonExtend;
 import frc.robot.commands.PistonRetract;
+import frc.robot.commands.LowerArm;
+import frc.robot.commands.RaiseArm;
 import frc.robot.commands.PIDTuner;
 
 public class OI {
- 
   public static Joystick joystick = new Joystick(0);;
 
   public Button[] joystickButtons = {
@@ -29,7 +30,10 @@ public class OI {
     new JoystickButton(joystick, 3),
     new JoystickButton(joystick, 4),
     new JoystickButton(joystick, 5),
-    new JoystickButton(joystick, 6)
+    new JoystickButton(joystick, 6),
+    new JoystickButton(joystick, 7),
+    new JoystickButton(joystick, 8),
+    new JoystickButton(joystick, 9)
   };
 
   public OI(){
@@ -38,8 +42,10 @@ public class OI {
     joystickButtons[2].toggleWhenPressed(new HatchRelease());
     joystickButtons[3].toggleWhenPressed(new HatchRetract());
     joystickButtons[4].toggleWhenPressed(new PistonExtend());
-    //joystickButtons[5].toggleWhenPressed(new PistonRetract());
-    joystickButtons[5].toggleWhenPressed(new PIDTuner(4));
+    joystickButtons[5].toggleWhenPressed(new PistonRetract());
+    joystickButtons[6].toggleWhenPressed(new PIDTuner(4));
+    joystickButtons[8].toggleWhenPressed(new LowerArm());
+    joystickButtons[9].toggleWhenPressed(new RaiseArm());
 
   }
 
