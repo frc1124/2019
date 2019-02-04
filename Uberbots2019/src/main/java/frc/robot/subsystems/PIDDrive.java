@@ -20,12 +20,6 @@ import com.kauailabs.navx.frc.AHRS;
 
 public class PIDDrive extends Subsystem{
 
-	private Gearbox leftGearbox;
-	private Gearbox rightGearbox;
-
-	private Encoder leftEncoder;
-	private Encoder rightEncoder;
-
 	// Find out what the 120 means
 	private final double ENCODER_DIST_PER_PULSE = (Math.PI / 4096);
 
@@ -40,26 +34,32 @@ public class PIDDrive extends Subsystem{
 
 	protected final double THROTTLE = .75;
 
+
+	private long kTimeoutMs = 20;
+	private int kArcadeProfile = 0;
+
 	public PIDDrive(){
         super("PIDDrive");
 
 		// Set up the left side
-		leftFront = new WPI_TalonSRX(RobotMap.LEFT_2);
-		leftBack = new WPI_TalonSRX(RobotMap.LEFT_1); //Check device numbers
-		int leftBackChannel = RobotMap.LEFT_DRIVE_BACK;
-		int leftFrontChannel = RobotMap.LEFT_DRIVE_FRONT;
-		leftEncoder = new Encoder(leftBackChannel, leftFrontChannel, false, EncodingType.k4X);
-		leftEncoder.setDistancePerPulse(ENCODER_DIST_PER_PULSE);
-		leftGearbox = new Gearbox(leftFront,leftBack,leftEncoder,RobotMap.LEFT_P,RobotMap.LEFT_I,RobotMap.LEFT_D,RobotMap.LEFT_F);
+		leftFront = new WPI_TalonSRX(RobotMap.LEFT_1);
+		leftBack = new WPI_TalonSRX(RobotMap.LEFT_2);
+		leftBack.follow(leftFront);
+		leftFront.config_kP(kArcadeProfile,RobotMap.LEFT_P);
+		leftFront.config_kI(kArcadeProfile,RobotMap.LEFT_I);
+		leftFront.config_kD(kArcadeProfile,RobotMap.LEFT_D);
+		leftFront.config_kF(kArcadeProfile,RobotMap.LEFT_F);
+		leftFront.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,kTimeoutMs);
 
 		// Set up the right side
-		rightFront = new WPI_TalonSRX(RobotMap.RIGHT_2);
-		rightBack = new WPI_TalonSRX(RobotMap.RIGHT_1);
-		int rightBackChannel = RobotMap.RIGHT_DRIVE_BACK;
-        int rightFrontChannel = RobotMap.RIGHT_DRIVE_FRONT;
-		rightEncoder = new Encoder(rightBackChannel, rightFrontChannel, false, EncodingType.k4X);
-		rightEncoder.setDistancePerPulse(ENCODER_DIST_PER_PULSE);
-		rightGearbox = new Gearbox(rightFront,rightBack,rightEncoder,RobotMap.RIGHT_P,RobotMap.RIGHT_I,RobotMap.RIGHT_D,RobotMap.RIGHT_F);
+		rightFront = new WPI_TalonSRX(RobotMap.RIGHT_1);
+		rightBack = new WPI_TalonSRX(RobotMap.RIGHT_2);
+		rightBack.follow(rightFront);
+		rightFront.config_kP(kArcadeProfile,RobotMap.RIGHT_P);
+		rightFront.config_kI(kArcadeProfile,RobotMap.RIGHT_I);
+		rightFront.config_kD(kArcadeProfile,RobotMap.RIGHT_D);
+		rightFront.config_kF(kArcadeProfile,RobotMap.RIGHT_F);
+		rightFront.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,kTimeoutMs);
 
 		resetEncoders();
 		resetNavx();
@@ -86,8 +86,8 @@ public class PIDDrive extends Subsystem{
 */
 
 	public void stop(){
-		leftGearbox.getSpeedControllerGroup().set(0.0);
-		rightGearbox.getSpeedControllerGroup().set(0.0);
+		leftFront.setMotorOutputPercent(0.0);
+		rightFront.setMotorOutputPercent(0.0);
 	}
 
 	public void resetNavx(){
@@ -178,16 +178,6 @@ public class PIDDrive extends Subsystem{
 
 	public static void setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode mode) {
 		leftFront.setNeutralMode(mode);
-		leftBack.setNeutralMode(mode);
 		rightFront.setNeutralMode(mode);
-		rightBack.setNeutralMode(mode);
-	}
-
-	public Gearbox getLeftGearbox(){
-		return leftGearbox;
-	}
-
-	public Gearbox getRightGearbox(){
-		return rightGearbox;
 	}
 }
