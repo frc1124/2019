@@ -1,27 +1,24 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.CounterBase.EncodingType;
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.SPI;
 
 import frc.robot.RobotMap;
+import frc.robot.Robot;
 import frc.robot.commands.ArcadeDriveJoystick;
 
-// Check for error here
-//import frc.robot.Robot;
-
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 
 import com.kauailabs.navx.frc.AHRS;
 
 public class PIDDrive extends Subsystem{
 
-	// Find out what the 120 means
-	private final double ENCODER_DIST_PER_PULSE = (Math.PI / 4096);
+	private int TIMEOUT = 500;
 
 	protected static WPI_TalonSRX leftBack, leftFront;
 	protected static WPI_TalonSRX rightBack, rightFront;
@@ -35,7 +32,7 @@ public class PIDDrive extends Subsystem{
 	protected final double THROTTLE = .75;
 
 
-	private long kTimeoutMs = 20;
+	private int kTimeoutMs = 20;
 	private int kArcadeProfile = 0;
 
 	public PIDDrive(){
@@ -61,6 +58,7 @@ public class PIDDrive extends Subsystem{
 		rightFront.config_kF(kArcadeProfile,RobotMap.RIGHT_F);
 		rightFront.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,kTimeoutMs);
 
+
 		resetEncoders();
 		resetNavx();
 	}
@@ -69,11 +67,12 @@ public class PIDDrive extends Subsystem{
 	public void initDefaultCommand(){
 		setDefaultCommand(new ArcadeDriveJoystick());
 	}
-/*
 	public void drive(double move, double rotate){
-		// Robot.ntData.arcadeDriveMoveEntry.getDouble(move);
-		// Robot.ntData.arcadeDriveRotateEntry.getDouble(rotate);
-		/diffDrive.arcadeDrive(move, rotate);
+
+		Robot.ntData.arcadeDriveMoveEntry.setDouble(move);
+		Robot.ntData.arcadeDriveRotateEntry.setDouble(rotate);
+
+		diffDrive.arcadeDrive(move, rotate);
 	}
 
 	public void drive(Joystick joystick){
@@ -81,14 +80,12 @@ public class PIDDrive extends Subsystem{
 	}
 
 	public void stop(){
-		this.drive(0,0);
+		drive(0,0);
 	}
-*/
-
-	public void stop(){
-		leftFront.setMotorOutputPercent(0.0);
-		rightFront.setMotorOutputPercent(0.0);
-	}
+	
+	// manual drive
+	public void leftMove() {}
+	public void rightMove() {}
 
 	public void resetNavx(){
 		navx.reset();
@@ -133,50 +130,27 @@ public class PIDDrive extends Subsystem{
 
 	// encoder methods
 	public double getLeftEncoderDistance(){
-		return leftEncoder.getDistance();
+		return leftFront.getSensorCollection().getQuadraturePosition();
 	}
 	
-	public boolean getLeftEncoderDirection(){
-		return leftEncoder.getDirection();
-	}
-	
-	public double getLeftEncoderRate(){
-		return leftEncoder.getRate();
-	}
-	
-	public boolean getLeftEncoderStopped(){
-		return leftEncoder.getStopped();
-	}
 	public double getRightEncoderDistance(){
-		return rightEncoder.getDistance();
+		return rightFront.getSensorCollection().getQuadraturePosition();
 	}
 
-	public boolean getRightEncoderDirection(){
-		return rightEncoder.getDirection();
+	public double getLeftEncoderVelocity(){
+		return leftFront.getSensorCollection().getQuadratureVelocity();
 	}
-
-	public double getRightEncoderRate(){
-		return rightEncoder.getRate();
-	}
-
-	public boolean getRightEncoderStopped(){
-		return rightEncoder.getStopped();
+	
+	public double getRightEncoderVelocity(){
+		return rightFront.getSensorCollection().getQuadratureVelocity();
 	}
 
 	public void resetEncoders(){
-		resetLeftEncoder();
-		resetRightEncoder();
+		rightFront.getSensorCollection().setQuadraturePosition(0, TIMEOUT);
+		leftFront.getSensorCollection().setQuadraturePosition(0, TIMEOUT);
 	}
 
-	public void resetLeftEncoder(){
-		leftEncoder.reset();
-	}
-
-	public void resetRightEncoder(){
-		rightEncoder.reset();
-	}
-
-	public static void setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode mode) {
+	public static void setNeutralMode(NeutralMode mode) {
 		leftFront.setNeutralMode(mode);
 		rightFront.setNeutralMode(mode);
 	}
