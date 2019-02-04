@@ -14,8 +14,6 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 public class Arm extends Subsystem{
 
-	private Encoder enc;
-
 	protected static WPI_TalonSRX arm;
 
 	protected static SpeedControllerGroup armSCGroup;
@@ -28,7 +26,6 @@ public class Arm extends Subsystem{
 		super("Arm");
 		//arm = new WPI_TalonSRX(RobotMap.ARM); //Check device numbers
 		armSCGroup = new SpeedControllerGroup(arm);
-		// enc = new Encoder();
 	}
 
 	public void moveArm(double y){
