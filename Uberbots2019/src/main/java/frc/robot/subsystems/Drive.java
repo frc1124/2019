@@ -13,12 +13,15 @@ import frc.robot.commands.ArcadeDriveJoystick;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import com.kauailabs.navx.frc.AHRS;
 
 public class Drive extends Subsystem{
 
 	private int TIMEOUT = 500;
+
+	private double DISTANCE_PER_TICK = Math.PI / 4096;
 
 	protected static WPI_TalonSRX leftBack, leftFront;
 	protected static WPI_TalonSRX rightBack, rightFront;
@@ -82,10 +85,43 @@ public class Drive extends Subsystem{
 	public void stop(){
 		drive(0,0);
 	}
+
+	public static void setNeutralMode(NeutralMode mode) {
+		leftFront.setNeutralMode(mode);
+		rightFront.setNeutralMode(mode);
+	}
 	
 	// manual drive
-	public void leftMove() {}
-	public void rightMove() {}
+	
+	public void leftManual(double speed) {
+		left.set(speed);
+
+	}
+
+	public void rightManual(double speed) {
+		right.set(speed);
+	}
+
+
+	// velocity drive
+	// velocity is position change / 100ms
+	
+	public void setLeftVelocity(double velocity) {
+		leftFront.set(ControlMode.Velocity, velocity);
+	}
+
+	public void setRightVelocity(double velocity) {
+		rightFront.set(ControlMode.Velocity, velocity);
+	}
+
+	// Distance in feet
+	public void setLeftPosition(double distance) {
+		leftFront.set(ControlMode.Position, distance / DISTANCE_PER_TICK);
+	}
+
+	public void setRightPosition(double distance) {
+		rightFront.set(ControlMode.Position, distance / DISTANCE_PER_TICK);
+	}
 
 	public void resetNavx(){
 		navx.reset();
@@ -150,8 +186,4 @@ public class Drive extends Subsystem{
 		leftFront.getSensorCollection().setQuadraturePosition(0, TIMEOUT);
 	}
 
-	public static void setNeutralMode(NeutralMode mode) {
-		leftFront.setNeutralMode(mode);
-		rightFront.setNeutralMode(mode);
-	}
 }
