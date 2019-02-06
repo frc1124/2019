@@ -1,8 +1,6 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 
 
@@ -22,30 +20,25 @@ public class Elevator extends Subsystem{
 	private double DISTANCE_PER_TICK = Math.PI / 4096;
 	private double ANG_OFFSET = 0;
 
-	protected static WPI_TalonSRX shaftMaster, shaftSlave;
+	protected static WPI_TalonSRX shaft;
 	protected static AnalogPotentiometer potentiometer;
-
-	protected static SpeedControllerGroup shaft;
 
 	protected final double THROTTLE = .75;
 
 
 	private int kTimeoutMs = 20;
-	private int kArcadeProfile = 0;
 
 	public Elevator(){
         super("Elevator");
 
 		// Set up the shaft
 		// TODO: create robotmap value
-		// shaftMaster = new WPI_TalonSRX(RobotMap.SHAFT_1);
-		// shaftSlave = new WPI_TalonSRX(RobotMap.SHAFT_2);
-		// shaftSlave.follow(shaftMaster);
-		// shaftMaster.config_kP(kArcadeProfile,RobotMap.SHAFT_P);
-		// shaftMaster.config_kI(kArcadeProfile,RobotMap.SHAFT_I);
-		// shaftMaster.config_kD(kArcadeProfile,RobotMap.SHAFT_D);
-		// shaftMaster.config_kF(kArcadeProfile,RobotMap.SHAFT_F);
-		// shaftMaster.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,kTimeoutMs);
+		// shaft = new WPI_TalonSRX(RobotMap.SHAFT_1);
+		// shaft.config_kP(kArcadeProfile,RobotMap.SHAFT_P);
+		// shaft.config_kI(kArcadeProfile,RobotMap.SHAFT_I);
+		// shaft.config_kD(kArcadeProfile,RobotMap.SHAFT_D);
+		// shaft.config_kF(kArcadeProfile,RobotMap.SHAFT_F);
+		// shaft.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,kTimeoutMs);
 		
 		// Set up sensors/meters
 		// potentiometer = new AnalogPotentiometer(RobotMap.POTENTIOMETER, 360, ANG_OFFSET);
@@ -64,12 +57,16 @@ public class Elevator extends Subsystem{
 
 	// velocity is position change / 100ms
 	public void moveShaftVelocity(double velocity) {
-		shaftMaster.set(ControlMode.Velocity, velocity);
+		shaft.set(ControlMode.Velocity, velocity);
 	}
 
 	// Distance in feet
 	public void moveShaftPosition(double distance) {
-		shaftMaster.set(ControlMode.Position, distance / DISTANCE_PER_TICK);
+		shaft.set(ControlMode.Position, distance / DISTANCE_PER_TICK);
+	}
+
+	public void setNeutralMode() {
+	
 	}
 
 }
