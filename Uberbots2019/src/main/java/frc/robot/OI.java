@@ -35,7 +35,10 @@ public class OI {
     new JoystickButton(joystick, 7),
     new JoystickButton(joystick, 8),
     new JoystickButton(joystick, 9),
-    new JoystickButton(joystick, 10)
+    new JoystickButton(joystick, 10),
+    new JoystickButton(joystick, 11),
+    new JoystickButton(joystick, 12),
+    
   };
 
   public OI(){
@@ -49,6 +52,9 @@ public class OI {
     //joystickButtons[8].toggleWhenPressed(new LowerArm());
     //joystickButtons[9].toggleWhenPressed(new RaiseArm());
     //joystickButtons[10].toggleWhenPressed(new SuctionCupStart());
+    //joystickButtons[11].toggleWhenPressed(new ElevateUp);
+    //joystickButtons[12].toggleWhenPressed(new ElevateDown);
+
   }
 
   public Joystick getJoystick(){
