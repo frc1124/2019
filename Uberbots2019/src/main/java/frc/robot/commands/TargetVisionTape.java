@@ -1,6 +1,7 @@
 package frc.robot.commands;
 
 import frc.robot.vision.GripPipeline;
+import frc.robot.Turn;
 
 import org.opencv.core.Mat;
 import frc.robot.Robot;
@@ -31,6 +32,7 @@ public class TargetVisionTape extends Command {
 		requires(Robot.driveCamera);
 		requires(Robot.driveTrain);
 		filter = new GripPipeline();
+		//turn = new Turn(); 
 		this.setInterruptible(false);
 	}
 
@@ -39,13 +41,13 @@ public class TargetVisionTape extends Command {
 	}
 
 	protected void initialize() {
-		
 		Mat img = Robot.driveCamera.getMat();
 		this.filter.process(img);
 		range = filter.getXRange();
 		lx = range[0];
 		hx = range[1];
 		mx = (lx + hx) / 2;
+		//mx = Camera.getContourCenter(img)
 		Robot.ntInfo.update();
 		difference = mx - (Camera.CAMERA_RESOLUTION_X / 2);
 		
@@ -59,12 +61,30 @@ public class TargetVisionTape extends Command {
 		lx = range[0];
 		hx = range[1];
 		mx = (lx + hx) / 2;
+		//mx = Camera.getContourCenter(img)
 		Robot.ntData.targetCenterEntry.setDouble(mx);
 		difference = mx - (Camera.CAMERA_RESOLUTION_X / 2);
-
+		/*
+		while ((mx <= 310)||(mx >= 330))
+		{
+			mxOld = mx;
+			Robot.turn(1);
+			Mat img = Robot.driveCamera.getMat();
+			this.filter.process(img);
+			range = filter.getXRange();
+			lx = range[0];
+			hx = range[1];
+			mx = (lx + hx) / 2;
+			if (mx > mxOld)
+			{ Robot.turn(1);}
+			if (mx<mxOld)
+			{ Robot.turn(-2);}
+			else
+			{ break;}
+		}
+		*/
 	}
 
-	
 	public void interrupted() {
 		this.end();
 	}
