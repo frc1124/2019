@@ -8,6 +8,8 @@ import edu.wpi.first.wpilibj.command.Command;
 public class Turn extends Command {
 	private double TOLLERANCE = 0.2;
 
+	private double THROTTLE = 0.75;
+
 	private double setPoint;
 
 	/*
@@ -25,7 +27,7 @@ public class Turn extends Command {
 
 	@Override
 	protected void execute() {
-		Robot.driveTrain.drive(0, setPoint/180);
+		Robot.driveTrain.drive(0, setPoint >= 180 ? THROTTLE : -THROTTLE);
 	}
 
 }

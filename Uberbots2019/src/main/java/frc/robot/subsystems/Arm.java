@@ -3,22 +3,27 @@ package frc.robot.subsystems;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.DigitalInput;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 public class Arm extends Subsystem{
 
+	// TODO: Change value
+	private double ANGLE_PER_TICK = 0;
+
+	private int kTimeoutMs = 20;
+	private int kArcadeProfile = 0;
+
 	protected static WPI_TalonSRX arm;
 
-	protected static SpeedControllerGroup armSCGroup;
+	protected static SpeedControllerGroup armSC;
 
-	protected static AnalogPotentiometer pot;
 	private double ANG_OFFSET = 0;
 
 	protected final double THROTTLE = .75;
@@ -27,28 +32,31 @@ public class Arm extends Subsystem{
 	public Arm(){
 		super("Arm");
 		//arm = new WPI_TalonSRX(RobotMap.ARM); //Check device numbers
-		armSCGroup = new SpeedControllerGroup(arm);
-
-		// pot = new AnalogPotentiometer(RobotMap.POTENTIOMETER, 360, ANG_OFFSET);
+		
+		arm.config_kP(kArcadeProfile,RobotMap.ARM_P);
+		arm.config_kI(kArcadeProfile,RobotMap.ARM_I);
+		arm.config_kD(kArcadeProfile,RobotMap.ARM_D);
+		arm.config_kF(kArcadeProfile,RobotMap.ARM_F);
+		arm.configSelectedFeedbackSensor(FeedbackDevice.Analog, 0, kTimeoutMs);
+		armSC = new SpeedControllerGroup(arm);
 	}
 
 	// 0 to 360
 	public void move(double y){
-		armSCGroup.set(y * THROTTLE);
+		armSC.set(y * THROTTLE);
 	}
 
 	public void stop() {
-		armSCGroup.stopMotor();
+		armSC.stopMotor();
 	}
-
-	public double getAngle(){
-		return pot.get();
-	}
-
 
 	@Override
 	public void initDefaultCommand(){
 	
+	}
+
+	public void setLeftPosition(double angle) {
+		arm.set(ControlMode.Position, angle / ANGLE_PER_TICK);
 	}
 }
 

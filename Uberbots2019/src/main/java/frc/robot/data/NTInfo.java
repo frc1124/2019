@@ -20,7 +20,7 @@ public class NTInfo {
 		//compressor = new Compressor(RobotMap.COMPRESSOR_ID);
 	}
 	public void update() {
-		d.leftEncoderDistanceEntry.setDouble(Robot.driveTrain.getLeftGearbox().getEncoder().getRate());
+		// d.leftEncoderDistanceEntry.setDouble(Robot.driveTrain.getLeftGearbox().getEncoder().getRate());
 		//d.getBatteryEntry().setDouble(pdp.getVoltage());
 		//d.getPressureEntry().setBoolean(compressor.getPressureSwitchValue());
 	}

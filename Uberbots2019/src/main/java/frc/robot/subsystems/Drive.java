@@ -82,6 +82,11 @@ public class Drive extends Subsystem{
 		this.drive(THROTTLE * -joystick.getY(), THROTTLE * -joystick.getX());
 	}
 
+	public void drive(double distance) {
+		setLeftPosition(distance);
+		setRightPosition(distance);
+	}
+
 	public void stop(){
 		drive(0,0);
 	}
@@ -118,6 +123,7 @@ public class Drive extends Subsystem{
 	public void setLeftPosition(double distance) {
 		leftFront.set(ControlMode.Position, distance / DISTANCE_PER_TICK);
 	}
+
 
 	public void setRightPosition(double distance) {
 		rightFront.set(ControlMode.Position, distance / DISTANCE_PER_TICK);

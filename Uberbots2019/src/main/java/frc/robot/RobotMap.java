@@ -60,4 +60,9 @@ public class RobotMap {
 	public static final double RIGHT_D = 0.0;
 	public static final double RIGHT_F = 0.0;
 
+	public static final double ARM_P = 0.0;
+	public static final double ARM_I = 0.0;
+	public static final double ARM_D = 0.0;
+	public static final double ARM_F = 0.0;
+
 }
