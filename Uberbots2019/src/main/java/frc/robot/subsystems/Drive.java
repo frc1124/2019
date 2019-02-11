@@ -34,7 +34,6 @@ public class Drive extends Subsystem{
 
 	protected final double THROTTLE = .75;
 
-
 	private int kTimeoutMs = 20;
 	private int kArcadeProfile = 0;
 
@@ -50,6 +49,7 @@ public class Drive extends Subsystem{
 		leftFront.config_kD(kArcadeProfile,RobotMap.LEFT_D);
 		leftFront.config_kF(kArcadeProfile,RobotMap.LEFT_F);
 		leftFront.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,kTimeoutMs);
+		left = new SpeedControllerGroup(rightFront, rightBack);
 
 		// Set up the right side
 		rightFront = new WPI_TalonSRX(RobotMap.RIGHT_1);
@@ -60,7 +60,10 @@ public class Drive extends Subsystem{
 		rightFront.config_kD(kArcadeProfile,RobotMap.RIGHT_D);
 		rightFront.config_kF(kArcadeProfile,RobotMap.RIGHT_F);
 		rightFront.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,kTimeoutMs);
+		right = new SpeedControllerGroup(rightFront, rightBack);
 
+		System.out.println("instanciate");
+		diffDrive = new DifferentialDrive(left, right);
 
 		resetEncoders();
 		resetNavx();
@@ -70,6 +73,7 @@ public class Drive extends Subsystem{
 	public void initDefaultCommand(){
 		setDefaultCommand(new ArcadeDriveJoystick());
 	}
+
 	public void drive(double move, double rotate){
 
 		Robot.ntData.arcadeDriveMoveEntry.setDouble(move);

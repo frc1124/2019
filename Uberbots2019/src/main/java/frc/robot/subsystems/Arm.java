@@ -12,7 +12,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 public class Arm extends Subsystem{
 
 	// TODO: Change value
-	private double ANGLE_PER_TICK = 0;
+	private double ANGLE_PER_TICK = .05/(360 / (Math.PI / 4096));
 
 	private int kTimeoutMs = 20;
 	private int kArcadeProfile = 0;
@@ -54,5 +54,3 @@ public class Arm extends Subsystem{
 		arm.set(ControlMode.Position, angle / ANGLE_PER_TICK);
 	}
 }
-
-

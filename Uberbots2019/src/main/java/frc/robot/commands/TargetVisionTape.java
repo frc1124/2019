@@ -1,7 +1,7 @@
 package frc.robot.commands;
 
 import frc.robot.vision.GripPipeline;
-import frc.robot.Turn;
+import frc.robot.commands.Turn;
 
 import org.opencv.core.Mat;
 import frc.robot.Robot;

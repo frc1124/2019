@@ -26,7 +26,7 @@ public class LowerArm extends Command {
 
     @Override
   protected void execute() {
-    Robot.arm.moveArm(THROTTLE);
+    //Robot.arm.moveArm(THROTTLE);
   }
 
 }

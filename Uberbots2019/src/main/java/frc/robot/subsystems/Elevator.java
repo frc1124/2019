@@ -35,13 +35,15 @@ public class Elevator extends Subsystem{
         super("Elevator");
 
 		// Set up the left side
-		shaft = new WPI_TalonSRX(RobotMap.ELEVATOR);
+		/*
+		shaft = new WPI_TalonSRX(RobotMap.elevator);
 		shaft.config_kP(kArcadeProfile,RobotMap.ELEVATOR_P);
 		shaft.config_kI(kArcadeProfile,RobotMap.ELEVATOR_I);
 		shaft.config_kD(kArcadeProfile,RobotMap.ELEVATOR_D);
 		shaft.config_kF(kArcadeProfile,RobotMap.ELEVATOR_F);
 		shaft.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,kTimeoutMs);
-
+		*/
+		
 		resetEncoder();
 	}
 

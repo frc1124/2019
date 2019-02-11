@@ -1,6 +1,6 @@
 package frc.robot.vision;
 
-import frc.robot.GripPipeline;
+import frc.robot.vision.GripPipeline;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.cscore.CvSink;

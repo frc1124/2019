@@ -13,7 +13,7 @@ public class SuctionCupStop extends Command{
     }
     
     public void execute(){
-        Robot.suctionCup.stop();
+        //Robot.suctionCup.stop();
 
     }
     protected boolean isFinished(){

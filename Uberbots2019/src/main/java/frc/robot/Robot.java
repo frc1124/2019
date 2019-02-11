@@ -43,7 +43,7 @@ public class Robot extends TimedRobot {
 	// public static SuctionCup suctionCup;
 	// public static Arm arm;
 	public static Drive driveTrain;
-	// public static Camera driveCamera;
+	public static Camera driveCamera;
 
 	@Override
 	public void robotInit() {
@@ -53,7 +53,7 @@ public class Robot extends TimedRobot {
 		ntInfo = new NTInfo(inst);
 
 		driveTrain = new Drive();
-		// driveCamera = new Camera("Drive");
+		driveCamera = new Camera("Drive");
 		// hatchMechanism = new HatchMechanism();
 		// suctionCup = new SuctionCup();
 		// arm = new Arm();
