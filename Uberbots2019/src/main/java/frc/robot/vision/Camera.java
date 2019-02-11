@@ -1,5 +1,6 @@
 package frc.robot.vision;
 
+import frc.robot.GripPipeline;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.cscore.CvSink;
@@ -50,4 +51,13 @@ public class Camera extends Subsystem {
 		cvSink.grabFrame(source);
 		return source;
 	}
+
+	/*
+	public int getContourCenter(Mat input)
+	{
+		this.process(this.getMat());
+		double[] r = this.getXRange();
+		double xCenter = ((r[0]+r[1])/2);
+	}
+	*/
 }
