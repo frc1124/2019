@@ -1,13 +1,9 @@
 package frc.robot.subsystems;
 
-import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.SPI;
-import edu.wpi.first.wpilibj.DigitalInput;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
@@ -24,8 +20,6 @@ public class Arm extends Subsystem{
 	protected static WPI_TalonSRX arm;
 
 	protected static SpeedControllerGroup armSC;
-
-	private double ANG_OFFSET = 0;
 
 	protected final double THROTTLE = .75;
 
