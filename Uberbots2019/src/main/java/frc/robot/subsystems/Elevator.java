@@ -1,10 +1,9 @@
 package frc.robot.subsystems;
-
-import edu.wpi.first.wpilibj.command.PIDSubsystem;
-import edu.wpi.first.wpilibj.AnalogPotentiometer;
-import edu.wpi.first.wpilibj.PWMSpeedController;
-import edu.wpi.first.wpilibj.Encoder;
-
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.SPI;
 
 import frc.robot.RobotMap;
 import frc.robot.Robot;
@@ -14,54 +13,81 @@ import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
-public class Elevator extends PIDSubsystem{
+import com.kauailabs.navx.frc.AHRS;
+
+public class Elevator extends Subsystem{
 
 	private int TIMEOUT = 500;
 
-	// TODO: get value
-	private double DISTANCE_PER_TICK = Math.PI / 4096;
-	private double ANG_OFFSET = 0;
+	public double DISTANCE_PER_TICK = Math.PI / 4096;
 
-	protected static PWMSpeedController shaft;
+	protected static WPI_TalonSRX shaft;
 
-	protected static Encoder enc;
+	protected static SpeedControllerGroup shaftSC;
 
 	protected final double THROTTLE = .75;
 
+
 	private int kTimeoutMs = 20;
+	private int kArcadeProfile = 0;
 
 	public Elevator(){
-       super("Elevator",
-       		   RobotMap.ELEVATOR_P,
-       		   RobotMap.ELEVATOR_I,
-			   RobotMap.ELEVATOR_D,
-			   RobotMap.ELEVATOR_F
-       		   );
+        super("Elevator");
 
-		// Set up the shaft
-		// TODO: create robotmap value
-		// shaft = new PWMSpeedController(RobotMap.SHAFT_1);
+		// Set up the left side
+		shaft = new WPI_TalonSRX(RobotMap.ELEVATOR);
+		shaft.config_kP(kArcadeProfile,RobotMap.ELEVATOR_P);
+		shaft.config_kI(kArcadeProfile,RobotMap.ELEVATOR_I);
+		shaft.config_kD(kArcadeProfile,RobotMap.ELEVATOR_D);
+		shaft.config_kF(kArcadeProfile,RobotMap.ELEVATOR_F);
+		shaft.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,kTimeoutMs);
 
-		// Set up sensors/meters
-		// enc = new Encoder(RobotMap.ARM_ENCODER);
-
+		resetEncoder();
 	}
 
 	@Override
 	public void initDefaultCommand(){
-		// setDefaultCommand(new <INSERT COMMAND HERE>);
+		// setDefaultCommand(new ElevatorJoystick());
 	}
 
-	public void setSpeed(double speed) {
-		shaft.set(speed);
+	public void move(double distance) {
+		setPosition(distance);
+	}
+
+	public void stop(){
+		shaftSC.stopMotor();
+	}
+
+	public static void setNeutralMode(NeutralMode mode) {
+		shaft.setNeutralMode(mode);
 	}
 	
-	public double returnPIDInput() {
-		return enc.getDistance();
+	// manual drive
+
+	public void shaftManual(double speed) {
+		shaftSC.set(speed);
 	}
 
-	@Override
-	public void usePIDOutput(double output) {
+	public void setVelocity(double velocity) {
+		shaft.set(ControlMode.Velocity, velocity);
+	}
+
+	public void setPosition(double distance) {
+		shaft.set(ControlMode.Position, distance / DISTANCE_PER_TICK);
+	}
+
+	// encoder methods
+	
+	public double getEncoderDistance(){
+		return shaft.getSensorCollection().getQuadraturePosition();
+	}
+	
+	public double getEncoderVelocity(){
+		return shaft.getSensorCollection().getQuadratureVelocity();
+	}
+
+	public void resetEncoder(){
+		shaft.getSensorCollection().setQuadraturePosition(0, TIMEOUT);
 	}
 
 }

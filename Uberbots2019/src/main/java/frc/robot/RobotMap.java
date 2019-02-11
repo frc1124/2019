@@ -10,6 +10,7 @@ package frc.robot;
 public class RobotMap {
 
     // Can addresses
+    // public static final int ELEVATOR = 0;
     // public static final int ARM = 9999999;
     public static final int LEFT_1 = 3;
     public static final int LEFT_2 = 0;
