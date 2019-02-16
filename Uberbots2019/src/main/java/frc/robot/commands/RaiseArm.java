@@ -3,30 +3,31 @@ package frc.robot.commands;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.command.PIDCommand;
 
 
-public class RaiseArm extends Command {
-	private double THROTTLE = -0.75;
-
-	protected static DigitalInput forwardLimitSwitch;
+public class RaiseArm extends PIDCommand {
+	private double TOLLERANCE = 0.05;
+	private double setPoint = 180;
 
 	public RaiseArm(){
-        //requires(Robot.arm);
+		super("RaiseArm",RobotMap.ARM_P,RobotMap.ARM_I,RobotMap.ARM_D);
+		requires(Robot.arm);
+	}
 
-		//forwardLimitSwitch = new DigitalInput(RobotMap.ARM_LIMIT_FORWARD);
-	
-        setInterruptible(true);
-    }
+	public boolean isFinished(){
+		return Math.abs(Robot.arm.getAngle() - setPoint) <= TOLLERANCE;
+	}
 
-    public boolean isFinished(){
-        return forwardLimitSwitch.get();
-    }
+	@Override
+	protected void execute() {
+		Robot.arm.move(1);
+	}
 
-    @Override
-  protected void execute() {
-    //Robot.arm.moveArm(THROTTLE);
-  }
+	public double returnPIDInput(){
+		return Robot.arm.getAngle();
+	}
+	public void usePIDOutput(double output) {
+	}
 
 }

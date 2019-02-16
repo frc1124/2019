@@ -17,8 +17,8 @@ import frc.robot.data.NTInfo;
 import frc.robot.OI;
 import frc.robot.subsystems.HatchMechanism;
 import frc.robot.subsystems.SuctionCup;
-import frc.robot.subsystems.Arm;
-import frc.robot.subsystems.Elevator;
+import frc.robot.subsystems.PIDArm;
+import frc.robot.subsystems.PIDElevator;
 
 import edu.wpi.first.networktables.NetworkTableInstance;
 
@@ -41,10 +41,10 @@ public class Robot extends TimedRobot {
 
 	public static HatchMechanism hatchMechanism;
 	public static SuctionCup suctionCup;
-	public static Arm arm;
+	public static PIDArm arm;
 	public static Drive driveTrain;
 	public static Camera driveCamera;
-	public static Elevator elevator;
+	public static PIDElevator elevator;
 
 	@Override
 	public void robotInit() {
@@ -57,7 +57,8 @@ public class Robot extends TimedRobot {
 		driveCamera = new Camera("Drive");
 		hatchMechanism = new HatchMechanism();
 		suctionCup = new SuctionCup();
-		arm = new Arm();
+		arm = new PIDArm();
+		elevator = new PIDElevator();
 
 		oi = new OI(); //instantiate this last
 	}
