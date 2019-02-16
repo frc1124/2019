@@ -6,13 +6,13 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class SuctionCup extends Subsystem{
-	// public static double isHatchReleased;
+	
 	protected static DoubleSolenoid suctionSol;
 
 	public SuctionCup(){
 		super("SuctionCup");
 
-		//suctionSol = new DoubleSolenoid(RobotMap.SUCTION_FORWARDS_CHANNEL,  RobotMap.SUCTION_BACKWARDS_CHANNEL);
+		suctionSol = new DoubleSolenoid(RobotMap.SUCTION_FORWARD_CHANNEL,  RobotMap.SUCTION_BACKWARD_CHANNEL);
 	}
 
 	public void initDefaultCommand(){

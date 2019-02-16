@@ -19,9 +19,9 @@ public class ArcadeDriveJoystick extends Command {
   }
 
   @Override
-  protected void execute() {
+  protected void execute() {    
     Joystick js = Robot.oi.getJoystick();
-    
+
     Robot.driveTrain.drive(js);
   }
 

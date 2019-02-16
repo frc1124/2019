@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class HatchMechanism extends Subsystem{
-	// public static double isHatchReleased;
+
 	protected static DoubleSolenoid Push1, Push2, Slide1, Slide2;
 
 	public HatchMechanism(){

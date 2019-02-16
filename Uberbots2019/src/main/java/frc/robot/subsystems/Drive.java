@@ -23,16 +23,16 @@ public class Drive extends Subsystem{
 
 	private double DISTANCE_PER_TICK = Math.PI / 4096;
 
-	protected static WPI_TalonSRX leftBack, leftFront;
-	protected static WPI_TalonSRX rightBack, rightFront;
+	protected WPI_TalonSRX leftBack, leftFront;
+	protected WPI_TalonSRX rightBack, rightFront;
 
     public AHRS navx = new AHRS(SPI.Port.kMXP);
 
-	protected static SpeedControllerGroup left, right;
+	private SpeedControllerGroup left, right;
 
-	protected static DifferentialDrive diffDrive;
+	private DifferentialDrive diffDrive;
 
-	protected final double THROTTLE = .75;
+	private final double THROTTLE = .75;
 
 	private int kTimeoutMs = 20;
 	private int kArcadeProfile = 0;
@@ -44,26 +44,23 @@ public class Drive extends Subsystem{
 		leftFront = new WPI_TalonSRX(RobotMap.LEFT_1);
 		leftBack = new WPI_TalonSRX(RobotMap.LEFT_2);
 		leftBack.follow(leftFront);
-		leftFront.config_kP(kArcadeProfile,RobotMap.LEFT_P);
-		leftFront.config_kI(kArcadeProfile,RobotMap.LEFT_I);
-		leftFront.config_kD(kArcadeProfile,RobotMap.LEFT_D);
-		leftFront.config_kF(kArcadeProfile,RobotMap.LEFT_F);
-		leftFront.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,kTimeoutMs);
-		left = new SpeedControllerGroup(rightFront, rightBack);
-
+		leftFront.config_kP(kArcadeProfile, RobotMap.LEFT_P);
+		leftFront.config_kI(kArcadeProfile, RobotMap.LEFT_I);
+		leftFront.config_kD(kArcadeProfile, RobotMap.LEFT_D);
+		leftFront.config_kF(kArcadeProfile, RobotMap.LEFT_F);
+		leftFront.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, kTimeoutMs);
+		
 		// Set up the right side
 		rightFront = new WPI_TalonSRX(RobotMap.RIGHT_1);
 		rightBack = new WPI_TalonSRX(RobotMap.RIGHT_2);
 		rightBack.follow(rightFront);
-		rightFront.config_kP(kArcadeProfile,RobotMap.RIGHT_P);
-		rightFront.config_kI(kArcadeProfile,RobotMap.RIGHT_I);
-		rightFront.config_kD(kArcadeProfile,RobotMap.RIGHT_D);
-		rightFront.config_kF(kArcadeProfile,RobotMap.RIGHT_F);
-		rightFront.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,kTimeoutMs);
-		right = new SpeedControllerGroup(rightFront, rightBack);
-
-		System.out.println("instanciate");
-		diffDrive = new DifferentialDrive(left, right);
+		rightFront.config_kP(kArcadeProfile, RobotMap.RIGHT_P);
+		rightFront.config_kI(kArcadeProfile, RobotMap.RIGHT_I);
+		rightFront.config_kD(kArcadeProfile, RobotMap.RIGHT_D);
+		rightFront.config_kF(kArcadeProfile, RobotMap.RIGHT_F);
+		rightFront.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, kTimeoutMs);
+		
+		diffDrive = new DifferentialDrive(leftFront, rightFront);
 
 		resetEncoders();
 		resetNavx();
@@ -95,7 +92,7 @@ public class Drive extends Subsystem{
 		drive(0,0);
 	}
 
-	public static void setNeutralMode(NeutralMode mode) {
+	public void setNeutralMode(NeutralMode mode) {
 		leftFront.setNeutralMode(mode);
 		rightFront.setNeutralMode(mode);
 	}

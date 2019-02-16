@@ -11,7 +11,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 public class Arm extends Subsystem{
 
-	// TODO: Change value
+	// TODO: Change value/Pray to RNJesus
 	private double ANGLE_PER_TICK = .05/(360 / (Math.PI / 4096));
 
 	private int kTimeoutMs = 20;
@@ -26,8 +26,8 @@ public class Arm extends Subsystem{
 
 	public Arm(){
 		super("Arm");
-		//arm = new WPI_TalonSRX(RobotMap.ARM); //Check device numbers
 		
+		arm = new WPI_TalonSRX(RobotMap.ARM); //Check device numbers
 		arm.config_kP(kArcadeProfile,RobotMap.ARM_P);
 		arm.config_kI(kArcadeProfile,RobotMap.ARM_I);
 		arm.config_kD(kArcadeProfile,RobotMap.ARM_D);
