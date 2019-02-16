@@ -9,6 +9,7 @@ import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 
 public class PIDArm extends PIDSubsystem{
 
@@ -26,6 +27,8 @@ public class PIDArm extends PIDSubsystem{
 		
 		arm = new WPI_TalonSRX(RobotMap.ARM); //Check device numbers
 		armSC = new SpeedControllerGroup(arm);
+
+		setNeutralMode(NeutralMode.Brake);
 
 		pot = new AnalogPotentiometer(RobotMap.POT, 3600, 0);
 		// Set tolerance

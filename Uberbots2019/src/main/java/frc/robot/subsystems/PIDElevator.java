@@ -33,6 +33,9 @@ public class PIDElevator extends PIDSubsystem{
 		enc = new Encoder(RobotMap.ELEVATOR1, RobotMap.ELEVATOR2);
 		enc.setDistancePerPulse(DISTANCE_PER_TICK);
 		setNeutralMode(NeutralMode.Brake);
+
+		setAbsoluteTolerance(0.1);
+		getPIDController().setContinuous(false);
 		
 		resetEncoder();
 	}
