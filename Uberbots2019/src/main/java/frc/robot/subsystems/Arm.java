@@ -12,7 +12,8 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 public class Arm extends Subsystem{
 
 	// TODO: Change value/Pray to RNJesus
-	private double ANGLE_PER_TICK = .05/(360 / (Math.PI / 4096));
+	private double DELTA_OHMS = 62.5;
+	private double ANGLE_ROTATION = 45;
 
 	private int kTimeoutMs = 20;
 	private int kArcadeProfile = 0;
@@ -22,7 +23,6 @@ public class Arm extends Subsystem{
 	protected static SpeedControllerGroup armSC;
 
 	protected final double THROTTLE = .75;
-
 
 	public Arm(){
 		super("Arm");
@@ -51,6 +51,6 @@ public class Arm extends Subsystem{
 	}
 
 	public void setLeftPosition(double angle) {
-		arm.set(ControlMode.Position, angle / ANGLE_PER_TICK);
+		arm.set(ControlMode.Position, angle / DELTA_OHMS);
 	}
 }

@@ -21,12 +21,11 @@ public class Elevator extends Subsystem{
 
 	public double DISTANCE_PER_TICK = Math.PI / 4096;
 
-	protected static WPI_TalonSRX shaft;
+	protected static WPI_TalonSRX shaft, slave;
 
 	protected static SpeedControllerGroup shaftSC;
 
 	protected final double THROTTLE = .75;
-
 
 	private int kTimeoutMs = 20;
 	private int kArcadeProfile = 0;
@@ -35,12 +34,15 @@ public class Elevator extends Subsystem{
         super("Elevator");
 
 		// Set up the left side
-		shaft = new WPI_TalonSRX(RobotMap.ELEVATOR);
+		shaft = new WPI_TalonSRX(RobotMap.ELEVATOR1);
 		shaft.config_kP(kArcadeProfile,RobotMap.ELEVATOR_P);
 		shaft.config_kI(kArcadeProfile,RobotMap.ELEVATOR_I);
 		shaft.config_kD(kArcadeProfile,RobotMap.ELEVATOR_D);
 		shaft.config_kF(kArcadeProfile,RobotMap.ELEVATOR_F);
 		shaft.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,kTimeoutMs);
+
+		slave = new WPI_TalonSRX(RobotMap.ELEVATOR2);
+		slave.follow(shaft);
 		
 		resetEncoder();
 	}
@@ -60,6 +62,7 @@ public class Elevator extends Subsystem{
 
 	public static void setNeutralMode(NeutralMode mode) {
 		shaft.setNeutralMode(mode);
+		slave.setNeutralMode(mode);
 	}
 	
 	// manual drive
@@ -89,5 +92,4 @@ public class Elevator extends Subsystem{
 	public void resetEncoder(){
 		shaft.getSensorCollection().setQuadraturePosition(0, TIMEOUT);
 	}
-
 }

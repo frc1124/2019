@@ -22,11 +22,12 @@ public class PIDElevator extends PIDSubsystem{
 	protected Encoder enc;
 
 	public PIDElevator(){
-        super("PIDElevator");
+        super("PIDElevator", RobotMap.ELEVATOR_P, RobotMap.ELEVATOR_I, RobotMap.ELEVATOR_D);
 
 		// Set up the left side
 		shaft1 = new WPI_TalonSRX(RobotMap.ELEVATOR1);
 		shaft2 = new WPI_TalonSRX(RobotMap.ELEVATOR2);
+		shaft2.follow(shaft1);
 
 		shaftSC = new SpeedControllerGroup(shaft1, shaft2);
 
@@ -80,5 +81,14 @@ public class PIDElevator extends PIDSubsystem{
 
 	public void resetEncoder(){
 		enc.reset();
+	}
+
+	public void usePIDOutput(double output) {
+		shaft1.pidWrite(output);
+	}
+
+	// TODO: Fix this Method
+	public double returnPIDInput() {
+		return enc.getRate();
 	}
 }
