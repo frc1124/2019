@@ -28,7 +28,7 @@ public class PIDArm extends PIDSubsystem{
 		arm = new WPI_TalonSRX(RobotMap.ARM); //Check device numbers
 		armSC = new SpeedControllerGroup(arm);
 
-		setNeutralMode(NeutralMode.Brake);
+		arm.setNeutralMode(NeutralMode.Brake);
 
 		pot = new AnalogPotentiometer(RobotMap.POT, 3600, 0);
 		// Set tolerance
