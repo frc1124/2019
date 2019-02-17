@@ -9,16 +9,9 @@ package frc.robot;
 
 public class RobotMap {
 
-<<<<<<< HEAD
     // Can addresses
     public static final int ELEVATOR1 = 1;
     public static final int ELEVATOR2 = 5;
-=======
-	// Can addresses
-	// TODO: Get Values
-    public static final int ELEVATOR1 = 0;
-    public static final int ELEVATOR2 = 0;
->>>>>>> cb5fa60cb8c3608540aaf1e08bf5d3c690c1265a
     public static final int ARM = 9999999;
 	
 	public static final int LEFT_1 = 3;
@@ -44,8 +37,7 @@ public class RobotMap {
 	public static final int POT = 0;
 
 	// Pistons & Solenoid
-	public static final int SUCTION_FORWARD_CHANNEL = 1;
-	public static final int SUCTION_BACKWARD_CHANNEL = 0;
+	public static final int SUCTION_CHANNEL = 1;
 
 	public static final int PUSH_FORWARD_CHANNEL = 3;
 	public static final int PUSH_BACKWARD_CHANNEL = 2;

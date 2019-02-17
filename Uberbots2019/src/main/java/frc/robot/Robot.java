@@ -20,6 +20,9 @@ import frc.robot.subsystems.SuctionCup;
 import frc.robot.subsystems.PIDArm;
 import frc.robot.subsystems.PIDElevator;
 
+import frc.robot.commands.ElevatorUp;
+import frc.robot.commands.PistonExtend;
+
 import edu.wpi.first.networktables.NetworkTableInstance;
 
 
