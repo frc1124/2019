@@ -88,6 +88,11 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void teleopInit() {
+		// PistonExtend p = new PistonExtend();
+		// ElevatorUp e = new ElevatorUp();
+		// Scheduler.getInstance().add(p);
+		// Scheduler.getInstance().add(e);
+		
 	}
 
 	@Override
