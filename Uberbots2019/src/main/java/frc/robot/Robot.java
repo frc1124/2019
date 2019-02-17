@@ -82,6 +82,8 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void autonomousInit() {
+		// PistonExtend p = new PistonExtend();
+		// Scheduler.getInstance().add(p);
 	}
 
 	@Override
