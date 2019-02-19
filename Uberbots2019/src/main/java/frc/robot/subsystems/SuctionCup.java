@@ -21,6 +21,10 @@ public class SuctionCup extends Subsystem{
 		suctionSol.set(true);
 	}
 
+	public void toggle(){
+		suctionSol.set(!suctionSol.get());
+	}
+
 	public void stop(){
 		suctionSol.set(false);
 	}
