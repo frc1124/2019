@@ -25,36 +25,43 @@ public class Elevator extends Subsystem{
 
 	protected static SpeedControllerGroup shaftSC;
 
-	protected final double THROTTLE = .75;
+	protected final double THROTTLE = .25;
 
 	private int kTimeoutMs = 20;
 	private int kArcadeProfile = 0;
+
+	private static boolean raiseElevator = true;
 
 	public Elevator(){
         super("Elevator");
 
 		// Set up the left side
 		shaft = new WPI_TalonSRX(RobotMap.ELEVATOR1);
+		/*
 		shaft.config_kP(kArcadeProfile,RobotMap.ELEVATOR_P);
 		shaft.config_kI(kArcadeProfile,RobotMap.ELEVATOR_I);
 		shaft.config_kD(kArcadeProfile,RobotMap.ELEVATOR_D);
 		shaft.config_kF(kArcadeProfile,RobotMap.ELEVATOR_F);
 		shaft.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,kTimeoutMs);
-
+		*/
 		slave = new WPI_TalonSRX(RobotMap.ELEVATOR2);
 		slave.follow(shaft);
 		
-		resetEncoder();
+		shaftSC = new SpeedControllerGroup(shaft, slave);
+		System.out.println("Init");
+		//resetEncoder();
 	}
 
 	@Override
 	public void initDefaultCommand(){
 		//setDefaultCommand(new ElevatorJoystick());
 	}
-
+	
+	/*
 	public void move(double distance) {
 		setPosition(distance);
 	}
+	*/
 
 	public void stop(){
 		shaftSC.stopMotor();
@@ -70,7 +77,7 @@ public class Elevator extends Subsystem{
 	public void shaftManual(double speed) {
 		shaftSC.set(speed);
 	}
-
+	/*
 	public void setVelocity(double velocity) {
 		shaft.set(ControlMode.Velocity, velocity);
 	}
@@ -91,5 +98,23 @@ public class Elevator extends Subsystem{
 
 	public void resetEncoder(){
 		shaft.getSensorCollection().setQuadraturePosition(0, TIMEOUT);
+	}
+	*/
+
+	public static boolean getRaiseElevator(){
+		return raiseElevator;
+	}
+
+	public void set(double speed) {
+		shaftSC.set(speed * THROTTLE);
+	}
+	
+	public void moveUp(boolean up) {
+		set(up ? 1 : -1);
+	}
+
+	public String log(){
+		
+		return "shaftSC - " + shaftSC.get() + " - shaft - " + shaft.get() + " - Start Time - " + System.currentTimeMillis();
 	}
 }

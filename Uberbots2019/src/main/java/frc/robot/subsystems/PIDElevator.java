@@ -21,6 +21,8 @@ public class PIDElevator extends PIDSubsystem{
 
 	protected Encoder enc;
 
+	private boolean raiseElevator = true;
+
 	public PIDElevator(){
         super("PIDElevator", RobotMap.ELEVATOR_P, RobotMap.ELEVATOR_I, RobotMap.ELEVATOR_D);
 
@@ -90,5 +92,13 @@ public class PIDElevator extends PIDSubsystem{
 	// TODO: Fix this Method
 	public double returnPIDInput() {
 		return enc.getRate();
+	}
+
+	public boolean getRaiseElevator(){
+		return raiseElevator;
+	}
+
+	public void toggleRaiseElevator(){
+		raiseElevator = !raiseElevator;
 	}
 }

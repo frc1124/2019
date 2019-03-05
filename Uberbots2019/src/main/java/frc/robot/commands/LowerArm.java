@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.PIDCommand;
 
 public class LowerArm extends PIDCommand {
 	private double TOLLERANCE = 0.05;
-	private double setPoint = 180;
+	private double setPoint = 10;
 
 	public LowerArm(){
 		super("LowerArm",RobotMap.ARM_P,RobotMap.ARM_I,RobotMap.ARM_D);

@@ -16,13 +16,16 @@ public class PIDDriveTest extends Command {
 	}
 
 	public boolean isFinished(){
+		Robot.ntInfo.update();
+		System.out.println("Left Encoder: " + Robot.driveTrain.getLeftEncoderDistance());
+		System.out.println("Right Encoder: " + Robot.driveTrain.getRightEncoderDistance());
 		return false;
 	}
 
 	@Override
 	protected void execute() {
-		Robot.driveTrain.setLeftPosition(setPoint);
-		// Robot.driveTrain.setRightPosition(4);
+		//Robot.driveTrain.setLeftPosition(setPoint);
+		Robot.driveTrain.setRightPosition(setPoint);
 	}
 
 }

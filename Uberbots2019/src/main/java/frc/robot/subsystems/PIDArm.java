@@ -15,12 +15,12 @@ public class PIDArm extends PIDSubsystem{
 
 	protected WPI_TalonSRX arm;
 	// TODO get value
-	private final double ANGLE_PER_OHM = 5;
+	private final double ANGLE_PER_OHM = 0.72;
 
 	protected SpeedControllerGroup armSC;
 	protected AnalogPotentiometer pot;
 
-	protected final double THROTTLE = .75;
+	protected final double THROTTLE = .25;
 
 	public PIDArm(){
 		super("PIDArm",RobotMap.ARM_P,RobotMap.ARM_I,RobotMap.ARM_D,RobotMap.ARM_F);

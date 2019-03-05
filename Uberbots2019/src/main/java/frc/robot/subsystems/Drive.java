@@ -59,7 +59,9 @@ public class Drive extends Subsystem{
 		rightFront.config_kD(kArcadeProfile, RobotMap.RIGHT_D);
 		rightFront.config_kF(kArcadeProfile, RobotMap.RIGHT_F);
 		rightFront.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, kTimeoutMs);
+		rightFront.setInverted(true);
 		
+		setNeutralMode(NeutralMode.Coast);
 		diffDrive = new DifferentialDrive(leftFront, rightFront);
 
 		resetEncoders();

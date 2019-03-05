@@ -5,36 +5,40 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-public class ElevatorUp extends Command {
+
+public class ToggleElevator extends Command {
 	// TODO: Find setPoint
 	private double setPoint = 0;
 	private final double TOLLERANCE = 0.1;
 
-	private long startTime = System.currentTimeMillis();
-
-	public ElevatorUp(){
-		//super("ElevatorUp", RobotMap.ELEVATOR_P, RobotMap.ELEVATOR_I, RobotMap.ELEVATOR_D);
+	public ToggleElevator(){
+		//super("ToggleElevator", RobotMap.ELEVATOR_P, RobotMap.ELEVATOR_I, RobotMap.ELEVATOR_D);
 		requires(Robot.elevator);
 
-		setInterruptible(true);
-	}
-
+		setInterruptible(false);
+    }
+	
 	public boolean isFinished(){
 		//return Math.abs(Robot.elevator.getEncoderDistance() - setPoint) <= TOLLERANCE;
-		return System.currentTimeMillis() - startTime >= 2000;
+		return false;
 	}
 
 	@Override
 	protected void execute() {
-		Robot.elevator.moveUp(true);
-	}
-	/*
-	public double returnPIDInput(){
-		return Robot.elevator.getEncoderDistance();
+        Robot.elevator.moveUp(Robot.elevator.getRaiseElevator());
 	}
 
+	public double returnPIDInput(){
+		//return Robot.elevator.getEncoderDistance();
+		return 0.0;
+	}
+    /*
 	public void usePIDOutput(double output) {
 		Robot.elevator.getPIDController().pidWrite(output);
 	}
-	*/
+
+    @Override
+    public void end(){
+        Robot.elevator.toggleRaiseElevator();
+    }*/
 }

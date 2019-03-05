@@ -22,7 +22,7 @@ public class Arm extends Subsystem{
 
 	protected static SpeedControllerGroup armSC;
 
-	protected final double THROTTLE = .75;
+	protected final double THROTTLE = .01;
 
 	public Arm(){
 		super("Arm");

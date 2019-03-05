@@ -4,9 +4,9 @@ import frc.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class HatchRelease extends Command {
+public class ToggleHatch extends Command {
 
-    public HatchRelease(){
+    public ToggleHatch(){
         requires(Robot.hatchMechanism);
 
         setInterruptible(true);

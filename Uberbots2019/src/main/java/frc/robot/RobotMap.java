@@ -12,7 +12,7 @@ public class RobotMap {
     // Can addresses
     public static final int ELEVATOR1 = 1;
     public static final int ELEVATOR2 = 5;
-    public static final int ARM = 9999999;
+    public static final int ARM = 6;
 	
 	public static final int LEFT_1 = 3;
     public static final int LEFT_2 = 0;
@@ -21,7 +21,7 @@ public class RobotMap {
 	
 	// TODO: GET VAUES
     public static final int PDP_ID = 0;
-    public static final int COMPRESSOR_ID = 99999;
+    public static final int COMPRESSOR_ID = 0;
 
     // Digital
 	public static final int LEFT_DRIVE_BACK = 0;
@@ -34,7 +34,7 @@ public class RobotMap {
 
     // Analog Inputs
 	public static final int GYRO = 0;
-	public static final int POT = 0;
+	public static final int POT = 3;
 
 	// Pistons & Solenoid
 	public static final int SUCTION_CHANNEL = 0;
@@ -47,12 +47,12 @@ public class RobotMap {
 
 	//PID Values
 	//TODO: Tune PID Values
-	public static final double LEFT_P = 0.1;
+	public static final double LEFT_P = 0.025;
 	public static final double LEFT_I = 0.0;
 	public static final double LEFT_D = 0.0;
 	public static final double LEFT_F = 0.0;
 	
-	public static final double RIGHT_P = 0.0;
+	public static final double RIGHT_P = 0.025;
 	public static final double RIGHT_I = 0.0;
 	public static final double RIGHT_D = 0.0;
 	public static final double RIGHT_F = 0.0;

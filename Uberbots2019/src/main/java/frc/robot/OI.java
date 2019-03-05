@@ -12,13 +12,16 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import frc.robot.commands.ArcadeDriveJoystick;
-// import frc.robot.commands.SuctionCupStart;
-// import frc.robot.commands.HatchRelease;
-// import frc.robot.commands.HatchRetract;
-// import frc.robot.commands.PistonExtend;
-// import frc.robot.commands.PistonRetract;
-// import frc.robot.commands.LowerArm;
-// import frc.robot.commands.RaiseArm;
+import frc.robot.commands.ElevatorUp;
+import frc.robot.commands.HatchRelease;
+import frc.robot.commands.HatchRetract;
+import frc.robot.commands.ToggleSuction;
+import frc.robot.commands.ToggleElevator;
+import frc.robot.commands.ToggleHatch;
+import frc.robot.commands.LowerArm;
+import frc.robot.commands.RaiseArm;
+import frc.robot.commands.PIDDriveTest;
+import frc.robot.commands.ElevatorDown;
 
 public class OI {
   public static Joystick joystick = new Joystick(0);;
@@ -32,17 +35,13 @@ public class OI {
     new JoystickButton(joystick, 5),
     new JoystickButton(joystick, 6),
     new JoystickButton(joystick, 7),
-    new JoystickButton(joystick, 8),
-    new JoystickButton(joystick, 9),
-    new JoystickButton(joystick, 10),
-    new JoystickButton(joystick, 11),
-    new JoystickButton(joystick, 12),
-    
+    new JoystickButton(joystick, 8)    
   };
 
   public OI(){
     
     joystickButtons[1].toggleWhenPressed(new ArcadeDriveJoystick());
+<<<<<<< Updated upstream
     //joystickButtons[2].toggleWhenPressed(new HatchRelease());
     //joystickButtons[3].toggleWhenPressed(new HatchRetract());
     //joystickButtons[4].toggleWhenPressed(new PistonExtend());
@@ -54,6 +53,15 @@ public class OI {
     //joystickButtons[11].toggleWhenPressed(new ElevateUp);
     //joystickButtons[12].toggleWhenPressed(new ElevateDown);
 
+=======
+    joystickButtons[2].toggleWhenPressed(new HatchRelease()); //B
+    joystickButtons[3].toggleWhenPressed(new HatchRetract()); //X
+    joystickButtons[4].toggleWhenPressed(new PIDDriveTest(4)); //Y
+    joystickButtons[5].toggleWhenPressed(new LowerArm());
+    joystickButtons[6].toggleWhenPressed(new RaiseArm());
+    //joystickButtons[7].toggleWhenPressed(new ElevatorUp());
+    //joystickButtons[8].toggleWhenPressed(new ElevatorDown());
+>>>>>>> Stashed changes
   }
 
   public Joystick getJoystick(){

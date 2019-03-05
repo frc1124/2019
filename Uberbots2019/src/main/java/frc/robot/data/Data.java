@@ -44,14 +44,15 @@ public class Data {
 	
 		NetworkTable dashboard = inst.getTable("dash");
 
+		leftEncoderDistanceEntry = dashboard.getEntry("leftEncoderDistanceEntry");
+
 		arcadeDriveMoveEntry = dashboard.getEntry("arcadeDriveMoveEntry");
 		arcadeDriveRotateEntry = dashboard.getEntry("arcadeDriveRotateEntry");
 
 		leftDrivePEntry = dashboard.getEntry("leftDrivePEntry");
 		leftDriveIEntry = dashboard.getEntry("leftDriveIEntry");
 		leftDriveDEntry = dashboard.getEntry("leftDriveDEntry");
-		leftEncoderDistanceEntry = dashboard.getEntry("leftEncoderDistanceEntry");
-
+		
 
 		rightDrivePEntry = dashboard.getEntry("rightDrivePEntry");
 		rightDriveIEntry = dashboard.getEntry("rightDriveIEntry");

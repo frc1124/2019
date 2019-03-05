@@ -9,6 +9,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.Compressor;
 
 import frc.robot.subsystems.Drive;
 import frc.robot.vision.Camera;
@@ -19,6 +20,7 @@ import frc.robot.subsystems.HatchMechanism;
 import frc.robot.subsystems.SuctionCup;
 import frc.robot.subsystems.PIDArm;
 import frc.robot.subsystems.PIDElevator;
+import frc.robot.subsystems.Elevator;
 
 import frc.robot.commands.ElevatorUp;
 import frc.robot.commands.PistonExtend;
@@ -47,7 +49,10 @@ public class Robot extends TimedRobot {
 	public static PIDArm arm;
 	public static Drive driveTrain;
 	public static Camera driveCamera;
-	public static PIDElevator elevator;
+	public static Elevator elevator;
+	public static Compressor c;
+
+	private boolean toggleCompressor = true;
 
 	@Override
 	public void robotInit() {
@@ -57,13 +62,16 @@ public class Robot extends TimedRobot {
 		ntInfo = new NTInfo(inst);
 
 		driveTrain = new Drive();
-		driveCamera = new Camera("Drive");
+		//driveCamera = new Camera("Drive");
 		hatchMechanism = new HatchMechanism();
 		suctionCup = new SuctionCup();
 		arm = new PIDArm();
-		elevator = new PIDElevator();
+		//elevator = new Elevator();
+		c = new Compressor(RobotMap.COMPRESSOR_ID);
 
 		oi = new OI(); //instantiate this last
+	
+		c.setClosedLoopControl(true);
 	}
 
 	@Override
@@ -103,6 +111,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		allPeriodic();
+		//System.out.println(elevator.log());
 		Scheduler.getInstance().run();
 	}
 
@@ -117,5 +126,10 @@ public class Robot extends TimedRobot {
 
 	public void allPeriodic() {
 		ntInfo.update();
+	}
+
+	public void toggleCompressor(){
+		this.toggleCompressor = !toggleCompressor;
+		c.setClosedLoopControl(toggleCompressor);
 	}
 }
