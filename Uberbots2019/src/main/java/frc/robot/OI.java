@@ -41,19 +41,6 @@ public class OI {
   public OI(){
     
     joystickButtons[1].toggleWhenPressed(new ArcadeDriveJoystick());
-<<<<<<< Updated upstream
-    //joystickButtons[2].toggleWhenPressed(new HatchRelease());
-    //joystickButtons[3].toggleWhenPressed(new HatchRetract());
-    //joystickButtons[4].toggleWhenPressed(new PistonExtend());
-    //joystickButtons[5].toggleWhenPressed(new PistonRetract());
-    //joystickButtons[5].toggleWhenPressed(new PIDDriveTest(4));
-    //joystickButtons[8].toggleWhenPressed(new LowerArm());
-    //joystickButtons[9].toggleWhenPressed(new RaiseArm());
-    //joystickButtons[10].toggleWhenPressed(new Succ());
-    //joystickButtons[11].toggleWhenPressed(new ElevateUp);
-    //joystickButtons[12].toggleWhenPressed(new ElevateDown);
-
-=======
     joystickButtons[2].toggleWhenPressed(new HatchRelease()); //B
     joystickButtons[3].toggleWhenPressed(new HatchRetract()); //X
     joystickButtons[4].toggleWhenPressed(new PIDDriveTest(4)); //Y
@@ -61,7 +48,7 @@ public class OI {
     joystickButtons[6].toggleWhenPressed(new RaiseArm());
     //joystickButtons[7].toggleWhenPressed(new ElevatorUp());
     //joystickButtons[8].toggleWhenPressed(new ElevatorDown());
->>>>>>> Stashed changes
+    
   }
 
   public Joystick getJoystick(){
