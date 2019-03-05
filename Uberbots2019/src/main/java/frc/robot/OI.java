@@ -50,7 +50,7 @@ public class OI {
     //joystickButtons[5].toggleWhenPressed(new PIDDriveTest(4));
     //joystickButtons[8].toggleWhenPressed(new LowerArm());
     //joystickButtons[9].toggleWhenPressed(new RaiseArm());
-    //joystickButtons[10].toggleWhenPressed(new SuctionCupStart());
+    //joystickButtons[10].toggleWhenPressed(new Succ());
     //joystickButtons[11].toggleWhenPressed(new ElevateUp);
     //joystickButtons[12].toggleWhenPressed(new ElevateDown);
 

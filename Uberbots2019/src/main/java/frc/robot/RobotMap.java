@@ -37,7 +37,7 @@ public class RobotMap {
 	public static final int POT = 0;
 
 	// Pistons & Solenoid
-	public static final int SUCTION_CHANNEL = 1;
+	public static final int SUCTION_CHANNEL = 0;
 
 	public static final int PUSH_FORWARD_CHANNEL = 3;
 	public static final int PUSH_BACKWARD_CHANNEL = 2;

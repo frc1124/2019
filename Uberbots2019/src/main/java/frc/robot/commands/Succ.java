@@ -4,9 +4,9 @@ import frc.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 
-public class SuctionCupStart extends Command{
+public class Succ extends Command{
     
-    public SuctionCupStart(){
+    public Succ(){
         //requires(Robot.suctionCup);
 
         setInterruptible(true);
