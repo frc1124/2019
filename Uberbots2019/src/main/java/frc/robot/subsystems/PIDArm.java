@@ -67,4 +67,8 @@ public class PIDArm extends PIDSubsystem{
 	public void run(double p) {
 		this.armSC.set(p);
 	}
+
+	public void setAngle(double angle) {
+		this.getPIDController().setSetpoint((angle + 40) * ANGLE_PER_OHM);
+	}
 }

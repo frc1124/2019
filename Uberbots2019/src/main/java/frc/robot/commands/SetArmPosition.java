@@ -25,13 +25,13 @@ public class SetArmPosition extends Command {
         }
 
         // Go to full if we're in a certain angle range no matter what; we need everything we can get
-        if ((Robot.arm.getPosition() < TOP && speed > 0) ||
-            (Robot.arm.getPosition() >= TOP && speed < 0)) {
+        if ((Robot.arm.getAngle() < TOP && speed > 0) ||
+            (Robot.arm.getAngle() >= TOP && speed < 0)) {
                 speed = (speed < 0) ? -1 : 1;
             }
 
         // If the angle is about to go too low for the elevator height, wait
-        double armHeight = 31.25 * Math.sin(Robot.arm.getPosition()); // in inches
+        double armHeight = 31.25 * Math.sin(Robot.arm.getAngle()); // in inches
         if ((armHeight + Robot.elevator.getPosition()) < 4.0) {
             speed = 0; // hold
         }

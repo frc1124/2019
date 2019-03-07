@@ -55,14 +55,6 @@ public class Elevator extends Subsystem{
 		//setDefaultCommand(new ElevatorJoystick());
 	}
 
-	public void usePID(boolean enablePID) {
-		if (enablePID) {
-			shaft.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, kTimeoutMs);
-		} else {
-			shaft.configSelectedFeedbackSensor((FeedbackDevice)null, 0, kTimeoutMs);
-		}
-	}
-
     /*
 	public void move(double distance) {
 		setPosition(distance);
@@ -82,6 +74,10 @@ public class Elevator extends Subsystem{
 
 	public void shaftManual(double speed) {
 		shaftSC.set(speed);
+	}
+
+	public double getPosition() {
+		return shaft.getSensorCollection().getQuadraturePosition() * DISTANCE_PER_TICK;
 	}
 	/*
 	public void setVelocity(double velocity) {

@@ -74,7 +74,6 @@ public class Robot extends TimedRobot {
 		//driveCamera = new Camera("Drive");
 		hatchMechanism = new HatchMechanism();
 		suctionCup = new SuctionCup();
-		manualArm = new Arm();
 		manualElevator = new Elevator();
 		arm = new PIDArm();
 		//elevator = new Elevator();

@@ -31,6 +31,10 @@ public class PIDElevator extends PIDSubsystem{
 		shaft2 = new WPI_TalonSRX(RobotMap.ELEVATOR2);
 		shaft2.follow(shaft1);
 
+		// Run in opposite directions
+		shaft1.setInverted(false);
+		shaft2.setInverted(true);
+
 		shaftSC = new SpeedControllerGroup(shaft1, shaft2);
 
 		enc = new Encoder(RobotMap.ELEVATOR1, RobotMap.ELEVATOR2);
@@ -91,7 +95,7 @@ public class PIDElevator extends PIDSubsystem{
 
 	// TODO: Fix this Method
 	public double returnPIDInput() {
-		return enc.getRate();
+		return shaft1.getSelectedSensorPosition();
 	}
 
 	public boolean getRaiseElevator(){
@@ -100,5 +104,13 @@ public class PIDElevator extends PIDSubsystem{
 
 	public void toggleRaiseElevator(){
 		raiseElevator = !raiseElevator;
+	}
+
+	public void setPosition(double pos) {
+		this.getPIDController().setSetpoint(pos);
+	}
+
+	public double getPosition() {
+		return shaft1.getSelectedSensorPosition();
 	}
 }
