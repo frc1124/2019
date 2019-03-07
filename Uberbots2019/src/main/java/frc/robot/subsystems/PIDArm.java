@@ -49,7 +49,7 @@ public class PIDArm extends PIDSubsystem{
 	}
 
 	public double getAngle() {
-		return pot.get() / ANGLE_PER_OHM;
+		return (pot.get() / ANGLE_PER_OHM) - 40; // assuming 0 degrees on pot is at pickup position
 	}
 
 	@Override
@@ -64,4 +64,7 @@ public class PIDArm extends PIDSubsystem{
 		return pot.get();
 	}
 
+	public void run(double p) {
+		this.armSC.set(p);
+	}
 }

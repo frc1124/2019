@@ -13,13 +13,11 @@ import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
-import com.kauailabs.navx.frc.AHRS;
-
 public class Elevator extends Subsystem{
 
 	private int TIMEOUT = 500;
 
-	public double DISTANCE_PER_TICK = Math.PI / 4096;
+	public double DISTANCE_PER_TICK = (2/25.4) / 4096; // measuring height at 2mm per round, in inches
 
 	protected static WPI_TalonSRX shaft, slave;
 
@@ -56,8 +54,16 @@ public class Elevator extends Subsystem{
 	public void initDefaultCommand(){
 		//setDefaultCommand(new ElevatorJoystick());
 	}
-	
-	/*
+
+	public void usePID(boolean enablePID) {
+		if (enablePID) {
+			shaft.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, kTimeoutMs);
+		} else {
+			shaft.configSelectedFeedbackSensor((FeedbackDevice)null, 0, kTimeoutMs);
+		}
+	}
+
+    /*
 	public void move(double distance) {
 		setPosition(distance);
 	}
@@ -103,7 +109,7 @@ public class Elevator extends Subsystem{
 
 	public static boolean getRaiseElevator(){
 		return raiseElevator;
-	}
+}
 
 	public void set(double speed) {
 		shaftSC.set(speed * THROTTLE);

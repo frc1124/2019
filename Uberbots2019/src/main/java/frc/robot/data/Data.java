@@ -39,6 +39,7 @@ public class Data {
 	public NetworkTableEntry targetCenterEntry;
 	public NetworkTableEntry targetCenterYEntry;
 
+	public NetworkTableEntry controlMode;
 
 	public Data(NetworkTableInstance inst) {
 	
@@ -78,6 +79,8 @@ public class Data {
 
 		//targetCenterXEntry = dashboard.getEntry("targetCenterXEntry");
 		targetCenterEntry = dashboard.getEntry("targetCenterEntry");
+
+		controlMode = dashboard.getEntry("controlMode");
 	}
 	
 	/**
@@ -578,5 +581,25 @@ public class Data {
 	public void setTargetCenterYEntry(NetworkTableEntry targetCenterYEntry)
 	{
 	    this.targetCenterYEntry = targetCenterYEntry;
+	}
+
+	/**
+	 * Get controlMode.
+	 *
+	 * @return controlMode as NetworkTableEntry.
+	 */
+	public NetworkTableEntry getControlMode()
+	{
+	    return controlMode;
+	}
+	
+	/**
+	 * Set controlMode.
+	 *
+	 * @param controlMode the value to set.
+	 */
+	public void setControlMode(NetworkTableEntry controlMode)
+	{
+	    this.controlMode = controlMode;
 	}
 }

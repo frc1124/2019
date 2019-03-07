@@ -53,4 +53,10 @@ public class Arm extends Subsystem{
 	public void setLeftPosition(double angle) {
 		arm.set(ControlMode.Position, angle / DELTA_OHMS);
 	}
+
+	public double getPosition() {
+		// assuming pot is set up so minimum reading (0) is when arm is in lowest position off the back of the robot
+		// this makes the suction cup parallel to the floor since it is angled at 50 degrees
+		return (arm.get() * DELTA_OHMS) - 40; // angle
+	}
 }

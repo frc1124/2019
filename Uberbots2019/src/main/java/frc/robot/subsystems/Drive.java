@@ -73,6 +73,16 @@ public class Drive extends Subsystem{
 		setDefaultCommand(new ArcadeDriveJoystick());
 	}
 
+	public void usePID(boolean enablePID) {
+		if (enablePID) {
+			leftFront.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, kTimeoutMs);
+			rightFront.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, kTimeoutMs);
+		} else {
+			leftFront.configSelectedFeedbackSensor((FeedbackDevice)null, 0, kTimeoutMs);
+			rightFront.configSelectedFeedbackSensor((FeedbackDevice)null, 0, kTimeoutMs);
+		}
+	}
+
 	public void drive(double move, double rotate){
 
 		Robot.ntData.arcadeDriveMoveEntry.setDouble(move);
@@ -195,4 +205,29 @@ public class Drive extends Subsystem{
 		leftFront.getSensorCollection().setQuadraturePosition(0, TIMEOUT);
 	}
 
+	public void setLeftPID(double p, double i, double d) {
+		leftFront.config_kP(kArcadeProfile, RobotMap.LEFT_P);
+		leftFront.config_kI(kArcadeProfile, RobotMap.LEFT_I);
+		leftFront.config_kD(kArcadeProfile, RobotMap.LEFT_D);
+	}
+
+	public void setLeftPID(double p, double i, double d, double f) {
+		leftFront.config_kP(kArcadeProfile, RobotMap.LEFT_P);
+		leftFront.config_kI(kArcadeProfile, RobotMap.LEFT_I);
+		leftFront.config_kD(kArcadeProfile, RobotMap.LEFT_D);
+		leftFront.config_kF(kArcadeProfile, RobotMap.LEFT_F);
+	}
+
+	public void setRightPID(double p, double i, double d) {
+		rightFront.config_kP(kArcadeProfile, RobotMap.LEFT_P);
+		rightFront.config_kI(kArcadeProfile, RobotMap.LEFT_I);
+		rightFront.config_kD(kArcadeProfile, RobotMap.LEFT_D);
+	}
+
+	public void setRightPID(double p, double i, double d, double f) {
+		rightFront.config_kP(kArcadeProfile, RobotMap.LEFT_P);
+		rightFront.config_kI(kArcadeProfile, RobotMap.LEFT_I);
+		rightFront.config_kD(kArcadeProfile, RobotMap.LEFT_D);
+		rightFront.config_kF(kArcadeProfile, RobotMap.LEFT_F);
+	}
 }

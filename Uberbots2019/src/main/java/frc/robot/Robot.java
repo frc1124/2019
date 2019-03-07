@@ -20,6 +20,7 @@ import frc.robot.subsystems.HatchMechanism;
 import frc.robot.subsystems.SuctionCup;
 import frc.robot.subsystems.PIDArm;
 import frc.robot.subsystems.PIDElevator;
+import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Elevator;
 
 import frc.robot.commands.ElevatorUp;
@@ -49,10 +50,18 @@ public class Robot extends TimedRobot {
 	public static PIDArm arm;
 	public static Drive driveTrain;
 	public static Camera driveCamera;
-	public static Elevator elevator;
 	public static Compressor c;
+	public static PIDElevator elevator;
+	public static Elevator manualElevator;
+	public static Arm manualArm;
 
 	private boolean toggleCompressor = true;
+
+	public static final int CONTROL_MODE_AUTO = 1;
+	public static final int CONTROL_MODE_TELEOP = 2;
+	public static final int CONTROL_MODE_TEST_NO_PID = 3;
+	public static final int CONTROL_MODE_TEST_PID = 4;
+	public static int controlMode;
 
 	@Override
 	public void robotInit() {
@@ -65,6 +74,8 @@ public class Robot extends TimedRobot {
 		//driveCamera = new Camera("Drive");
 		hatchMechanism = new HatchMechanism();
 		suctionCup = new SuctionCup();
+		manualArm = new Arm();
+		manualElevator = new Elevator();
 		arm = new PIDArm();
 		//elevator = new Elevator();
 		c = new Compressor(RobotMap.COMPRESSOR_ID);
@@ -90,8 +101,15 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void autonomousInit() {
-		// PistonExtend p = new PistonExtend();
-		// Scheduler.getInstance().add(p);
+		// Make sure nothing is moving
+		this.initMechanisms();
+
+		// Set up the auto controls
+		setControlMode(Robot.CONTROL_MODE_AUTO);
+
+		// Init hatch
+		PistonExtend p = new PistonExtend();
+		Scheduler.getInstance().add(p);
 	}
 
 	@Override
@@ -101,11 +119,9 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void teleopInit() {
-		// PistonExtend p = new PistonExtend();
+		setControlMode(Robot.CONTROL_MODE_TELEOP);
 		// ElevatorUp e = new ElevatorUp();
-		// Scheduler.getInstance().add(p);
 		// Scheduler.getInstance().add(e);
-		
 	}
 
 	@Override
@@ -117,11 +133,25 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void testPeriodic() {
+		checkControlMode();
 		Scheduler.getInstance().run();
+	}
+
+	private void initMechanisms() {
+		// Init the mechanisms
+		hatchMechanism.HatchRetract();
+		suctionCup.stop();
+		arm.stop();
+		driveTrain.stop();
+		elevator.stop();
 	}
 
 	@Override
 	public void testInit(){
+		this.initMechanisms();
+
+		// Default the mode to test without PID
+		setControlMode(Robot.CONTROL_MODE_TEST_NO_PID);
 	}
 
 	public void allPeriodic() {
@@ -131,5 +161,35 @@ public class Robot extends TimedRobot {
 	public void toggleCompressor(){
 		this.toggleCompressor = !toggleCompressor;
 		c.setClosedLoopControl(toggleCompressor);
+    }
+
+	private void checkControlMode() {
+		try {
+			int networkControlMode = Integer.parseInt(ntData.getControlMode().getString("2"));
+			if (controlMode != networkControlMode) {
+				setControlMode(networkControlMode);
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+
+	private void setControlMode(int cm) {
+		controlMode = cm;
+		switch (controlMode) {
+		case Robot.CONTROL_MODE_AUTO:
+			OI.configureControlModeAuto();
+			break;
+		case Robot.CONTROL_MODE_TELEOP:
+			OI.configureControlModeTeleop();
+			break;
+		case Robot.CONTROL_MODE_TEST_NO_PID:
+			OI.configureControlModeTestNoPID();
+			break;
+		case Robot.CONTROL_MODE_TEST_PID:
+			OI.configureControlModeTestPID();
+			break;
+		}
+		ntData.getControlMode().setNumber(controlMode);
 	}
 }
