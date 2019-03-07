@@ -11,7 +11,7 @@ import com.ctre.phoenix.motorcontrol.NeutralMode;
 public class PIDElevator extends PIDSubsystem{
 
 	// TODO: get val
-	public double DISTANCE_PER_TICK = Math.PI / 4096;
+	public double DISTANCE_PER_TICK = (2/25.4) / 4096; // reporting height; 2mm per turn adjust for inches
 
 	protected WPI_TalonSRX shaft1, shaft2;
 
