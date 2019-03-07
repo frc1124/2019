@@ -10,7 +10,7 @@ public class PIDDriveTest extends Command {
 	private double setPoint;
 
 	public PIDDriveTest(double setPoint){
-		this.setPoint = setPoint;
+		this.setPoint = setPoint * 4096;
 		requires(Robot.driveTrain);
 		setInterruptible(true);
 	}

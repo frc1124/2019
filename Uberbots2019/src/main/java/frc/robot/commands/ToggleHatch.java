@@ -6,6 +6,8 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class ToggleHatch extends Command {
 
+    private boolean hasToggled = false;
+
     public ToggleHatch(){
         requires(Robot.hatchMechanism);
 
@@ -13,13 +15,13 @@ public class ToggleHatch extends Command {
     }
 
     public boolean isFinished(){
-        return false;
+        return hasToggled;
     }
 
     @Override
   protected void execute() {
-
     Robot.hatchMechanism.HatchToggle();
+    hasToggled = true;
   }
 
 }

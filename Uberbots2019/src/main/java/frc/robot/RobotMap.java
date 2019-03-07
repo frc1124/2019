@@ -52,7 +52,7 @@ public class RobotMap {
 	public static final double LEFT_D = 0.0;
 	public static final double LEFT_F = 0.0;
 	
-	public static final double RIGHT_P = 0.025;
+	public static final double RIGHT_P = 0.05;
 	public static final double RIGHT_I = 0.0;
 	public static final double RIGHT_D = 0.0;
 	public static final double RIGHT_F = 0.0;
@@ -62,7 +62,7 @@ public class RobotMap {
 	public static final double ARM_D = 0.0;
 	public static final double ARM_F = 0.0;
 
-	public static final double ELEVATOR_P = 0.0;
+	public static final double ELEVATOR_P = 0.1;
 	public static final double ELEVATOR_I = 0.0;
 	public static final double ELEVATOR_D = 0.0;
 	public static final double ELEVATOR_F = 0.0;

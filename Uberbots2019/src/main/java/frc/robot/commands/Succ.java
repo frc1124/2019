@@ -7,13 +7,13 @@ import edu.wpi.first.wpilibj.command.Command;
 public class Succ extends Command{
     
     public Succ(){
-        //requires(Robot.suctionCup);
+        requires(Robot.suctionCup);
 
         setInterruptible(true);
     }
     
     public void execute(){
-        //Robot.suctionCup.suck();
+        Robot.suctionCup.suck();
 
     }
     protected boolean isFinished(){

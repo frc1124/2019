@@ -31,6 +31,7 @@ public class PIDArm extends PIDSubsystem{
 		arm.setNeutralMode(NeutralMode.Brake);
 
 		pot = new AnalogPotentiometer(RobotMap.POT, 3600, 0);
+		
 		// Set tolerance
 		setAbsoluteTolerance(0.1);
 		getPIDController().setContinuous(false);

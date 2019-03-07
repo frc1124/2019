@@ -32,7 +32,7 @@ public class Drive extends Subsystem{
 
 	private DifferentialDrive diffDrive;
 
-	private final double THROTTLE = .75;
+	private final double THROTTLE = 1;
 
 	private int kTimeoutMs = 20;
 	private int kArcadeProfile = 0;

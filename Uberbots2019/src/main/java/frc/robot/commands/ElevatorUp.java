@@ -10,11 +10,13 @@ public class ElevatorUp extends Command {
 	private double setPoint = 0;
 	private final double TOLLERANCE = 0.1;
 
-	private long startTime = System.currentTimeMillis();
+	private long startTime;
 
 	public ElevatorUp(){
 		//super("ElevatorUp", RobotMap.ELEVATOR_P, RobotMap.ELEVATOR_I, RobotMap.ELEVATOR_D);
 		requires(Robot.elevator);
+
+		startTime = System.currentTimeMillis();
 
 		setInterruptible(true);
 	}

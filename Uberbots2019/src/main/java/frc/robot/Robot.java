@@ -71,12 +71,12 @@ public class Robot extends TimedRobot {
 		ntInfo = new NTInfo(inst);
 
 		driveTrain = new Drive();
-		//driveCamera = new Camera("Drive");
+		driveCamera = new Camera("Drive");
 		hatchMechanism = new HatchMechanism();
 		suctionCup = new SuctionCup();
 		manualElevator = new Elevator();
 		arm = new PIDArm();
-		//elevator = new Elevator();
+		elevator = new PIDElevator();
 		c = new Compressor(RobotMap.COMPRESSOR_ID);
 
 		oi = new OI(); //instantiate this last

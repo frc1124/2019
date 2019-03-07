@@ -5,19 +5,22 @@ import edu.wpi.first.wpilibj.command.Command;
 
 
 public class ToggleSuction extends Command{
+    private boolean hasToggled = false;
     
     public ToggleSuction(){
-        //requires(Robot.suctionCup);
+        requires(Robot.suctionCup);
 
         setInterruptible(true);
     }
     
     public void execute(){
         Robot.suctionCup.toggle();
-
+        hasToggled = true;
     }
-    protected boolean isFinished(){
-        return false;
+
+
+    protected boolean isFinished(){    
+        return hasToggled;
     }
 }
 

@@ -20,6 +20,8 @@ import frc.robot.commands.RaiseArm;
 import frc.robot.commands.ToggleSuction;
 import frc.robot.commands.ElevatorUp;
 import frc.robot.commands.ElevatorDown;
+import frc.robot.commands.ToggleHatch;
+import frc.robot.commands.PIDDriveTest;
 
 public class OI {
 
@@ -71,16 +73,17 @@ public class OI {
   };
 
   public OI(){
-/*
- joystickButtons[1].toggleWhenPressed(new ArcadeDriveJoystick());
- joystickButtons[2].toggleWhenPressed(new HatchRelease()); //B
- joystickButtons[3].toggleWhenPressed(new HatchRetract()); //X
- joystickButtons[4].toggleWhenPressed(new PIDDriveTest(4)); //Y
- joystickButtons[5].toggleWhenPressed(new LowerArm());
- joystickButtons[6].toggleWhenPressed(new RaiseArm());
- //joystickButtons[7].toggleWhenPressed(new ElevatorUp());
- //joystickButtons[8].toggleWhenPressed(new ElevatorDown());
- */
+
+    //Driver 1
+    joystickButtons[1][0].toggleWhenPressed(new ArcadeDriveJoystick());
+    joystickButtons[2][0].toggleWhenPressed(new ToggleHatch());
+    joystickButtons[3][0].toggleWhenPressed(new ToggleSuction());
+    joystickButtons[4][0].toggleWhenPressed(new PIDDriveTest(4));
+    joystickButtons[5][0].toggleWhenPressed(new LowerArm());
+    joystickButtons[6][0].toggleWhenPressed(new RaiseArm());
+    //joystickButtons[7].toggleWhenPressed(new ElevatorUp());
+    //joystickButtons[8].toggleWhenPressed(new ElevatorDown());
+
   }
 
   public Joystick getJoystick(){
