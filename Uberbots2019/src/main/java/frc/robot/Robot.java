@@ -139,6 +139,7 @@ public class Robot extends TimedRobot {
 	private void initMechanisms() {
 		// Init the mechanisms
 		hatchMechanism.HatchRetract();
+		hatchMechanism.PistonRetract();
 		suctionCup.stop();
 		arm.stop();
 		driveTrain.stop();
