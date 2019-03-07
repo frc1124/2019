@@ -71,4 +71,8 @@ public class PIDArm extends PIDSubsystem{
 	public void setAngle(double angle) {
 		this.getPIDController().setSetpoint((angle + 40) * ANGLE_PER_OHM);
 	}
+
+	public void setVelocity(double v) {
+		arm.set(ControlMode.Velocity,v);
+	}
 }

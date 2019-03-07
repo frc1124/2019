@@ -37,7 +37,15 @@ public class SetArmPosition extends Command {
         }
 
         // Run the arm
-        Robot.elevator.set(speed);
+        Robot.arm.setVelocity(speed);
+    }
+
+    protected void end() {
+        Robot.arm.setVelocity(0);
+    }
+
+    protected void interrupted() {
+        Robot.arm.setVelocity(0);
     }
 
     protected boolean isFinished() {

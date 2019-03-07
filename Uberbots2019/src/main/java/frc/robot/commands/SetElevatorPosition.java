@@ -29,6 +29,14 @@ public class SetElevatorPosition extends Command {
         Robot.elevator.set(speed);
     }
 
+    protected void end() {
+        Robot.elevator.stop();
+    }
+
+    protected void interrupted() {
+        Robot.elevator.stop();
+    }
+
     protected boolean isFinished() {
         return (Robot.elevator.getPosition() == this.targetPosition);
     }
