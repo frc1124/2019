@@ -1,5 +1,6 @@
 package frc.robot.data;
 
+import java.util.HashMap;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
@@ -41,6 +42,9 @@ public class Data {
 
 	public NetworkTableEntry controlMode;
 
+	private NetworkTable contoursReport;
+	public HashMap<String,Double> visionData = new HashMap<String,Double>();
+
 	public Data(NetworkTableInstance inst) {
 	
 		NetworkTable dashboard = inst.getTable("dash");
@@ -81,6 +85,8 @@ public class Data {
 		targetCenterEntry = dashboard.getEntry("targetCenterEntry");
 
 		controlMode = dashboard.getEntry("controlMode");
+
+		contoursReport = inst.getTable("GRIP/myContoursReport");
 	}
 	
 	/**
@@ -601,5 +607,29 @@ public class Data {
 	public void setControlMode(NetworkTableEntry controlMode)
 	{
 	    this.controlMode = controlMode;
+	}
+
+	/**
+	 * Get visionData.
+	 *
+	 * @return visionData as NetworkTableEntry.
+	 */
+	public Double getVisionData(String name)
+	{
+		// Update from NetworkTables
+		for (String n : contoursReport.getKeys()) {
+			this.visionData.put(n,contoursReport.getEntry(n).getDouble(-1.0));
+		}
+		return this.visionData.get(name);
+	}
+	
+	/**
+	 * Set visionData.
+	 *
+	 * @param visionData the value to set.
+	 */
+	public void setVisionData(String name,Double value)
+	{
+		this.visionData.put(name,value);
 	}
 }
