@@ -4,17 +4,18 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class SetArmPosition extends Command {
-    private double targetPosition;
+    private double targetAngle;
     private final double CLOSE = 5;
     private final double TOP = 130;
 
-    public SetArmPosition(double position) {
+    public SetArmPosition(double angle) {
         super("SetArmPosition");
         requires(Robot.arm);
-        this.targetPosition = position;
+        this.targetAngle = angle;
     }
 
     protected void execute() {
+/*
         // Figure out which way to run the arm and go
         double diff = Robot.arm.getPosition() - this.targetPosition;
 
@@ -38,6 +39,8 @@ public class SetArmPosition extends Command {
 
         // Run the arm
         Robot.arm.setVelocity(speed);
+*/
+        Robot.arm.setAngle(targetAngle);
     }
 
     protected void end() {
@@ -49,6 +52,6 @@ public class SetArmPosition extends Command {
     }
 
     protected boolean isFinished() {
-        return (Robot.arm.getPosition() == this.targetPosition);
+        return (Robot.arm.getAngle() == this.targetAngle);
     }
 }

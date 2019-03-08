@@ -1,6 +1,7 @@
 package frc.robot.subsystems;
 
 import frc.robot.RobotMap;
+import frc.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
@@ -21,6 +22,7 @@ public class PIDArm extends PIDSubsystem{
 	protected AnalogPotentiometer pot;
 
 	protected final double THROTTLE = .25;
+	private final double ARM_LENGTH = 31.25;
 
 	public PIDArm(){
 		super("PIDArm",RobotMap.ARM_P,RobotMap.ARM_I,RobotMap.ARM_D,RobotMap.ARM_F);
@@ -58,6 +60,37 @@ public class PIDArm extends PIDSubsystem{
 	}
 
 	public void usePIDOutput(double output) {
+/*
+		// Make sure the arm does not crash into other mechanisms
+		double angle = getAngle();
+		double elevatorHeight = Robot.elevator.getPosition();
+		double xSlope = Math.abs(Math.cos(angle));
+		double ySlope = Math.sin(angle);
+
+		// Avoid crashing into front and back
+		double collisionX = 0;
+		double collisionY = 0;
+// TODO: Measure the actual collision points (top inside distance from lowest elevator height)
+		if (angle > 90) {
+			collisionX = 12;
+			collisionY = 14;
+		} else {
+			collisionX = 6.5;
+			collisionY = 6.5;
+		}
+
+		// Will it collide?
+		double y = elevatorHeight + ySlope * ARM_LENGTH;
+		if (y < collisionY) {
+			// Is the x slope great enough to avoid collision?
+			double armX = xSlope * ARM_LENGTH;
+			if (armX >= collisionX) {
+				// Collided; set speed to zero
+				arm.pidWrite(0);
+				return;
+			}
+		}
+*/
 		arm.pidWrite(output);
 	}
 
