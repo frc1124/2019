@@ -19,9 +19,9 @@ public class ToggleHatch extends Command {
     }
 
     @Override
-  protected void execute() {
-    Robot.hatchMechanism.HatchToggle();
-    hasToggled = true;
-  }
+    protected void execute() {
+        Robot.hatchMechanism.HatchToggle();
+        hasToggled = true;
+    }
 
 }

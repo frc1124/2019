@@ -29,7 +29,7 @@ public class TargetVisionTape extends Command {
 	private double difference;
 
 	public TargetVisionTape() {
-		requires(Robot.driveCamera);
+		requires(Robot.driveFoward);
 		requires(Robot.driveTrain);
 		filter = new GripPipeline();
 		//turn = new Turn(); 
@@ -41,7 +41,7 @@ public class TargetVisionTape extends Command {
 	}
 
 	protected void initialize() {
-		Mat img = Robot.driveCamera.getMat();
+		Mat img = Robot.driveFoward.getMat();
 		this.filter.process(img);
 		range = filter.getXRange();
 		lx = range[0];
@@ -55,7 +55,7 @@ public class TargetVisionTape extends Command {
 
 	protected void execute() {
 
-		Mat img = Robot.driveCamera.getMat();
+		Mat img = Robot.driveFoward.getMat();
 		this.filter.process(img);
 		range = filter.getXRange();
 		lx = range[0];

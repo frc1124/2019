@@ -49,7 +49,7 @@ public class Robot extends TimedRobot {
 	public static SuctionCup suctionCup;
 	public static PIDArm arm;
 	public static Drive driveTrain;
-	public static Camera driveCamera;
+	public static Camera driveFoward, driveBackward;
 	public static Compressor c;
 	public static PIDElevator elevator;
 	public static Elevator manualElevator;
@@ -71,7 +71,8 @@ public class Robot extends TimedRobot {
 		ntInfo = new NTInfo(inst);
 
 		driveTrain = new Drive();
-		driveCamera = new Camera("Drive");
+		driveFoward = new Camera("DriveFoward");
+		driveBackward = new Camera("DriveBackward");
 		hatchMechanism = new HatchMechanism();
 		suctionCup = new SuctionCup();
 		manualElevator = new Elevator();
@@ -113,6 +114,7 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void autonomousPeriodic() {
+		c.setClosedLoopControl(true);
 		Scheduler.getInstance().run();
 	}
 
@@ -126,6 +128,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		allPeriodic();
+		c.setClosedLoopControl(true);
 		//System.out.println(elevator.log());
 		Scheduler.getInstance().run();
 	}
@@ -139,7 +142,7 @@ public class Robot extends TimedRobot {
 	private void initMechanisms() {
 		// Init the mechanisms
 		hatchMechanism.HatchRetract();
-		hatchMechanism.PistonRetract();
+		//hatchMechanism.PistonRetract();
 		suctionCup.stop();
 		arm.stop();
 		driveTrain.stop();
@@ -155,6 +158,7 @@ public class Robot extends TimedRobot {
 	}
 
 	public void allPeriodic() {
+		c.setClosedLoopControl(true);
 		ntInfo.update();
 	}
 

@@ -2,21 +2,20 @@ package frc.robot.commands;
 
 import frc.robot.Robot;
 import frc.robot.RobotMap;
+import frc.robot.OI;
 
-import edu.wpi.first.wpilibj.command.PIDCommand;
+import edu.wpi.first.wpilibj.command.Command;
 
 
-public class RaiseArm extends PIDCommand {
-	private double TOLLERANCE = 0.05;
-	private double setPoint = 180;
+public class RaiseArm extends Command {
 
 	public RaiseArm(){
-		super("RaiseArm",RobotMap.ARM_P,RobotMap.ARM_I,RobotMap.ARM_D);
+		super("RaiseArm");
 		requires(Robot.arm);
 	}
 
 	public boolean isFinished(){
-		return Math.abs(Robot.arm.getAngle() - setPoint) <= TOLLERANCE;
+		return !OI.getJoystick().getRawButton(OI.LEFT_BUTTON);
 	}
 
 	@Override
@@ -24,10 +23,15 @@ public class RaiseArm extends PIDCommand {
 		Robot.arm.move(1);
 	}
 
-	public double returnPIDInput(){
-		return Robot.arm.getAngle();
+	@Override
+	public void end() {
+		Robot.arm.stop();
 	}
-	public void usePIDOutput(double output) {
+
+
+	@Override
+	public void interrupted() {
+		Robot.arm.stop();
 	}
 
 }

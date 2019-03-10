@@ -28,11 +28,6 @@ public class Arm extends Subsystem{
 		super("Arm");
 		
 		arm = new WPI_TalonSRX(RobotMap.ARM); //Check device numbers
-		arm.config_kP(kArcadeProfile,RobotMap.ARM_P);
-		arm.config_kI(kArcadeProfile,RobotMap.ARM_I);
-		arm.config_kD(kArcadeProfile,RobotMap.ARM_D);
-		arm.config_kF(kArcadeProfile,RobotMap.ARM_F);
-		arm.configSelectedFeedbackSensor(FeedbackDevice.Analog, 0, kTimeoutMs);
 		armSC = new SpeedControllerGroup(arm);
 	}
 
@@ -48,15 +43,5 @@ public class Arm extends Subsystem{
 	@Override
 	public void initDefaultCommand(){
 	
-	}
-
-	public void setLeftPosition(double angle) {
-		arm.set(ControlMode.Position, angle / DELTA_OHMS);
-	}
-
-	public double getPosition() {
-		// assuming pot is set up so minimum reading (0) is when arm is in lowest position off the back of the robot
-		// this makes the suction cup parallel to the floor since it is angled at 50 degrees
-		return (arm.get() * DELTA_OHMS) - 40; // angle
 	}
 }

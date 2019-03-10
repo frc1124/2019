@@ -37,9 +37,12 @@ public class HatchMechanism extends Subsystem{
 	}
 
 	public void HatchToggle(){
-		Push.set(getHatchStatus() == DoubleSolenoid.Value.kReverse ? DoubleSolenoid.Value.kForward : DoubleSolenoid.Value.kReverse);
+		switch(Push.get()){
+			case kReverse: Push.set(DoubleSolenoid.Value.kForward); break;
+			case kForward: Push.set(DoubleSolenoid.Value.kReverse); break;
+			case kOff: Push.set(DoubleSolenoid.Value.kForward); break;
+		}
 		Robot.ntData.hatchReleasedEntry.setBoolean(getHatchStatus() == DoubleSolenoid.Value.kReverse ? true : false);
-
 	}
 
 	public void PistonExtend(){

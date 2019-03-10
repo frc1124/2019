@@ -17,7 +17,7 @@ public class PIDElevator extends PIDSubsystem{
 
 	protected SpeedControllerGroup shaftSC;
 
-	protected final double THROTTLE = .75;
+	protected final double THROTTLE = .7775;
 
 	protected Encoder enc;
 
@@ -30,10 +30,8 @@ public class PIDElevator extends PIDSubsystem{
 		shaft1 = new WPI_TalonSRX(RobotMap.ELEVATOR1);
 		shaft2 = new WPI_TalonSRX(RobotMap.ELEVATOR2);
 		shaft2.follow(shaft1);
-
-		// Run in opposite directions
-		shaft1.setInverted(false);
-		shaft2.setInverted(true);
+		
+		//shaft1.setInverted(true);
 
 		shaftSC = new SpeedControllerGroup(shaft1, shaft2);
 

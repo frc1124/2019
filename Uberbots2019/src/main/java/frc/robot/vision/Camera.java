@@ -34,16 +34,16 @@ public class Camera extends Subsystem {
 		try{
 			UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
 			camera.setResolution(CAMERA_RESOLUTION_X, CAMERA_RESOLUTION_Y);
-			camera.setFPS(20);
+			camera.setFPS(12);
 		}catch(Exception e) {
 			System.out.println("Failed to initialize Microsoft LifeCam.");
 		}
 
 		cvSink = CameraServer.getInstance().getVideo();
 
-		if(name == "Drive"){
+		if(name == "DriveFoward" || name == "DriveBackward"){
 			CameraServer.getInstance().putVideo(name, CAMERA_RESOLUTION_X, CAMERA_RESOLUTION_Y);
-		}
+		}	
 	}
 
 	public Mat getMat(){

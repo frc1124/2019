@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.command.PIDCommand;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
-
+import frc.robot.OI;
 
 public class ElevatorDown extends Command {
 	// TODO: Find setPoint
@@ -22,9 +22,19 @@ public class ElevatorDown extends Command {
 
 	public boolean isFinished(){
 		//return Math.abs(Robot.elevator.getEncoderDistance() - setPoint) <= TOLLERANCE;
-		return System.currentTimeMillis() - startTime >= 2000;
+	//	return System.currentTimeMillis() - startTime >= 2000;4
+		return !OI.getJoystick().getRawButton(OI.X_BUTTON);
 	}
 
+	@Override
+	public void end() {
+		Robot.elevator.stop();
+	}
+
+	@Override
+	public void interrupted() {
+		Robot.elevator.stop();
+	}
 	@Override
 	protected void execute() {
 		Robot.elevator.moveUp(false);

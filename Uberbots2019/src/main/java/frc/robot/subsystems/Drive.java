@@ -34,7 +34,7 @@ public class Drive extends Subsystem{
 
 	private final double THROTTLE = 1;
 
-	private int kTimeoutMs = 20;
+	private int kTimeoutMs = 140;
 	private int kArcadeProfile = 0;
 
 	public Drive(){
@@ -44,23 +44,24 @@ public class Drive extends Subsystem{
 		leftFront = new WPI_TalonSRX(RobotMap.LEFT_1);
 		leftBack = new WPI_TalonSRX(RobotMap.LEFT_2);
 		leftBack.follow(leftFront);
-		leftFront.config_kP(kArcadeProfile, RobotMap.LEFT_P);
+		/*leftFront.config_kP(kArcadeProfile, RobotMap.LEFT_P);
 		leftFront.config_kI(kArcadeProfile, RobotMap.LEFT_I);
 		leftFront.config_kD(kArcadeProfile, RobotMap.LEFT_D);
 		leftFront.config_kF(kArcadeProfile, RobotMap.LEFT_F);
 		leftFront.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, kTimeoutMs);
-		
+		*/
 		// Set up the right side
 		rightFront = new WPI_TalonSRX(RobotMap.RIGHT_1);
 		rightBack = new WPI_TalonSRX(RobotMap.RIGHT_2);
 		rightBack.follow(rightFront);
-		rightFront.config_kP(kArcadeProfile, RobotMap.RIGHT_P);
+		/*rightFront.config_kP(kArcadeProfile, RobotMap.RIGHT_P);
 		rightFront.config_kI(kArcadeProfile, RobotMap.RIGHT_I);
 		rightFront.config_kD(kArcadeProfile, RobotMap.RIGHT_D);
 		rightFront.config_kF(kArcadeProfile, RobotMap.RIGHT_F);
 		rightFront.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, kTimeoutMs);
 		rightFront.setInverted(true);
-		
+		*/
+
 		setNeutralMode(NeutralMode.Coast);
 		diffDrive = new DifferentialDrive(leftFront, rightFront);
 
@@ -92,7 +93,7 @@ public class Drive extends Subsystem{
 	}
 
 	public void drive(Joystick joystick){
-		this.drive(THROTTLE * -joystick.getY(), THROTTLE * -joystick.getX());
+		this.drive(Math.pow(-joystick.getY(),3), Math.pow(joystick.getX(),3));
 	}
 
 	public void drive(double distance) {
