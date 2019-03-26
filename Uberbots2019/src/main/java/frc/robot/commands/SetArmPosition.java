@@ -40,18 +40,19 @@ public class SetArmPosition extends Command {
         // Run the arm
         Robot.arm.setVelocity(speed);
 */
-        Robot.arm.setAngle(targetAngle);
+        //Robot.arm.setAngle(targetAngle);
     }
 
     protected void end() {
-        Robot.arm.setVelocity(0);
+        //Robot.arm.setVelocity(0);
     }
 
     protected void interrupted() {
-        Robot.arm.setVelocity(0);
+        // Robot.arm.setVelocity(0);
     }
 
     protected boolean isFinished() {
-        return (Robot.arm.getAngle() == this.targetAngle);
+        // return (Robot.arm.getAngle() == this.targetAngle);
+        return false;
     }
 }

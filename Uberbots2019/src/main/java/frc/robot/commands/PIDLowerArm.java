@@ -16,7 +16,7 @@ public class PIDLowerArm extends PIDCommand {
 	}
 
 	public boolean isFinished(){
-		return Math.abs(Robot.arm.getAngle() - setPoint) <= TOLLERANCE;
+		return false; //return Math.abs(Robot.arm.getAngle() - setPoint) <= TOLLERANCE;
 	}
 
 	@Override
@@ -25,7 +25,7 @@ public class PIDLowerArm extends PIDCommand {
 	}
 
 	public double returnPIDInput(){
-		return Robot.arm.getAngle();
+		return 0; //return Robot.arm.getAngle();
 	}
 	public void usePIDOutput(double output) {
 	}

@@ -108,7 +108,7 @@ public class OI {
   }
 
   private static void configureDriverArm(int driver) {
-    //6+joystickButtons[driver][OI.LEFT_BUTTON].toggleWhenPressed(new LowerArm());
+    //joystickButtons[driver][OI.LEFT_BUTTON].toggleWhenPressed(new LowerArm());
     //joystickButtons[driver][OI.RIGHT_BUTTON].toggleWhenPressed(new RaiseArm());
   }
 

@@ -32,7 +32,7 @@ public class Drive extends Subsystem{
 
 	private DifferentialDrive diffDrive;
 
-	private final double THROTTLE = 1;
+	private final double THROTTLE = .75;
 
 	private int kTimeoutMs = 140;
 	private int kArcadeProfile = 0;
@@ -93,7 +93,7 @@ public class Drive extends Subsystem{
 	}
 
 	public void drive(Joystick joystick){
-		this.drive(Math.pow(-joystick.getY(),3), Math.pow(joystick.getX(),3));
+		this.drive(Math.pow(-joystick.getY(),3) * THROTTLE, Math.pow(joystick.getX(),3));
 	}
 
 	public void drive(double distance) {

@@ -47,7 +47,7 @@ public class Robot extends TimedRobot {
 
 	public static HatchMechanism hatchMechanism;
 	public static SuctionCup suctionCup;
-	public static PIDArm arm;
+	public static Arm arm;
 	public static Drive driveTrain;
 	public static Camera driveFoward, driveBackward;
 	public static Compressor c;
@@ -76,7 +76,7 @@ public class Robot extends TimedRobot {
 		hatchMechanism = new HatchMechanism();
 		suctionCup = new SuctionCup();
 		manualElevator = new Elevator();
-		arm = new PIDArm();
+		arm = new Arm();
 		elevator = new PIDElevator();
 		c = new Compressor(RobotMap.COMPRESSOR_ID);
 
