@@ -1,34 +1,27 @@
 package frc.robot.subsystems;
-import edu.wpi.first.wpilibj.Joystick;
+
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.SPI;
-
+//import edu.wpi.first.wpilibj.Joystick;
+//import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+//import edu.wpi.first.wpilibj.SPI;
 import frc.robot.RobotMap;
-import frc.robot.Robot;
-
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
-import com.ctre.phoenix.motorcontrol.ControlMode;
+//import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+//import com.ctre.phoenix.motorcontrol.ControlMode;
 
 public class Elevator extends Subsystem{
+	protected WPI_TalonSRX shaft, slave;
+	protected SpeedControllerGroup shaftSC;
 
-	private int TIMEOUT = 500;
-
+//	private int TIMEOUT = 500;
+//	private int kTimeoutMs = 20;
+//	private int kArcadeProfile = 0;
+	protected final double THROTTLE = .25;
 	public double DISTANCE_PER_TICK = (2/25.4) / 4096; // measuring height at 2mm per round, in inches
 
-	protected static WPI_TalonSRX shaft, slave;
-
-	protected static SpeedControllerGroup shaftSC;
-
-	protected final double THROTTLE = .25;
-
-	private int kTimeoutMs = 20;
-	private int kArcadeProfile = 0;
-
-	private static boolean raiseElevator = true;
+	private boolean raiseElevator = true;
 
 	public Elevator(){
         super("Elevator");
@@ -65,7 +58,7 @@ public class Elevator extends Subsystem{
 		shaftSC.stopMotor();
 	}
 
-	public static void setNeutralMode(NeutralMode mode) {
+	public void setNeutralMode(NeutralMode mode) {
 		shaft.setNeutralMode(mode);
 		slave.setNeutralMode(mode);
 	}
@@ -103,7 +96,7 @@ public class Elevator extends Subsystem{
 	}
 	*/
 
-	public static boolean getRaiseElevator(){
+	public boolean getRaiseElevator(){
 		return raiseElevator;
 }
 

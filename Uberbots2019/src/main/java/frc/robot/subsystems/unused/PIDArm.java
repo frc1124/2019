@@ -1,28 +1,25 @@
-package frc.robot.subsystems;
+package frc.robot.subsystems.unused;
 
 import frc.robot.RobotMap;
-import frc.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import frc.robot.Robot;
 import com.ctre.phoenix.motorcontrol.ControlMode;
-
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 
 public class PIDArm extends PIDSubsystem{
 
 	protected WPI_TalonSRX arm;
-	// TODO get value
-	private final double ANGLE_PER_OHM = 0.72;
 
 	protected SpeedControllerGroup armSC;
 	protected AnalogPotentiometer pot;
 
-	protected final double THROTTLE = .25;
-	private final double ARM_LENGTH = 31.25;
+	private static final double ANGLE_PER_OHM = 0.72;
+	private static final double THROTTLE = .25;
+	private static final double ARM_LENGTH = 31.25;
 
 	public PIDArm(){
 		super("PIDArm",RobotMap.ARM_P,RobotMap.ARM_I,RobotMap.ARM_D,RobotMap.ARM_F);
@@ -60,7 +57,6 @@ public class PIDArm extends PIDSubsystem{
 	}
 
 	public void usePIDOutput(double output) {
-/*
 		// Make sure the arm does not crash into other mechanisms
 		double angle = getAngle();
 		double elevatorHeight = Robot.elevator.getPosition();
@@ -80,17 +76,17 @@ public class PIDArm extends PIDSubsystem{
 		}
 
 		// Will it collide?
-		double y = elevatorHeight + ySlope * ARM_LENGTH;
+		double y = elevatorHeight + ySlope * PIDArm.ARM_LENGTH;
 		if (y < collisionY) {
 			// Is the x slope great enough to avoid collision?
-			double armX = xSlope * ARM_LENGTH;
+			double armX = xSlope * PIDArm.ARM_LENGTH;
 			if (armX >= collisionX) {
 				// Collided; set speed to zero
 				arm.pidWrite(0);
 				return;
 			}
 		}
-*/
+
 		arm.pidWrite(output);
 	}
 

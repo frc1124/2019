@@ -5,37 +5,29 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.SPI;
-
 import frc.robot.RobotMap;
 import frc.robot.Robot;
 import frc.robot.commands.ArcadeDriveJoystick;
-
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.ControlMode;
-
 import com.kauailabs.navx.frc.AHRS;
 
 public class Drive extends Subsystem{
 
-	private int TIMEOUT = 500;
-
-	private double DISTANCE_PER_TICK = Math.PI / 4096;
-
 	protected WPI_TalonSRX leftBack, leftFront;
 	protected WPI_TalonSRX rightBack, rightFront;
-
     public AHRS navx = new AHRS(SPI.Port.kMXP);
 
 	private SpeedControllerGroup left, right;
-
 	private DifferentialDrive diffDrive;
 
-	private final double THROTTLE = .75;
-
+	private int TIMEOUT = 500;
+	private double DISTANCE_PER_TICK = Math.PI / 4096;
 	private int kTimeoutMs = 140;
 	private int kArcadeProfile = 0;
+	private final double THROTTLE = .75;
 
 	public Drive(){
         super("Drive");

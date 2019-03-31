@@ -1,15 +1,14 @@
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.command.PIDCommand;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
 
 
 public class ToggleElevator extends Command {
 	// TODO: Find setPoint
-	private double setPoint = 0;
-	private final double TOLLERANCE = 0.1;
+	//private double setPoint = 0;
+	//private final double TOLERANCE = 0.1;
+	private boolean done = false;
 
 	public ToggleElevator(){
 		//super("ToggleElevator", RobotMap.ELEVATOR_P, RobotMap.ELEVATOR_I, RobotMap.ELEVATOR_D);
@@ -19,13 +18,14 @@ public class ToggleElevator extends Command {
     }
 	
 	public boolean isFinished(){
-		//return Math.abs(Robot.elevator.getEncoderDistance() - setPoint) <= TOLLERANCE;
-		return false;
+		//return Math.abs(Robot.elevator.getEncoderDistance() - setPoint) <= TOLERANCE;
+		return this.done;
 	}
 
 	@Override
 	protected void execute() {
-        Robot.elevator.moveUp(Robot.elevator.getRaiseElevator());
+		Robot.elevator.moveUp(Robot.elevator.getRaiseElevator());
+		this.done = true;
 	}
 
 	public double returnPIDInput(){

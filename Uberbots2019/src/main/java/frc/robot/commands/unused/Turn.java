@@ -1,4 +1,4 @@
-package frc.robot.commands;
+package frc.robot.commands.unused;
 
 import frc.robot.Robot;
 
@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 
 public class Turn extends Command {
-	private double TOLLERANCE = 0.2;
+	private double TOLERANCE = 0.2;
 
 	private double THROTTLE = 0.75;
 
@@ -22,7 +22,7 @@ public class Turn extends Command {
 	}
 
 	public boolean isFinished(){
-		return Math.abs(Robot.driveTrain.getYaw() - setPoint) <= TOLLERANCE;
+		return Math.abs(Robot.driveTrain.getYaw() - setPoint) <= TOLERANCE;
 	}
 
 	@Override

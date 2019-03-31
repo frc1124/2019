@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class HatchMechanism extends Subsystem{
 
-	protected static DoubleSolenoid Push, Slide;
+	protected DoubleSolenoid Push, Slide;
 
 	public HatchMechanism(){
 		super("HatchMechanism");

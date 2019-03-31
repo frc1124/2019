@@ -8,7 +8,6 @@ import edu.wpi.first.wpilibj.command.Command;
 
 
 public class ArcadeDriveJoystick extends Command {
-  private final int IMAGE_WIDTH = 320;
 
   public ArcadeDriveJoystick(){
     requires(Robot.driveTrain);
@@ -23,7 +22,7 @@ public class ArcadeDriveJoystick extends Command {
 
   @Override
   protected void execute() {    
-    Joystick js = Robot.oi.getJoystick();
+    Joystick js = OI.getJoystick();
 
   /*
     // if target button is held, steer with vision

@@ -1,8 +1,8 @@
-package frc.robot.commands;
+package frc.robot.commands.unused;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import frc.robot.commands.SetElevatorPosition;
-import frc.robot.commands.SetArmPosition;
+import frc.robot.commands.unused.SetElevatorPosition;
+import frc.robot.commands.unused.SetArmPosition;
 
 public class PickupCargo extends CommandGroup {
     public PickupCargo() {

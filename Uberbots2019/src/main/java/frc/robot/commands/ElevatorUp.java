@@ -1,23 +1,20 @@
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.command.PIDCommand;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
 import frc.robot.OI;
 
 public class ElevatorUp extends Command {
 	// TODO: Find setPoint
-	private double setPoint = 0;
-	private final double TOLLERANCE = 0.1;
-
-	private long startTime;
+	//private double setPoint = 0;
+	//private final double TOLERANCE = 0.1;
+	//private long startTime;
 
 	public ElevatorUp(){
 		//super("ElevatorUp", RobotMap.ELEVATOR_P, RobotMap.ELEVATOR_I, RobotMap.ELEVATOR_D);
 		requires(Robot.elevator);
 
-		startTime = System.currentTimeMillis();
+		//startTime = System.currentTimeMillis();
 
 		setInterruptible(true);
 	}

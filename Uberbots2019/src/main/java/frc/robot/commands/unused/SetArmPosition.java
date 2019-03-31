@@ -1,12 +1,12 @@
-package frc.robot.commands;
+package frc.robot.commands.unused;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class SetArmPosition extends Command {
     private double targetAngle;
-    private final double CLOSE = 5;
-    private final double TOP = 130;
+    private static final double CLOSE = 5;
+    private static final double TOP = 130;
 
     public SetArmPosition(double angle) {
         super("SetArmPosition");
@@ -15,9 +15,13 @@ public class SetArmPosition extends Command {
     }
 
     protected void execute() {
-/*
+//        Robot.arm.setAngle(targetAngle);
+        this.fakePIDExecute();
+    }
+
+    private void fakePIDExecute() {
         // Figure out which way to run the arm and go
-        double diff = Robot.arm.getPosition() - this.targetPosition;
+        double diff = Robot.arm.getAngle() - this.targetAngle;
 
         // If we're close, run half speed
         double speed = (Math.abs(diff) < CLOSE) ? 0.5 : 1;
@@ -38,11 +42,8 @@ public class SetArmPosition extends Command {
         }
 
         // Run the arm
-        Robot.arm.setVelocity(speed);
-*/
-        //Robot.arm.setAngle(targetAngle);
+        Robot.arm.move(speed);
     }
-
     protected void end() {
         //Robot.arm.setVelocity(0);
     }
@@ -52,7 +53,10 @@ public class SetArmPosition extends Command {
     }
 
     protected boolean isFinished() {
-        // return (Robot.arm.getAngle() == this.targetAngle);
-        return false;
+        double d = Robot.arm.getAngle() - this.targetAngle;
+        if (d < 0) {
+            d *= -1;
+        }
+        return (d < 0.2);
     }
 }

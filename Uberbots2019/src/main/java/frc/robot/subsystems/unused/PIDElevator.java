@@ -1,25 +1,20 @@
-package frc.robot.subsystems;
+package frc.robot.subsystems.unused;
+
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Encoder;
-
 import frc.robot.RobotMap;
-
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 
 public class PIDElevator extends PIDSubsystem{
 
-	// TODO: get val
-	public double DISTANCE_PER_TICK = (2/25.4) / 4096; // reporting height; 2mm per turn adjust for inches
-
 	protected WPI_TalonSRX shaft1, shaft2;
-
 	protected SpeedControllerGroup shaftSC;
-
-	protected final double THROTTLE = .7775;
-
 	protected Encoder enc;
+
+	public double DISTANCE_PER_TICK = (2/25.4) / 4096; // reporting height; 2mm per turn adjust for inches
+	public static final double THROTTLE = .7775;
 
 	private boolean raiseElevator = true;
 
