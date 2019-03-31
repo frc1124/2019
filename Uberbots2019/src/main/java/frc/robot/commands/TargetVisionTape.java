@@ -1,88 +1,54 @@
 package frc.robot.commands;
 
-import frc.robot.vision.GripPipeline;
-import frc.robot.commands.Turn;
-
-import org.opencv.core.Mat;
 import frc.robot.Robot;
-import frc.robot.vision.Camera;
-import frc.robot.vision.GripPipeline;
-
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.networktables.NetworkTable;
+
+/**
+ * Do NOT put GripPipeline or any other OpenCV on the roboRIO unless you have been 
+ * able to carefully tune it to not interfere with actuator control.
+ * 
+ * Use a co-processor, such as a Raspberry Pi, instead. Read the co-processor's 
+ * output from SmartDashboard.
+ */
 
 public class TargetVisionTape extends Command {
-    
+	private static final double FORWARD_POWER = 0.35;
+
 	private boolean done = false;
-
-	public static final int CAMERA_EXPOSURE = 3;
-
-	private int tolerance = 10;
-	private double buffer = .4;
-
-	private GripPipeline filter = null;
-	private int backupMode = 2;
-	
-	private double[] range;
-	private double lx, hx;
-	private double mx;
-	private double difference;
+	private double cameraCenterX = -1;
+	private double cameraWidth = -1;
+//	private int tolerance = 10;
 
 	public TargetVisionTape() {
-		requires(Robot.driveFoward);
 		requires(Robot.driveTrain);
-		filter = new GripPipeline();
-		//turn = new Turn(); 
 		this.setInterruptible(false);
 	}
 
-	protected void end() {
-		this.done = true;
-	}
-
 	protected void initialize() {
-		Mat img = Robot.driveFoward.getMat();
-		this.filter.process(img);
-		range = filter.getXRange();
-		lx = range[0];
-		hx = range[1];
-		mx = (lx + hx) / 2;
-		//mx = Camera.getContourCenter(img)
-		Robot.ntInfo.update();
-		difference = mx - (Camera.CAMERA_RESOLUTION_X / 2);
-		
+		// Make sure we're getting a good read from the co-processor
+		double cameraWidth = Robot.ntData.getVisionData("camera_width");
+		double x = Robot.ntData.getVisionData("center_x");
+
+		// If no read, abort
+		if (cameraCenterX <= 0 || x <= 0) {
+			this.done = true;
+		} else {
+			cameraCenterX = cameraWidth / 2;
+		}
 	}
 
 	protected void execute() {
+		double x = Robot.ntData.getVisionData("centerX");
+		double difference = x - cameraCenterX;
+		double adjustment = difference / cameraWidth;
 
-		Mat img = Robot.driveFoward.getMat();
-		this.filter.process(img);
-		range = filter.getXRange();
-		lx = range[0];
-		hx = range[1];
-		mx = (lx + hx) / 2;
-		//mx = Camera.getContourCenter(img)
-		Robot.ntData.targetCenterEntry.setDouble(mx);
-		difference = mx - (Camera.CAMERA_RESOLUTION_X / 2);
-		/*
-		while ((mx <= 310)||(mx >= 330))
-		{
-			mxOld = mx;
-			Robot.turn(1);
-			Mat img = Robot.driveCamera.getMat();
-			this.filter.process(img);
-			range = filter.getXRange();
-			lx = range[0];
-			hx = range[1];
-			mx = (lx + hx) / 2;
-			if (mx > mxOld)
-			{ Robot.turn(1);}
-			if (mx<mxOld)
-			{ Robot.turn(-2);}
-			else
-			{ break;}
-		}
-		*/
+		// Drive forward with turn affected by adjustment; negative is left, positive is right
+		Robot.driveTrain.drive(FORWARD_POWER, adjustment);
+	}
+
+	protected void end() {
+		Robot.driveTrain.stop();
+		this.done = true;
 	}
 
 	public void interrupted() {

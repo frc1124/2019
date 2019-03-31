@@ -49,7 +49,7 @@ public class Robot extends TimedRobot {
 	public static SuctionCup suctionCup;
 	public static Arm arm;
 	public static Drive driveTrain;
-	public static Camera driveFoward, driveBackward;
+	public static Camera camera;
 	public static Compressor c;
 	public static PIDElevator elevator;
 	public static Elevator manualElevator;
@@ -71,8 +71,7 @@ public class Robot extends TimedRobot {
 		ntInfo = new NTInfo(inst);
 
 		driveTrain = new Drive();
-		driveFoward = new Camera("DriveFoward");
-		driveBackward = new Camera("DriveBackward");
+		camera = new Camera();
 		hatchMechanism = new HatchMechanism();
 		suctionCup = new SuctionCup();
 		manualElevator = new Elevator();
