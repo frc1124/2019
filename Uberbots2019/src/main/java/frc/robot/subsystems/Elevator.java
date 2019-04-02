@@ -18,7 +18,7 @@ public class Elevator extends Subsystem{
 //	private int TIMEOUT = 500;
 //	private int kTimeoutMs = 20;
 //	private int kArcadeProfile = 0;
-	protected final double THROTTLE = .25;
+	protected final double THROTTLE = 1;
 	public double DISTANCE_PER_TICK = (2/25.4) / 4096; // measuring height at 2mm per round, in inches
 
 	private boolean raiseElevator = true;
@@ -36,7 +36,7 @@ public class Elevator extends Subsystem{
 		shaft.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,kTimeoutMs);
 		*/
 		slave = new WPI_TalonSRX(RobotMap.ELEVATOR2);
-		slave.follow(shaft);
+		//slave.follow(shaft);
 		
 		shaftSC = new SpeedControllerGroup(shaft, slave);
 		System.out.println("Init");

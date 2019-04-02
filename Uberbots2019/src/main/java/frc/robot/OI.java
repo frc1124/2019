@@ -17,11 +17,11 @@ import frc.robot.commands.ToggleHatch;
 import frc.robot.commands.PistonExtend;
 import frc.robot.commands.PistonRetract;
 import frc.robot.commands.ToggleSuction;
-//import frc.robot.commands.LowerArm;
-//import frc.robot.commands.RaiseArm;
-//import frc.robot.commands.ElevatorUp;
-//import frc.robot.commands.ElevatorDown;
-//import frc.robot.commands.ToggleHatch;
+import frc.robot.commands.LowerArm;
+import frc.robot.commands.RaiseArm;
+import frc.robot.commands.ElevatorUp;
+import frc.robot.commands.ElevatorDown;
+import frc.robot.commands.ToggleHatch;
 
 public class OI {
 
@@ -107,13 +107,13 @@ public class OI {
   }
 
   private static void configureDriverArm(int driver) {
-    //joystickButtons[driver][OI.LEFT_BUTTON].toggleWhenPressed(new LowerArm());
-    //joystickButtons[driver][OI.RIGHT_BUTTON].toggleWhenPressed(new RaiseArm());
+    joystickButtons[driver][OI.LEFT_BUTTON].toggleWhenPressed(new LowerArm());
+    joystickButtons[driver][OI.RIGHT_BUTTON].toggleWhenPressed(new RaiseArm());
   }
 
   private static void configureDriverElevator(int driver) {
-    //joystickButtons[driver][OI.A_BUTTON].toggleWhenPressed(new ElevatorUp());
-    //joystickButtons[driver][OI.X_BUTTON].toggleWhenPressed(new ElevatorDown());
+    joystickButtons[driver][OI.A_BUTTON].toggleWhenPressed(new ElevatorUp());
+    joystickButtons[driver][OI.X_BUTTON].toggleWhenPressed(new ElevatorDown());
   }
 
   public static void configureControlModeAuto() {
@@ -124,16 +124,16 @@ public class OI {
     OI.configureDriverArm(OI.DRIVER_1);
     OI.configureDriverElevator(OI.DRIVER_1);
 
-    //joystickButtons[OI.DRIVER_1][OI.A_BUTTON].toggleWhenPressed(new ArcadeDriveJoystick());
-    //joystickButtons[OI.DRIVER_1][OI.X_BUTTON].toggleWhenPressed(new HatchRetract());
-    //joystickButtons[OI.DRIVER_1][OI.LEFT_BUTTON].toggleWhenPressed(new PistonRetract());
-    //joystickButtons[OI.DRIVER_1][OI.RIGHT_BUTTON].toggleWhenPressed(new PIDDriveTest(4));
+    joystickButtons[OI.DRIVER_1][OI.A_BUTTON].toggleWhenPressed(new ArcadeDriveJoystick());
+    joystickButtons[OI.DRIVER_1][OI.X_BUTTON].toggleWhenPressed(new HatchRetract());
+    joystickButtons[OI.DRIVER_1][OI.LEFT_BUTTON].toggleWhenPressed(new PistonRetract());
+    joystickButtons[OI.DRIVER_1][OI.RIGHT_BUTTON].toggleWhenPressed(new PIDDriveTest(4));
   }
 
 	public static void configureControlModeTeleop() {
     // Set up OI for teleop
     //Scheduler.getInstance().removeAll();
-    Scheduler.getInstance().add(Robot.driveTrain.getDefaultCommand());
+    //Scheduler.getInstance().add(Robot.driveTrain.getDefaultCommand());
     OI.configurePneumaticButtons(OI.DRIVER_1);
     OI.configureDriverArm(OI.DRIVER_1);
     OI.configureDriverElevator(OI.DRIVER_1);

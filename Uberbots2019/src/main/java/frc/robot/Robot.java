@@ -80,7 +80,7 @@ public class Robot extends TimedRobot {
 		// Operator interface
 		oi = new OI(); //instantiate this last
 	
-		c.setClosedLoopControl(true);
+		//c.setClosedLoopControl(true);
 	}
 
 	/**
@@ -121,7 +121,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
-		c.setClosedLoopControl(true);
+		//c.setClosedLoopControl(true);
 		Scheduler.getInstance().run();
 	}
 
@@ -141,6 +141,8 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		allPeriodic();
+		c.setClosedLoopControl(true);
+		System.out.println(elevator.log());
 		Scheduler.getInstance().run();
 	}
 
@@ -182,8 +184,8 @@ public class Robot extends TimedRobot {
 	 * Makes sure the we're in closed loop and update NetworkTables
 	 */
 	public void allPeriodic() {
-		c.setClosedLoopControl(true);
-		ntInfo.update();
+		//c.setClosedLoopControl(true);
+		//ntInfo.update();
 	}
 
 	/**
@@ -191,7 +193,7 @@ public class Robot extends TimedRobot {
 	 */
 	public void toggleCompressor(){
 		this.toggleCompressor = !toggleCompressor;
-		c.setClosedLoopControl(toggleCompressor);
+		//c.setClosedLoopControl(toggleCompressor);
     }
 
 	/**
@@ -229,6 +231,6 @@ public class Robot extends TimedRobot {
 			OI.configureControlModeTestPID();
 			break;
 		}
-		ntData.getControlMode().setNumber(controlMode);
+		//ntData.getControlMode().setNumber(controlMode);
 	}
 }
