@@ -12,16 +12,14 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import edu.wpi.first.wpilibj.command.Scheduler;
-import frc.robot.commands.ArcadeDriveJoystick;
 import frc.robot.commands.ToggleHatch;
-import frc.robot.commands.PistonExtend;
-import frc.robot.commands.PistonRetract;
+import frc.robot.commands.TogglePiston;
 import frc.robot.commands.ToggleSuction;
 import frc.robot.commands.LowerArm;
 import frc.robot.commands.RaiseArm;
 import frc.robot.commands.ElevatorUp;
 import frc.robot.commands.ElevatorDown;
-import frc.robot.commands.ToggleHatch;
+import frc.robot.commands.SwitchCamera;
 
 public class OI {
 
@@ -40,7 +38,6 @@ public class OI {
   public static final int RIGHT_JOYSTICK_BUTTON = 10;
 
   public static Joystick joystick = new Joystick(OI.DRIVER_1);
-  //public static Joystick joystick2 = new Joystick(OI.DRIVER_2);
 
   public static Button[][] joystickButtons = {{
     null,
@@ -57,53 +54,24 @@ public class OI {
     new JoystickButton(joystick, 11),
     new JoystickButton(joystick, 12),
     
-  },{/*
-    null,
-    new JoystickButton(joystick2, OI.A_BUTTON),
-    new JoystickButton(joystick2, OI.B_BUTTON),
-    new JoystickButton(joystick2, OI.X_BUTTON),
-    new JoystickButton(joystick2, OI.Y_BUTTON),
-    new JoystickButton(joystick2, OI.LEFT_BUTTON),
-    new JoystickButton(joystick2, OI.RIGHT_BUTTON),
-    new JoystickButton(joystick2, 7),
-    new JoystickButton(joystick2, 8),
-    new JoystickButton(joystick2, OI.LEFT_JOYSTICK_BUTTON),
-    new JoystickButton(joystick2, OI.RIGHT_JOYSTICK_BUTTON),
-    new JoystickButton(joystick2, 11),
-    new JoystickButton(joystick2, 12),*/
-  }
+  },{}
   };
 
-  public OI(){
-    /*
-    //Driver 1
-    joystickButtons[1][0].toggleWhenPressed(new ArcadeDriveJoystick());
-    joystickButtons[2][0].toggleWhenPressed(new ToggleHatch());
-    joystickButtons[3][0].toggleWhenPressed(new ToggleSuction());
-    joystickButtons[4][0].toggleWhenPressed(new PIDDriveTest(4));
-    joystickButtons[5][0].toggleWhenPressed(new LowerArm());
-    joystickButtons[6][0].toggleWhenPressed(new RaiseArm());
-    */
-    
-    //Driver 2
-    //joystickButtons[7].toggleWhenPressed(new ElevatorUp());
-    //joystickButtons[8].toggleWhenPressed(new ElevatorDown());
-
-  }
+  public OI(){}
 
   public static Joystick getJoystick(){
     return joystick;
   }
 
   public static Joystick getJoystick2(){
-    return null;//joystick2;
+    return null;
   }
 
   private static void configurePneumaticButtons(int driver) {
     joystickButtons[driver][OI.B_BUTTON].whenPressed(new ToggleHatch());
     joystickButtons[driver][OI.Y_BUTTON].whenPressed(new ToggleSuction());
-    joystickButtons[driver][OI.BACK_BUTTON].whenPressed(new PistonRetract());
-    joystickButtons[driver][OI.START_BUTTON].whenPressed(new PistonExtend());
+    joystickButtons[driver][OI.BACK_BUTTON].whenPressed(new TogglePiston());
+    joystickButtons[driver][OI.START_BUTTON].whenPressed(new SwitchCamera());
   }
 
   private static void configureDriverArm(int driver) {
@@ -123,11 +91,6 @@ public class OI {
     OI.configurePneumaticButtons(OI.DRIVER_1);
     OI.configureDriverArm(OI.DRIVER_1);
     OI.configureDriverElevator(OI.DRIVER_1);
-
-    joystickButtons[OI.DRIVER_1][OI.A_BUTTON].toggleWhenPressed(new ArcadeDriveJoystick());
-    joystickButtons[OI.DRIVER_1][OI.X_BUTTON].toggleWhenPressed(new HatchRetract());
-    joystickButtons[OI.DRIVER_1][OI.LEFT_BUTTON].toggleWhenPressed(new PistonRetract());
-    joystickButtons[OI.DRIVER_1][OI.RIGHT_BUTTON].toggleWhenPressed(new PIDDriveTest(4));
   }
 
 	public static void configureControlModeTeleop() {
@@ -154,7 +117,6 @@ public class OI {
 		 * Hatch: driver 1, right button
 		 * Init hatch: driver 1, right push button
 		 */
-    joystickButtons[OI.DRIVER_1][OI.BACK_BUTTON].whenPressed(new PistonRetract());
     Scheduler.getInstance().add(Robot.driveTrain.getDefaultCommand());
     OI.configurePneumaticButtons(OI.DRIVER_1);
     OI.configureDriverArm(OI.DRIVER_1);
@@ -175,7 +137,6 @@ public class OI {
 		 * Hatch: driver 1, B button
 		 * Init hatch: driver 1, Y button
 		 */
-    joystickButtons[OI.DRIVER_1][OI.A_BUTTON].toggleWhenPressed(new ArcadeDriveJoystick());
     OI.configurePneumaticButtons(OI.DRIVER_1);
     OI.configureDriverArm(OI.DRIVER_1);
     OI.configureDriverElevator(OI.DRIVER_1);
