@@ -75,8 +75,8 @@ public class OI {
   }
 
   private static void configureDriverArm(int driver) {
-    joystickButtons[driver][OI.LEFT_BUTTON].toggleWhenPressed(new LowerArm());
-    joystickButtons[driver][OI.RIGHT_BUTTON].toggleWhenPressed(new RaiseArm());
+    //joystickButtons[driver][OI.LEFT_BUTTON].toggleWhenPressed(new LowerArm());
+    //joystickButtons[driver][OI.RIGHT_BUTTON].toggleWhenPressed(new RaiseArm());
   }
 
   private static void configureDriverElevator(int driver) {

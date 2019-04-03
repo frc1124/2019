@@ -26,7 +26,7 @@ public class Camera extends Subsystem {
 		this.forward = CameraServer.getInstance().startAutomaticCapture(Camera.CAMERA_FORWARD);
 		initCamera(this.forward);
 
-		this.backward = CameraServer.getInstance().startAutomaticCapture(Camera.CAMERA_FORWARD);
+		this.backward = CameraServer.getInstance().startAutomaticCapture(Camera.CAMERA_BACKWARD);
 		initCamera(this.backward);
 
 		// Default the current camera to forward

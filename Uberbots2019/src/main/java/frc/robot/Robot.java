@@ -140,7 +140,7 @@ public class Robot extends TimedRobot {
 	public void teleopPeriodic() {
 		allPeriodic();
 		c.setClosedLoopControl(true);
-		System.out.println(elevator.log());
+		//System.out.println(elevator.log());
 		Scheduler.getInstance().run();
 	}
 

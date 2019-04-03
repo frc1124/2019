@@ -14,6 +14,7 @@ public class ToggleSuction extends Command{
     }
     
     public void execute(){
+        System.out.println("execute suction");
         Robot.suctionCup.toggle();
         hasToggled = true;
     }
