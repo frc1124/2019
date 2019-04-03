@@ -25,6 +25,7 @@ public class Camera extends Subsystem {
 		// Configure the cameras
 		this.forward = CameraServer.getInstance().startAutomaticCapture(Camera.CAMERA_FORWARD);
 		initCamera(this.forward);
+
 		this.backward = CameraServer.getInstance().startAutomaticCapture(Camera.CAMERA_FORWARD);
 		initCamera(this.backward);
 
@@ -40,7 +41,7 @@ public class Camera extends Subsystem {
 			camera.setResolution(CAMERA_RESOLUTION_X, CAMERA_RESOLUTION_Y);
 			camera.setFPS(12);
 		}catch(Exception e) {
-			System.out.println("Failed to initialize Microsoft LifeCam: "+camera);
+			System.out.println("Failed to initialize Microsoft LifeCam: " + camera);
 		}
 	}
 

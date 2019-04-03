@@ -1,16 +1,25 @@
 package frc.robot.subsystems.unused;
 
 import frc.robot.RobotMap;
+import frc.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import frc.robot.Robot;
+
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
+//import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+//import com.ctre.phoenix.motorcontrol.ControlMode;
 
 public class PIDArm extends PIDSubsystem{
+
+	//  Change value/Pray to RNJesus
+	//	private double DELTA_OHMS = 62.5;
+	//	private double ANGLE_ROTATION = 45;
+	//	private int kTimeoutMs = 20;
+	//	private int kArcadeProfile = 0;
 
 	protected WPI_TalonSRX arm;
 
@@ -66,7 +75,7 @@ public class PIDArm extends PIDSubsystem{
 		// Avoid crashing into front and back
 		double collisionX = 0;
 		double collisionY = 0;
-// TODO: Measure the actual collision points (top inside distance from lowest elevator height)
+	// TODO: Measure the actual collision points (top inside distance from lowest elevator height)
 		if (angle > 90) {
 			collisionX = 12;
 			collisionY = 14;

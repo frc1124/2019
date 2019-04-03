@@ -5,17 +5,10 @@ import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
-//import com.ctre.phoenix.motorcontrol.FeedbackDevice;
-//import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 public class Arm extends Subsystem{
-	// TODO: Change value/Pray to RNJesus
-//	private double DELTA_OHMS = 62.5;
-//	private double ANGLE_ROTATION = 45;
-//	private int kTimeoutMs = 20;
-//	private int kArcadeProfile = 0;
 
 	protected WPI_TalonSRX arm;
 	protected SpeedControllerGroup armSC;

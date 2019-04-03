@@ -9,7 +9,7 @@ package frc.robot;
 
 public class RobotMap {
 
-    // Can addresses
+    // Can Addresses
     public static final int ELEVATOR1 = 1;
     public static final int ELEVATOR2 = 5;
     public static final int ARM = 6;
@@ -19,7 +19,6 @@ public class RobotMap {
     public static final int RIGHT_1 = 2;
     public static final int RIGHT_2 = 4;
 	
-	// TODO: GET VAUES
     public static final int PDP_ID = 0;
     public static final int COMPRESSOR_ID = 0;
 
@@ -66,5 +65,4 @@ public class RobotMap {
 	public static final double ELEVATOR_I = 0.0;
 	public static final double ELEVATOR_D = 0.0;
 	public static final double ELEVATOR_F = 0.0;
-
 }

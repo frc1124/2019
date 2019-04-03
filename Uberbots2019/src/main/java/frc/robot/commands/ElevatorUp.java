@@ -5,23 +5,18 @@ import frc.robot.Robot;
 import frc.robot.OI;
 
 public class ElevatorUp extends Command {
-	// TODO: Find setPoint
 	//private double setPoint = 0;
 	//private final double TOLERANCE = 0.1;
-	//private long startTime;
 
 	public ElevatorUp(){
 		//super("ElevatorUp", RobotMap.ELEVATOR_P, RobotMap.ELEVATOR_I, RobotMap.ELEVATOR_D);
 		requires(Robot.elevator);
-
-		//startTime = System.currentTimeMillis();
 
 		setInterruptible(true);
 	}
 
 	public boolean isFinished(){
 		//return Math.abs(Robot.elevator.getEncoderDistance() - setPoint) <= TOLLERANCE;
-	//	return System.currentTimeMillis() - startTime >= 2000;4
 		return !OI.getJoystick().getRawButton(OI.A_BUTTON);
 	}
 
@@ -29,7 +24,6 @@ public class ElevatorUp extends Command {
 	public void end() {
 		Robot.elevator.stop();
 	}
-
 
 	@Override
 	public void interrupted() {
@@ -40,6 +34,7 @@ public class ElevatorUp extends Command {
 	protected void execute() {
 		Robot.elevator.moveUp(true);
 	}
+	
 	/*
 	public double returnPIDInput(){
 		return Robot.elevator.getEncoderDistance();

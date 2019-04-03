@@ -5,7 +5,7 @@ import frc.robot.Robot;
 import frc.robot.OI;
 
 public class ElevatorDown extends Command {
-	// TODO: Find setPoint
+	// Find setPoint
 	//private double setPoint = 0;
 	//private final double TOLERANCE = 0.1;
 	//private  long startTime = System.currentTimeMillis();
@@ -19,7 +19,6 @@ public class ElevatorDown extends Command {
 
 	public boolean isFinished(){
 		//return Math.abs(Robot.elevator.getEncoderDistance() - setPoint) <= TOLLERANCE;
-	//	return System.currentTimeMillis() - startTime >= 2000;4
 		return !OI.getJoystick().getRawButton(OI.X_BUTTON);
 	}
 
@@ -36,6 +35,7 @@ public class ElevatorDown extends Command {
 	protected void execute() {
 		Robot.elevator.moveUp(false);
 	}
+	
 	/*
 	public double returnPIDInput(){
 		return Robot.elevator.getEncoderDistance();
@@ -43,5 +43,4 @@ public class ElevatorDown extends Command {
 	public void usePIDOutput(double output) {
 		Robot.elevator.getPIDController().pidWrite(output);
 	}*/
-
 }

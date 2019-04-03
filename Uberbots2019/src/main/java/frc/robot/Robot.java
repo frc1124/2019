@@ -78,9 +78,9 @@ public class Robot extends TimedRobot {
 		c = new Compressor(RobotMap.COMPRESSOR_ID);
 
 		// Operator interface
-		oi = new OI(); //instantiate this last
+		oi = new OI();
 	
-		//c.setClosedLoopControl(true);
+		c.setClosedLoopControl(true);
 	}
 
 	/**
@@ -121,7 +121,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
-		//c.setClosedLoopControl(true);
+		c.setClosedLoopControl(true);
 		Scheduler.getInstance().run();
 	}
 
@@ -131,8 +131,6 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopInit() {
 		setControlMode(Robot.CONTROL_MODE_TELEOP);
-		// ElevatorUp e = new ElevatorUp();
-		// Scheduler.getInstance().add(e);
 	}
 
 	/**
@@ -162,11 +160,10 @@ public class Robot extends TimedRobot {
 	private void initMechanisms() {
 		// Init the mechanisms
 		hatchMechanism.HatchRetract();
-		//hatchMechanism.PistonRetract();
 		suctionCup.stop();
 		arm.stop();
 		driveTrain.stop();
-//		elevator.stop();
+		elevator.stop();
 	}
 
 	/**
@@ -184,8 +181,8 @@ public class Robot extends TimedRobot {
 	 * Makes sure the we're in closed loop and update NetworkTables
 	 */
 	public void allPeriodic() {
-		//c.setClosedLoopControl(true);
-		//ntInfo.update();
+		c.setClosedLoopControl(true);
+		ntInfo.update();
 	}
 
 	/**
@@ -193,7 +190,7 @@ public class Robot extends TimedRobot {
 	 */
 	public void toggleCompressor(){
 		this.toggleCompressor = !toggleCompressor;
-		//c.setClosedLoopControl(toggleCompressor);
+		c.setClosedLoopControl(toggleCompressor);
     }
 
 	/**
@@ -231,6 +228,6 @@ public class Robot extends TimedRobot {
 			OI.configureControlModeTestPID();
 			break;
 		}
-		//ntData.getControlMode().setNumber(controlMode);
+		ntData.getControlMode().setNumber(controlMode);
 	}
 }

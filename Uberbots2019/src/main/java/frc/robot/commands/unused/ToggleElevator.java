@@ -3,9 +3,7 @@ package frc.robot.commands.unused;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-
 public class ToggleElevator extends Command {
-	// TODO: Find setPoint
 	//private double setPoint = 0;
 	//private final double TOLERANCE = 0.1;
 	private boolean done = false;
@@ -27,18 +25,20 @@ public class ToggleElevator extends Command {
 		Robot.elevator.moveUp(Robot.elevator.getRaiseElevator());
 		this.done = true;
 	}
+	
+	/*
+	@Override
+    public void end(){
+        Robot.elevator.toggleRaiseElevator();
+    }
 
 	public double returnPIDInput(){
 		//return Robot.elevator.getEncoderDistance();
 		return 0.0;
 	}
-    /*
+    
 	public void usePIDOutput(double output) {
 		Robot.elevator.getPIDController().pidWrite(output);
 	}
-
-    @Override
-    public void end(){
-        Robot.elevator.toggleRaiseElevator();
-    }*/
+	*/
 }
